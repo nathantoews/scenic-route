@@ -1,3 +1,5 @@
-# scenic-react
-\n---
-\n
+# scenic-route
+
+## Initialization
+
+npm install
