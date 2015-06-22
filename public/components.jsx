@@ -11,10 +11,6 @@ var HelloMessage = React.createClass({
   }
 })
 
-
-
-
-
 if (isNode) {
   exports.HelloMessage = HelloMessage
 } else {
