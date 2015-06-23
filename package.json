@@ -14,7 +14,8 @@
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",
     "react": "^0.13.3",
-    "react-tools": "^0.13.3"
+    "react-tools": "^0.13.3",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {},
   "scripts": {

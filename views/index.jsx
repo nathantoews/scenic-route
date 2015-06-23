@@ -1,15 +1,8 @@
-// tutorial1.js
-// Higher Level Architecutre
-// - CommentBox
-//   - CommentList
-//     - Comment
-//   - CommentForm
-
-
 var React = require('react');
 var Layout = require('./layout/default');
 // var SideNav = require('./layout/SideNav');
 var ProfileNav = require('./layout/ProfileNav');
+
 
 var Body = React.createClass({
     render: function(){
