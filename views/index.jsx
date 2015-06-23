@@ -1,13 +1,4 @@
-// tutorial1.js
-// Higher Level Architecutre
-// - CommentBox
-//   - CommentList
-//     - Comment
-//   - CommentForm
-
-
 var React = require('react');
-
 
 var CommentList = React.createClass({
     render: function(){
