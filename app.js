@@ -4,13 +4,14 @@ var express = require('express')
   , app = express()
   , session = require('express-session')
   , mongoose = require('mongoose')
-  , User = require('./models.js')('User')
-  , passport = require('./configured_passport.js')
+  , User = require('./lib/db/models.js')('User')
+  , passport = require('./lib/auth/configured_passport.js')
   , fb = require('passport-facebook').Strategy
   , React = require('react/addons')
   , components = require('./public/components.jsx')
-  , auth = require('./auth.js')
+  , auth = require('./lib/auth/auth.js')
 
+// Express App Initialization
 app.use(session(
 	{
 		resave: true, 
@@ -29,7 +30,7 @@ app.engine('jsx', require('express-react-views').createEngine(options));
 
 mongoose.connect('mongodb://localhost:27017/scenic');
 
-// authenticate via facebook
+// Routes below
 app.get('/', function(req, res){
 		var data =
 		[
