@@ -8,8 +8,8 @@ var Body = React.createClass({
     render: function(){
       return (
         <Layout>          
-          <ProfileNav />
         </Layout>
+        <ProfileNav/>
       );
     }
 });
