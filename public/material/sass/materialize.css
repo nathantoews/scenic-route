@@ -2104,7 +2104,7 @@ video.responsive-video {
   .pagination li.active a {
     color: #fff; }
   .pagination li.active {
-    background-color: #ee6e73; }
+    background-color: #93b86e; }
   .pagination li.disabled a {
     color: #999; }
   .pagination li i {
@@ -2200,7 +2200,7 @@ ul.staggered-list li {
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
-  background-color: #ee6e73; }
+  background-color: #93b86e; }
   footer.page-footer .footer-copyright {
     overflow: hidden;
     height: 50px;
@@ -5017,7 +5017,7 @@ span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #93b86e;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -5040,7 +5040,8 @@ nav {
     nav .button-collapse i {
       font-size: 2.7rem;
       height: 56px;
-      line-height: 56px; }
+      line-height: 56px;
+      padding-right: 20px; }
   nav .brand-logo {
     position: absolute;
     color: #fff;
@@ -5523,7 +5524,7 @@ small {
     letter-spacing: .8px;
     width: 15%; }
     .tabs .tab a {
-      color: #ee6e73;
+      color: #93b86e;
       display: block;
       width: 100%;
       height: 100%;
@@ -5533,12 +5534,12 @@ small {
       -ms-transition: color 0.28s ease;
       transition: color 0.28s ease; }
       .tabs .tab a:hover {
-        color: #f9c9cb; }
+        color: #c6dab2; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    background-color: #b9d1a1;
     will-change: left, right; }
 
 .tabs .tab {
@@ -6928,7 +6929,7 @@ select {
       left: auto; } }
 .side-nav .collapsible-body li.active,
 .side-nav.fixed .collapsible-body li.active {
-  background-color: #ee6e73; }
+  background-color: #93b86e; }
   .side-nav .collapsible-body li.active a,
   .side-nav.fixed .collapsible-body li.active a {
     color: #fff; }

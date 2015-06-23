@@ -6,10 +6,25 @@ var ProfileNav = React.createClass({
     return (
       <nav>
         <ul id="slide-out" className="side-nav">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
+          <li>
+            <a className="waves-effect waves-light btn-flat">
+            <i className="fa fa-google right"></i>google</a>
+          </li>
+          
+          <li>
+            <a className="waves-effect waves-light btn-flat">
+            <i className="fa fa-facebook-official right"></i>facebook</a>
+          </li>
+
+          <li>
+            <a className="waves-effect waves-light btn-flat">
+            <i className="material-icons right">settings</i>logout</a>
+          </li>
+
         </ul>
-        <a href="#" data-activates="slide-out" className="button-collapse show-on-large"><i className="mdi-navigation-menu" /></a>
+        <a href="#" data-activates="slide-out" className="button-collapse show-on-large right">
+          <i className="large material-icons">supervisor_account</i>
+        </a>
       </nav>
     );
   }

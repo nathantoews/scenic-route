@@ -7,9 +7,11 @@ var ProfileNav = require('./layout/ProfileNav');
 var Body = React.createClass({
     render: function(){
       return (
-        <Layout>          
+        <Layout>
+          <ProfileNav>
+          </ProfileNav>         
         </Layout>
-        <ProfileNav/>
+
       );
     }
 });
