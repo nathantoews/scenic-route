@@ -23,7 +23,9 @@ app.use(session(
 ));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + '/public'))	
+app.use(express.static(__dirname + '/public'));
+app.use('/material', express.static(__dirname + '/material'));
+app.use('/fonts', express.static(__dirname + '/material/fonts'));	
 
 // serialize and deserialize
 passport.serializeUser(function(user, done) {
