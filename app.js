@@ -8,7 +8,6 @@ var express = require('express')
   , passport = require('./lib/auth/configured_passport.js')
   , fb = require('passport-facebook').Strategy
   , React = require('react/addons')
-  , components = require('./public/components.jsx')
   , auth = require('./lib/auth/auth.js')
 
 // Express App Initialization
