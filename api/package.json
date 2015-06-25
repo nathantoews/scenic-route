@@ -1,0 +1,36 @@
+{
+  "name": "scenic-react",
+  "version": "0.0.1",
+  "description": "branch out!",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.4",
+    "express-session": "^1.11.3",
+    "mongodb": "^2.0.34",
+    "mongoose": "^4.0.5",
+    "mongoose-findorcreate": "^0.1.2",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-twitter": "^1.0.3",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alouis93/scenic-react.git"
+  },
+  "keywords": [
+    "scenic",
+    "react"
+  ],
+  "author": "Andrew and Nathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alouis93/scenic-react/issues"
+  },
+  "homepage": "https://github.com/alouis93/scenic-react"
+}
