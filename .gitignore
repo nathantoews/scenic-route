@@ -1,1 +1,4 @@
-node_modules
+api/node_modules
+frontend/node_modules
+frontend/.module-cache
+frontend/.sass-cache
