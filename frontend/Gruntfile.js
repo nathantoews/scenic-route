@@ -1,7 +1,7 @@
 module.exports = function(grunt) {  	
   	// Initial configuration
 	grunt.initConfig({
-		browerify:{
+		browserify:{
 			dist: {
 			  files: {
 			    'bundle.js': ['index.jsx'],
