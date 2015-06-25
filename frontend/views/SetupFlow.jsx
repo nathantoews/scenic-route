@@ -1,32 +1,39 @@
 var React = require('react');
 
 var SetupFlow = React.createClass({
-  componentDidMount: function(){
-    localStorage.getItem('view') ?  localStorage.getItem('view') : localStorage.setItem('view', 0);
+  getInitialState: function(){
+    return this.routes.timeSel;
+    
+    console.log(this.state);
     console.dir(this);
-    console.log(this);
+    
     window.reactobj = this;
   },
-  routes: function(){
-    return{
-    transBtns: function(){
-      return(
+  routes: 
+  {
+    transBtns:{
+      reactBlob:
+      (
         <form action="#">
           <p><input type="radio" id="test5"/></p>
           <p><input type="radio" id="test6" value="1"/></p>
         </form>
-      )
-    },
-    travelType: function(){
-      return(
+      ),
+      linkTo: 'travelType'       
+    }
+    ,
+    travelType: {
+      reactBlob:(
         <form action="#">
           <p><input type="radio" id="test5"/></p>
           <p><input type="radio" id="test6" value="1"/></p>
         </form>
-      )
-    },
-    destSel: function(){
-      return(
+      ),
+      linkTo: 'destSel'
+    }
+    ,
+    destSel: {
+      reactBlob:(
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -41,30 +48,38 @@ var SetupFlow = React.createClass({
             </div>
           </form>
         </div>
-      )
-    },
-    timeSel: function(){
-      return(
+      ),
+      linkTo: 'timeSel'      
+    }
+    ,
+    timeSel: {
+      reactBlob:(
         <form action="#">
           <p class="range-field"><input type="range" id="test5" min="0" max="100" /></p>
         </form>
-      )
+      ),
+      linkTo: 'travelType'
     }
   }
-}
-
-  ,
+  , 
   nextState: function(){
-
-
+    // Gets the linkTo value
+    var nextView = this.state.linkTo;
+    // Sets the state object identified by the above property.
+    this.setState(this.routes[nextView])
   }
-,
+  ,
   render: function() {
     return (
       <nav>
         <ul className="side-nav fixed left">
-            <button onClick={this.nextState()}>Next</button>
+            <button onClick={this.nextState}>Next</button>
         </ul>
+
+
+        {this.state.reactBlob}
+
+
         <a className="button-collapse show-on-large left">
           <i className="large material-icons">search</i>
         </a>

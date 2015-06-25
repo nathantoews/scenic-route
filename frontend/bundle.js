@@ -19935,139 +19935,136 @@ var ProfileNav = React.createClass({
 module.exports = ProfileNav;
 
 },{"../config.js":1,"react":158}],160:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var React = require('react');
+var React = require("react");
 
 var SetupFlow = React.createClass({
-  displayName: 'SetupFlow',
+  displayName: "SetupFlow",
 
-  componentDidMount: function componentDidMount() {
-    localStorage.getItem('view') ? localStorage.getItem('view') : localStorage.setItem('view', 0);
+  getInitialState: function getInitialState() {
+    return this.routes.timeSel;
+
+    console.log(this.state);
     console.dir(this);
-    console.log(this);
+
     window.reactobj = this;
   },
-  getInitialState: function getInitialState() {
-    return { items: [] };
-  },
-  routes: function routes() {
-    return {
-      transBtns: function transBtns() {
-        return React.createElement(
-          'form',
-          { action: '#' },
-          React.createElement(
-            'p',
-            null,
-            React.createElement('input', { type: 'checkbox', id: 'test5' })
-          ),
-          React.createElement(
-            'p',
-            null,
-            React.createElement('input', { type: 'checkbox', id: 'test6', checked: 'checked' })
-          )
-        );
-      },
+  routes: {
+    transBtns: {
+      reactBlob: React.createElement(
+        "form",
+        { action: "#" },
+        React.createElement(
+          "p",
+          null,
+          React.createElement("input", { type: "radio", id: "test5" })
+        ),
+        React.createElement(
+          "p",
+          null,
+          React.createElement("input", { type: "radio", id: "test6", value: "1" })
+        )
+      ),
+      linkTo: "travelType"
+    },
 
-      travelType: function travelType() {
-        return React.createElement(
-          'form',
-          { action: '#' },
-          React.createElement(
-            'p',
-            null,
-            React.createElement('input', { type: 'checkbox', id: 'test5' }),
-            React.createElement(
-              'label',
-              { 'for': 'test5' },
-              'Red'
-            )
-          ),
-          React.createElement(
-            'p',
-            null,
-            React.createElement('input', { type: 'checkbox', id: 'test6', checked: 'checked' }),
-            React.createElement(
-              'label',
-              { 'for': 'test6' },
-              'Yellow'
-            )
-          )
-        );
-      },
+    travelType: {
+      reactBlob: React.createElement(
+        "form",
+        { action: "#" },
+        React.createElement(
+          "p",
+          null,
+          React.createElement("input", { type: "radio", id: "test5" })
+        ),
+        React.createElement(
+          "p",
+          null,
+          React.createElement("input", { type: "radio", id: "test6", value: "1" })
+        )
+      ),
+      linkTo: "destSel"
+    },
 
-      destSel: function destSel() {
-        return React.createElement(
-          'div',
-          { 'class': 'row' },
+    destSel: {
+      reactBlob: React.createElement(
+        "div",
+        { "class": "row" },
+        React.createElement(
+          "form",
+          { "class": "col s12" },
           React.createElement(
-            'form',
-            { 'class': 'col s12' },
+            "div",
+            { "class": "row" },
             React.createElement(
-              'div',
-              { 'class': 'row' },
+              "div",
+              { "class": "input-field col s6" },
+              React.createElement("input", { placeholder: "Placeholder", id: "first_name", type: "text", "class": "validate" }),
               React.createElement(
-                'div',
-                { 'class': 'input-field col s6' },
-                React.createElement('input', { placeholder: 'Placeholder', id: 'first_name', type: 'text', 'class': 'validate' }),
-                React.createElement(
-                  'label',
-                  { 'for': 'first_name' },
-                  'First Name'
-                )
-              ),
+                "label",
+                { "for": "first_name" },
+                "First Name"
+              )
+            ),
+            React.createElement(
+              "div",
+              { "class": "input-field col s6" },
+              React.createElement("input", { id: "last_name", type: "text", "class": "validate" }),
               React.createElement(
-                'div',
-                { 'class': 'input-field col s6' },
-                React.createElement('input', { id: 'last_name', type: 'text', 'class': 'validate' }),
-                React.createElement(
-                  'label',
-                  { 'for': 'last_name' },
-                  'Last Name'
-                )
+                "label",
+                { "for": "last_name" },
+                "Last Name"
               )
             )
           )
-        );
-      },
+        )
+      ),
+      linkTo: "timeSel"
+    },
 
-      timeSel: function timeSel() {
-        return React.createElement(
-          'form',
-          { action: '#' },
-          React.createElement(
-            'p',
-            { 'class': 'range-field' },
-            React.createElement('input', { type: 'range', id: 'test5', min: '0', max: '100' })
-          )
-        );
-      }
-    };
+    timeSel: {
+      reactBlob: React.createElement(
+        "form",
+        { action: "#" },
+        React.createElement(
+          "p",
+          { "class": "range-field" },
+          React.createElement("input", { type: "range", id: "test5", min: "0", max: "100" })
+        )
+      ),
+      linkTo: "travelType"
+    }
   },
 
-  nextState: function nextState() {},
+  nextState: function nextState() {
+    // Gets the linkTo value
+    var nextView = this.state.linkTo;
+    // Sets the state object identified by the above property.
+    this.setState(this.routes[nextView]);
+  },
 
   render: function render() {
     return React.createElement(
-      'nav',
+      "nav",
       null,
       React.createElement(
-        'ul',
-        { className: 'side-nav fixed left' },
+        "ul",
+        { className: "side-nav fixed left" },
         React.createElement(
-          'button',
-          { onClick: this.nextState() },
-          'Next'
+          "button",
+          { onClick: this.nextState },
+          "Next"
         )
       ),
+      this.state.reactBlob,
       React.createElement(
-        'a',
-        { className: 'button-collapse show-on-large left' },
+        "a",
+        { className: "button-collapse show-on-large left" },
         React.createElement(
-          'i',
-          { className: 'large material-icons' },
-          'search'
+          "i",
+          { className: "large material-icons" },
+          "search"
         )
       )
     );
