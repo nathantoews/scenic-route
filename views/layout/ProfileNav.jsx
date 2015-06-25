@@ -1,15 +1,20 @@
 var React = require('react');
-
+var $ = require('jquery');
      
 var ProfileNav = React.createClass({
   validPassport: function(){ 
     return (this.props.passport && Object.keys(this.props.passport).length); 
   },  
-  logoutButton: function(){
+  logoutButton: function(){  
+    console.log($);
+    // $.get(this.props.session, function(result) {
+    //     this.setState({
+    //       name: result.displayName,
+    //     });
+    // }.bind(this));
     return([
         <li>
           <a className="waves-effect waves-light btn-flat">
-            {this.props.passport.user.displayName}
           </a>
         </li>,
         <li>

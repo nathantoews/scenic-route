@@ -28,11 +28,11 @@ app.get('/users', function(req,res){
 	});
 });
 
-app.get('/debug', function(req, res){
-	res.send(req.session.passport.user.displayName);	
+app.get('/user', function(req, res){
+	res.send(req.session.passport);	
 })
 
-app.listen(3000, '127.0.0.1',function() {
+app.listen(3000, function() {
   console.log('Listening on port 3000...')
 })
 

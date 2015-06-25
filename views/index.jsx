@@ -7,7 +7,7 @@ var Body = React.createClass({
     render: function(){
       return (
         <Layout>
-          <ProfileNav passport={this.props.user}>
+          <ProfileNav session='http://127.0.0.1:3000/user' passport={this.props.user}>
           </ProfileNav>         
         </Layout>
 
