@@ -2,7 +2,7 @@ var React = require('react');
 
 var SetupFlow = React.createClass({
   getInitialState: function(){
-    return this.routes.timeSel;
+    return this.routes.transBtns;
     
     console.log(this.state);
     console.dir(this);
@@ -15,6 +15,8 @@ var SetupFlow = React.createClass({
       reactBlob:
       (
         <form action="#">
+        <h1>transBtns</h1>
+
           <p><input type="radio" id="test5"/></p>
           <p><input type="radio" id="test6" value="1"/></p>
         </form>
@@ -25,6 +27,7 @@ var SetupFlow = React.createClass({
     travelType: {
       reactBlob:(
         <form action="#">
+        <h1>travelType</h1>        
           <p><input type="radio" id="test5"/></p>
           <p><input type="radio" id="test6" value="1"/></p>
         </form>
@@ -34,16 +37,16 @@ var SetupFlow = React.createClass({
     ,
     destSel: {
       reactBlob:(
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s6">
-                <input placeholder="Placeholder" id="first_name" type="text" class="validate" />
-                <label for="first_name">First Name</label>
+        <div className="row">
+          <form className="col s12">
+            <div className="row">
+              <div className="input-field col s6">
+                <input placeholder="Placeholder" id="yourLoc" type="text" className="validate" />
+                <label for="yourLoc">Location</label>
               </div>
-              <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate" />
-                <label for="last_name">Last Name</label>
+              <div className="input-field col s6">
+                <input id="dest" type="text" class="validate" />
+                <label for="dest">Destination</label>
               </div>
             </div>
           </form>
@@ -55,10 +58,10 @@ var SetupFlow = React.createClass({
     timeSel: {
       reactBlob:(
         <form action="#">
-          <p class="range-field"><input type="range" id="test5" min="0" max="100" /></p>
+          <p className="range-field"><input type="range" id="test5" min="0" max="100" /></p>
         </form>
       ),
-      linkTo: 'travelType'
+      linkTo: 'transBtns'
     }
   }
   , 
@@ -71,19 +74,10 @@ var SetupFlow = React.createClass({
   ,
   render: function() {
     return (
-      <nav>
-        <ul className="side-nav fixed left">
+        <ul className="fixed-nav fixed left s12">
+            <div>{this.state.reactBlob}</div>
             <button onClick={this.nextState}>Next</button>
         </ul>
-
-
-        {this.state.reactBlob}
-
-
-        <a className="button-collapse show-on-large left">
-          <i className="large material-icons">search</i>
-        </a>
-      </nav>
     );
   }
 });

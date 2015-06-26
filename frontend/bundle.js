@@ -19943,7 +19943,7 @@ var SetupFlow = React.createClass({
   displayName: "SetupFlow",
 
   getInitialState: function getInitialState() {
-    return this.routes.timeSel;
+    return this.routes.transBtns;
 
     console.log(this.state);
     console.dir(this);
@@ -19955,6 +19955,11 @@ var SetupFlow = React.createClass({
       reactBlob: React.createElement(
         "form",
         { action: "#" },
+        React.createElement(
+          "h1",
+          null,
+          "transBtns"
+        ),
         React.createElement(
           "p",
           null,
@@ -19974,6 +19979,11 @@ var SetupFlow = React.createClass({
         "form",
         { action: "#" },
         React.createElement(
+          "h1",
+          null,
+          "travelType"
+        ),
+        React.createElement(
           "p",
           null,
           React.createElement("input", { type: "radio", id: "test5" })
@@ -19990,31 +20000,31 @@ var SetupFlow = React.createClass({
     destSel: {
       reactBlob: React.createElement(
         "div",
-        { "class": "row" },
+        { className: "row" },
         React.createElement(
           "form",
-          { "class": "col s12" },
+          { className: "col s12" },
           React.createElement(
             "div",
-            { "class": "row" },
+            { className: "row" },
             React.createElement(
               "div",
-              { "class": "input-field col s6" },
-              React.createElement("input", { placeholder: "Placeholder", id: "first_name", type: "text", "class": "validate" }),
+              { className: "input-field col s6" },
+              React.createElement("input", { placeholder: "Placeholder", id: "yourLoc", type: "text", className: "validate" }),
               React.createElement(
                 "label",
-                { "for": "first_name" },
-                "First Name"
+                { "for": "yourLoc" },
+                "Location"
               )
             ),
             React.createElement(
               "div",
-              { "class": "input-field col s6" },
-              React.createElement("input", { id: "last_name", type: "text", "class": "validate" }),
+              { className: "input-field col s6" },
+              React.createElement("input", { id: "dest", type: "text", "class": "validate" }),
               React.createElement(
                 "label",
-                { "for": "last_name" },
-                "Last Name"
+                { "for": "dest" },
+                "Destination"
               )
             )
           )
@@ -20029,11 +20039,11 @@ var SetupFlow = React.createClass({
         { action: "#" },
         React.createElement(
           "p",
-          { "class": "range-field" },
+          { className: "range-field" },
           React.createElement("input", { type: "range", id: "test5", min: "0", max: "100" })
         )
       ),
-      linkTo: "travelType"
+      linkTo: "transBtns"
     }
   },
 
@@ -20046,26 +20056,17 @@ var SetupFlow = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "nav",
-      null,
+      "ul",
+      { className: "fixed-nav fixed left s12" },
       React.createElement(
-        "ul",
-        { className: "side-nav fixed left" },
-        React.createElement(
-          "button",
-          { onClick: this.nextState },
-          "Next"
-        )
+        "div",
+        null,
+        this.state.reactBlob
       ),
-      this.state.reactBlob,
       React.createElement(
-        "a",
-        { className: "button-collapse show-on-large left" },
-        React.createElement(
-          "i",
-          { className: "large material-icons" },
-          "search"
-        )
+        "button",
+        { onClick: this.nextState },
+        "Next"
       )
     );
   }
