@@ -6,7 +6,7 @@ var SetupFlow = React.createClass({
     
     console.log(this.state);
     console.dir(this);
-    
+     
     window.reactobj = this;
   },
   routes: 
@@ -14,23 +14,20 @@ var SetupFlow = React.createClass({
     transBtns:{
       reactBlob:
       (
-        <form action="#">
-        <h1>transBtns</h1>
-
-          <p><input type="radio" id="test5"/></p>
-          <p><input type="radio" id="test6" value="1"/></p>
-        </form>
+        <div className="buttonSize">
+          <a className="waves-effect waves-light btn-large"><i className="fa fa-male"></i></a>
+          <a className="waves-effect waves-light btn-large"><i className="fa fa-bicycle"></i></a>
+        </div>
       ),
       linkTo: 'travelType'       
     }
     ,
     travelType: {
       reactBlob:(
-        <form action="#">
-        <h1>travelType</h1>        
-          <p><input type="radio" id="test5"/></p>
-          <p><input type="radio" id="test6" value="1"/></p>
-        </form>
+        <div className="buttonSize">
+          <a className="waves-effect waves-light btn-large"><i className="fa fa-location-arrow"></i></a>
+          <a className="waves-effect waves-light btn-large"><i className="fa fa-refresh"></i></a>
+        </div>
       ),
       linkTo: 'destSel'
     }
@@ -40,11 +37,11 @@ var SetupFlow = React.createClass({
         <div className="row">
           <form className="col s12">
             <div className="row">
-              <div className="input-field col s6">
-                <input placeholder="Placeholder" id="yourLoc" type="text" className="validate" />
+              <div className="input-field col s12">
+                <input id="yourLoc" type="text" className="validate" />
                 <label for="yourLoc">Location</label>
               </div>
-              <div className="input-field col s6">
+              <div className="input-field col s12">
                 <input id="dest" type="text" class="validate" />
                 <label for="dest">Destination</label>
               </div>
@@ -58,7 +55,9 @@ var SetupFlow = React.createClass({
     timeSel: {
       reactBlob:(
         <form action="#">
-          <p className="range-field"><input type="range" id="test5" min="0" max="100" /></p>
+          <p className="range-field"><input type="range" id="test5" min="0" max="100" />start</p>
+          <p className="range-field"><input type="range" id="test5" min="0" max="100" />end</p>
+
         </form>
       ),
       linkTo: 'transBtns'
@@ -70,13 +69,43 @@ var SetupFlow = React.createClass({
     var nextView = this.state.linkTo;
     // Sets the state object identified by the above property.
     this.setState(this.routes[nextView])
-  }
-  ,
+
+  },
+
+  transBtns: function() {
+    this.setState(this.routes.transBtns);
+
+  },
+    travelType: function() {
+    this.setState(this.routes.travelType);
+  },
+
+  destSel: function() {
+    this.setState(this.routes.destSel);
+  },
+
+  timeSel: function() {
+    this.setState(this.routes.timeSel);
+  },
+
   render: function() {
     return (
-        <ul className="fixed-nav fixed left s12">
-            <div>{this.state.reactBlob}</div>
-            <button onClick={this.nextState}>Next</button>
+        <ul className="row fixed-nav fixed left">
+          <div className="col s4">
+            <nav className="formSteps step1">
+            <span className="current"></span>
+              <ul>
+              <li><a onClick={this.transBtns} href="#step-1">walk/bike</a></li>
+              <li><a onClick={this.travelType} href="#step-2">route/loop</a></li>
+              <li><a onClick={this.destSel} href="#step-3">to & from</a></li>
+              <li><a onClick={this.timeSel} href="#step-4">range</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div className="col s8">
+            <div className="heightFix">{this.state.reactBlob}</div>
+            <div className="nxtBtn"><a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a></div>
+          </div>
         </ul>
     );
   }

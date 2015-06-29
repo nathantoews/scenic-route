@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 		    livereload: true
 		  },			
 		  css: {
-		    files: ['materialize/sass/*.scss','components/*.scss'],
+		    files: ['materialize/sass/*.scss','materialize/sass/components/*.scss'],
 		    tasks: ['sass'],
 		  },
 		  react:{

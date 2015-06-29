@@ -19953,22 +19953,17 @@ var SetupFlow = React.createClass({
   routes: {
     transBtns: {
       reactBlob: React.createElement(
-        "form",
-        { action: "#" },
+        "div",
+        { className: "buttonSize" },
         React.createElement(
-          "h1",
-          null,
-          "transBtns"
+          "a",
+          { className: "waves-effect waves-light btn-large" },
+          React.createElement("i", { className: "fa fa-male" })
         ),
         React.createElement(
-          "p",
-          null,
-          React.createElement("input", { type: "radio", id: "test5" })
-        ),
-        React.createElement(
-          "p",
-          null,
-          React.createElement("input", { type: "radio", id: "test6", value: "1" })
+          "a",
+          { className: "waves-effect waves-light btn-large" },
+          React.createElement("i", { className: "fa fa-bicycle" })
         )
       ),
       linkTo: "travelType"
@@ -19976,22 +19971,17 @@ var SetupFlow = React.createClass({
 
     travelType: {
       reactBlob: React.createElement(
-        "form",
-        { action: "#" },
+        "div",
+        { className: "buttonSize" },
         React.createElement(
-          "h1",
-          null,
-          "travelType"
+          "a",
+          { className: "waves-effect waves-light btn-large" },
+          React.createElement("i", { className: "fa fa-location-arrow" })
         ),
         React.createElement(
-          "p",
-          null,
-          React.createElement("input", { type: "radio", id: "test5" })
-        ),
-        React.createElement(
-          "p",
-          null,
-          React.createElement("input", { type: "radio", id: "test6", value: "1" })
+          "a",
+          { className: "waves-effect waves-light btn-large" },
+          React.createElement("i", { className: "fa fa-refresh" })
         )
       ),
       linkTo: "destSel"
@@ -20009,8 +19999,8 @@ var SetupFlow = React.createClass({
             { className: "row" },
             React.createElement(
               "div",
-              { className: "input-field col s6" },
-              React.createElement("input", { placeholder: "Placeholder", id: "yourLoc", type: "text", className: "validate" }),
+              { className: "input-field col s12" },
+              React.createElement("input", { id: "yourLoc", type: "text", className: "validate" }),
               React.createElement(
                 "label",
                 { "for": "yourLoc" },
@@ -20019,7 +20009,7 @@ var SetupFlow = React.createClass({
             ),
             React.createElement(
               "div",
-              { className: "input-field col s6" },
+              { className: "input-field col s12" },
               React.createElement("input", { id: "dest", type: "text", "class": "validate" }),
               React.createElement(
                 "label",
@@ -20040,7 +20030,14 @@ var SetupFlow = React.createClass({
         React.createElement(
           "p",
           { className: "range-field" },
-          React.createElement("input", { type: "range", id: "test5", min: "0", max: "100" })
+          React.createElement("input", { type: "range", id: "test5", min: "0", max: "100" }),
+          "start"
+        ),
+        React.createElement(
+          "p",
+          { className: "range-field" },
+          React.createElement("input", { type: "range", id: "test5", min: "0", max: "100" }),
+          "end"
         )
       ),
       linkTo: "transBtns"
@@ -20054,19 +20051,91 @@ var SetupFlow = React.createClass({
     this.setState(this.routes[nextView]);
   },
 
+  transBtns: function transBtns() {
+    this.setState(this.routes.transBtns);
+  },
+  travelType: function travelType() {
+    this.setState(this.routes.travelType);
+  },
+
+  destSel: function destSel() {
+    this.setState(this.routes.destSel);
+  },
+
+  timeSel: function timeSel() {
+    this.setState(this.routes.timeSel);
+  },
+
   render: function render() {
     return React.createElement(
       "ul",
-      { className: "fixed-nav fixed left s12" },
+      { className: "row fixed-nav fixed left" },
       React.createElement(
         "div",
-        null,
-        this.state.reactBlob
+        { className: "col s4" },
+        React.createElement(
+          "nav",
+          { className: "formSteps step1" },
+          React.createElement("span", { className: "current" }),
+          React.createElement(
+            "ul",
+            null,
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                "a",
+                { onClick: this.transBtns, href: "#step-1" },
+                "walk/bike"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                "a",
+                { onClick: this.travelType, href: "#step-2" },
+                "route/loop"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                "a",
+                { onClick: this.destSel, href: "#step-3" },
+                "to & from"
+              )
+            ),
+            React.createElement(
+              "li",
+              null,
+              React.createElement(
+                "a",
+                { onClick: this.timeSel, href: "#step-4" },
+                "range"
+              )
+            )
+          )
+        )
       ),
       React.createElement(
-        "button",
-        { onClick: this.nextState },
-        "Next"
+        "div",
+        { className: "col s8" },
+        React.createElement(
+          "div",
+          { className: "heightFix" },
+          this.state.reactBlob
+        ),
+        React.createElement(
+          "div",
+          { className: "nxtBtn" },
+          React.createElement(
+            "a",
+            { className: "waves-effect waves-light btn-large", onClick: this.nextState },
+            "Next"
+          )
+        )
       )
     );
   }

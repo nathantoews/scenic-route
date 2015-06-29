@@ -4,7 +4,7 @@
   <head>
     <title>Scenic Route</title>
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>	 
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>	 
+     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
      <link rel="stylesheet" href="materialize/sass/materialize.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1">  
   </head>
@@ -20,8 +20,27 @@
 		      edge: 'right', // Choose the horizontal origin
 		    }
 		  );
-	  });  	
-  	</script>
+	  }); 
+
+
+    //active state slider ------------->
+
+    $(function() {
+      var $nav = $('.formSteps');
+        $('a',$nav).on('click',function(e) {
+        e.preventDefault();
+      var href = $(this).attr('href'),                 step = href.match(/\d$/)[0];
+          $nav.find('.active').removeClass('active');
+          $(this).addClass('active');
+          $nav.removeAttr('class')
+          $nav.addClass('step'+step);
+        });
+      }); 	
+
+
+    // range slider ----------------------->
+
+  </script>
    	<script src="bundle.js"></script>
   </body>
 </html>
