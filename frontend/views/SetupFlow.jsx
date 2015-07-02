@@ -1,4 +1,5 @@
 var React = require('react');
+var React = require('react/addons');
 
 var SetupFlow = React.createClass({
   getInitialState: function(){
@@ -90,7 +91,7 @@ var SetupFlow = React.createClass({
 
   render: function() {
     return (
-        <ul className="row fixed-nav fixed left">
+        <ul className="row routeSel left col l3">
           <div className="col s4">
             <nav className="formSteps step1">
             <span className="current"></span>
@@ -103,9 +104,12 @@ var SetupFlow = React.createClass({
             </nav>
           </div>
           <div className="col s8">
-            <div className="heightFix">{this.state.reactBlob}</div>
+            <div className="heightFix">{this.state.reactBlob}
             <div className="nxtBtn"><a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a></div>
+            </div>
           </div>
+
+
         </ul>
     );
   }
