@@ -12,6 +12,7 @@ var Body = React.createClass({
       		<div className="row">
               <SetupFlow/>
               <MapView/>
+
             </div>
       );
     }

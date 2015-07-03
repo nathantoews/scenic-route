@@ -36,9 +36,9 @@
 
 
 .row {
+  height:100%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
 
   // Clear floating children
   &:after {
@@ -50,7 +50,7 @@
   .col {
     float: left;
     @include box-sizing(border-box);
-    padding: 0 $gutter-width / 2;
+    padding: 0 ;
 
     $i: 1;
     @while $i <= $num-cols {

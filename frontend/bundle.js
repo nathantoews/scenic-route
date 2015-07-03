@@ -21913,7 +21913,7 @@ var Map = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'map', className: 'col l9' },
+			{ id: 'map', className: 'col l9 s12' },
 			React.createElement('div', { id: 'map-container' })
 		);
 	}
@@ -22651,7 +22651,7 @@ var SetupFlow = React.createClass({
     transBtns: {
       reactBlob: React.createElement(
         'div',
-        { className: 'buttonSize' },
+        { className: 'optSwitch' },
         React.createElement(
           'a',
           { className: 'waves-effect waves-light btn-large' },
@@ -22669,7 +22669,7 @@ var SetupFlow = React.createClass({
     travelType: {
       reactBlob: React.createElement(
         'div',
-        { className: 'buttonSize' },
+        { className: 'optSwitch' },
         React.createElement(
           'a',
           { className: 'waves-effect waves-light btn-large' },
@@ -22686,33 +22686,29 @@ var SetupFlow = React.createClass({
 
     destSel: {
       reactBlob: React.createElement(
-        'div',
-        { className: 'row' },
+        'form',
+        { className: 'col s12' },
         React.createElement(
-          'form',
-          { className: 'col s12' },
+          'div',
+          { className: 'row' },
           React.createElement(
             'div',
-            { className: 'row' },
+            { className: 'input-field col s12' },
+            React.createElement('input', { id: 'yourLoc', type: 'text', className: 'validate' }),
             React.createElement(
-              'div',
-              { className: 'input-field col s12' },
-              React.createElement('input', { id: 'yourLoc', type: 'text', className: 'validate' }),
-              React.createElement(
-                'label',
-                { 'for': 'yourLoc' },
-                'Location'
-              )
-            ),
+              'label',
+              { 'for': 'yourLoc' },
+              'Location'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'input-field col s12' },
+            React.createElement('input', { id: 'dest', type: 'text', 'class': 'validate' }),
             React.createElement(
-              'div',
-              { className: 'input-field col s12' },
-              React.createElement('input', { id: 'dest', type: 'text', 'class': 'validate' }),
-              React.createElement(
-                'label',
-                { 'for': 'dest' },
-                'Destination'
-              )
+              'label',
+              { 'for': 'dest' },
+              'Destination'
             )
           )
         )
@@ -22765,7 +22761,7 @@ var SetupFlow = React.createClass({
 
   render: function render() {
     return React.createElement(
-      'ul',
+      'div',
       { className: 'row routeSel left col l3' },
       React.createElement(
         'div',
@@ -22818,19 +22814,15 @@ var SetupFlow = React.createClass({
       ),
       React.createElement(
         'div',
-        { className: 'col s8' },
+        { className: 'heightFix col s8' },
+        this.state.reactBlob,
         React.createElement(
           'div',
-          { className: 'heightFix' },
-          this.state.reactBlob,
+          { className: 'nxtBtn' },
           React.createElement(
-            'div',
-            { className: 'nxtBtn' },
-            React.createElement(
-              'a',
-              { className: 'waves-effect waves-light btn-large', onClick: this.nextState },
-              'Next'
-            )
+            'a',
+            { className: 'waves-effect waves-light btn-large', onClick: this.nextState },
+            'Next'
           )
         )
       )

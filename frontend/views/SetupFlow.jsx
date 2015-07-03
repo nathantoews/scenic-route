@@ -15,7 +15,7 @@ var SetupFlow = React.createClass({
     transBtns:{
       reactBlob:
       (
-        <div className="buttonSize">
+        <div className="optSwitch">
           <a className="waves-effect waves-light btn-large"><i className="fa fa-male"></i></a>
           <a className="waves-effect waves-light btn-large"><i className="fa fa-bicycle"></i></a>
         </div>
@@ -25,7 +25,7 @@ var SetupFlow = React.createClass({
     ,
     travelType: {
       reactBlob:(
-        <div className="buttonSize">
+        <div className="optSwitch">
           <a className="waves-effect waves-light btn-large"><i className="fa fa-location-arrow"></i></a>
           <a className="waves-effect waves-light btn-large"><i className="fa fa-refresh"></i></a>
         </div>
@@ -35,7 +35,6 @@ var SetupFlow = React.createClass({
     ,
     destSel: {
       reactBlob:(
-        <div className="row">
           <form className="col s12">
             <div className="row">
               <div className="input-field col s12">
@@ -48,7 +47,6 @@ var SetupFlow = React.createClass({
               </div>
             </div>
           </form>
-        </div>
       ),
       linkTo: 'timeSel'      
     }
@@ -91,7 +89,7 @@ var SetupFlow = React.createClass({
 
   render: function() {
     return (
-        <ul className="row routeSel left col l3">
+        <div className="row routeSel left col l3">
           <div className="col s4">
             <nav className="formSteps step1">
             <span className="current"></span>
@@ -103,14 +101,13 @@ var SetupFlow = React.createClass({
               </ul>
             </nav>
           </div>
-          <div className="col s8">
-            <div className="heightFix">{this.state.reactBlob}
-            <div className="nxtBtn"><a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a></div>
+          <div className="heightFix col s8">
+            {this.state.reactBlob}
+            <div className="nxtBtn">
+              <a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a>
             </div>
           </div>
-
-
-        </ul>
+        </div>
     );
   }
 });

@@ -2064,6 +2064,10 @@ a {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent; }
 
+#content {
+  height: 100%;
+  width: 100%; }
+
 .valign-wrapper {
   display: -webkit-box;
   display: -moz-box;
@@ -2085,7 +2089,7 @@ ul {
 .clearfix {
   clear: both; }
 
-.z-depth-1, .fixed-nav, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav, .routeSel {
+.z-depth-1, .fixed-nav, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
@@ -4875,9 +4879,9 @@ span.badge {
     padding-top: 0; }
 
 .row {
+  height: 100%;
   margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px; }
+  margin-right: auto; }
   .row:after {
     content: "";
     display: table;
@@ -4887,7 +4891,7 @@ span.badge {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0 0.75rem; }
+    padding: 0; }
     .row .col.s1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -7009,36 +7013,42 @@ select {
   will-change: opacity; }
 
 .routeSel {
-  margin: 0;
-  background-color: #FFF;
-  z-index: 999;
-  overflow-y: auto;
-  will-change: left; }
-  .routeSel.right-aligned {
-    will-change: right;
-    right: -105%;
-    left: auto; }
-  .routeSel .collapsible {
-    margin: 0; }
-  .routeSel li {
-    float: none;
-    padding: 0 15px; }
-    .routeSel li:hover, .routeSel li.active {
-      background-color: #ddd; }
-  .routeSel a {
-    color: #444;
-    display: block;
-    padding: 0 15px; }
+  height: 100%;
+  padding: 0; }
+  .routeSel ul {
+    height: 100%; }
+  .routeSel .nxtBtn {
+    width: 100%;
+    height: 10%; }
+    .routeSel .nxtBtn a {
+      width: 100%; }
 
 .heightFix {
-  height: 100vh; }
-  .heightFix a {
-    height: 45%;
-    padding: 0; }
+  height: 100%; }
 
-.row .col {
-  height: 100vh;
-  padding: 0; }
+.optSwitch {
+  height: 90%; }
+  .optSwitch a {
+    padding: 20%;
+    height: 50%;
+    width: 100%; }
+    .optSwitch a i {
+      top: 50%;
+      font-size: 100px;
+      width: 100%; }
+
+li {
+  width: 100%;
+  background-color: #93c6b3;
+  float: none;
+  padding: 0 15px; }
+  li:hover, li.active {
+    background-color: #ddd; }
+
+a {
+  color: #444;
+  display: block;
+  padding: 0 15px; }
 
 .modal .modal-content {
   width: 100%;
