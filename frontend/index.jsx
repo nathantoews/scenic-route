@@ -10,8 +10,10 @@ var Body = React.createClass({
     render: function(){
       return (
       		<div className="row">
-              <SetupFlow/>
-              <MapView/>
+      			<ProfileNav/>
+            	<SetupFlow/>
+            	<MapView/>
+
 
             </div>
       );

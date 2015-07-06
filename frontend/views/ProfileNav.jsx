@@ -63,7 +63,7 @@ var ProfileNav = React.createClass({
           {this.authButtons()}
         </ul>
         <a data-activates="slide-out" className="button-collapse show-on-large right">
-          <i className="large material-icons">supervisor_account</i>
+          <i className="large material-icons">reorder</i>
         </a>
       </nav>
     );

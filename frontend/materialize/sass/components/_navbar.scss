@@ -1,12 +1,12 @@
 nav {
-  color: #fff;
+  color: $secondary-color;
   @extend .z-depth-1;
-  background-color:$primary-color;
+  background-color:#fff;
   width: 100%;
-  height: $navbar-height-mobile;
+  min-height: 8%;
   line-height: $navbar-height-mobile;
 
-  a { color: #fff; }
+  a { color: $secondary-color; }
 
   .nav-wrapper {
     position: relative;
@@ -79,7 +79,7 @@ nav {
     }
     a {
       font-size: 1rem;
-      color: #fff;
+      color: $secondary-color;
       display: block;
       padding: 0 15px;
     }
@@ -126,7 +126,7 @@ nav {
 // Fixed Navbar
 .navbar-fixed {
   position: relative;
-  height: $navbar-height-mobile;
+  min-height: 8%;
   z-index: 998;
 
   nav {
@@ -135,7 +135,7 @@ nav {
 }
 @media #{$medium-and-up} {
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-    height: $navbar-height;
+    min-height: 8%;
     line-height: $navbar-height;
   }
   .navbar-fixed {

@@ -25,6 +25,7 @@ var Body = React.createClass({
     return React.createElement(
       'div',
       { className: 'row' },
+      React.createElement(ProfileNav, null),
       React.createElement(SetupFlow, null),
       React.createElement(MapView, null)
     );
@@ -21914,7 +21915,20 @@ var Map = React.createClass({
 		return React.createElement(
 			'div',
 			{ id: 'map', className: 'col l9 s12' },
-			React.createElement('div', { id: 'map-container' })
+			React.createElement(
+				'div',
+				{ id: 'map-container' },
+				React.createElement(
+					'a',
+					{ className: 'waves-effect waves-light btn map-start-btn' },
+					React.createElement(
+						'i',
+						{ className: 'material-icons right' },
+						'search'
+					),
+					'find my route'
+				)
+			)
 		);
 	}
 });
@@ -22397,7 +22411,7 @@ var ProfileNav = React.createClass({
         React.createElement(
           'i',
           { className: 'large material-icons' },
-          'supervisor_account'
+          'reorder'
         )
       )
     );
@@ -22762,59 +22776,31 @@ var SetupFlow = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      { className: 'row routeSel left col l3' },
+      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only' },
       React.createElement(
         'div',
-        { className: 'col s4' },
+        { className: 'heightFix col s3' },
         React.createElement(
-          'nav',
-          { className: 'formSteps step1' },
-          React.createElement('span', { className: 'current' }),
+          'div',
+          { className: 'progress-meter' },
           React.createElement(
-            'ul',
-            null,
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'a',
-                { onClick: this.transBtns, href: '#step-1' },
-                'walk/bike'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'a',
-                { onClick: this.travelType, href: '#step-2' },
-                'route/loop'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'a',
-                { onClick: this.destSel, href: '#step-3' },
-                'to & from'
-              )
-            ),
-            React.createElement(
-              'li',
-              null,
-              React.createElement(
-                'a',
-                { onClick: this.timeSel, href: '#step-4' },
-                'range'
-              )
-            )
+            'div',
+            { className: 'track' },
+            React.createElement('span', { className: 'progress' })
+          ),
+          React.createElement(
+            'ol',
+            { className: 'progress-points', 'data-current': '1' },
+            React.createElement('li', { className: 'progress-point', onClick: this.transBtns, href: '#step-1' }),
+            React.createElement('li', { className: 'progress-point', onClick: this.travelType, href: '#step-2' }),
+            React.createElement('li', { className: 'progress-point', onClick: this.destSel, href: '#step-3' }),
+            React.createElement('li', { className: 'progress-point', onClick: this.timeSel, href: '#step-4' })
           )
         )
       ),
       React.createElement(
         'div',
-        { className: 'heightFix col s8' },
+        { className: 'heightFix col s9' },
         this.state.reactBlob,
         React.createElement(
           'div',
@@ -22831,5 +22817,15 @@ var SetupFlow = React.createClass({
 });
 
 module.exports = SetupFlow;
+
+// <nav className="formSteps step1">
+//             <span className="current"></span>
+//               <ul>
+//               <li><a onClick={this.transBtns} href="#step-1">walk/bike</a></li>
+//               <li><a onClick={this.travelType} href="#step-2">route/loop</a></li>
+//               <li><a onClick={this.destSel} href="#step-3">to & from</a></li>
+//               <li><a onClick={this.timeSel} href="#step-4">range</a></li>
+//               </ul>
+//             </nav>
 
 },{"react":176,"react/addons":4}]},{},[2]);

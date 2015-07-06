@@ -89,19 +89,25 @@ var SetupFlow = React.createClass({
 
   render: function() {
     return (
-        <div className="row routeSel left col l3">
-          <div className="col s4">
-            <nav className="formSteps step1">
-            <span className="current"></span>
-              <ul>
-              <li><a onClick={this.transBtns} href="#step-1">walk/bike</a></li>
-              <li><a onClick={this.travelType} href="#step-2">route/loop</a></li>
-              <li><a onClick={this.destSel} href="#step-3">to & from</a></li>
-              <li><a onClick={this.timeSel} href="#step-4">range</a></li>
-              </ul>
-            </nav>
+        <div className="row routeSel left col l3 m3 s12 hide-on-small-only">
+          <div className="heightFix col s3">
+            <div className="progress-meter">
+              <div className="track">
+                <span className="progress"></span>
+              </div>
+              <ol className="progress-points" data-current="1">
+                <li className="progress-point" onClick={this.transBtns} href="#step-1">
+                </li>
+                <li className="progress-point" onClick={this.travelType} href="#step-2">
+                </li>
+                <li className="progress-point" onClick={this.destSel} href="#step-3">
+                </li>
+                <li className="progress-point" onClick={this.timeSel} href="#step-4">
+                </li>
+              </ol>
+            </div>
           </div>
-          <div className="heightFix col s8">
+          <div className="heightFix col s9">
             {this.state.reactBlob}
             <div className="nxtBtn">
               <a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a>
@@ -113,3 +119,14 @@ var SetupFlow = React.createClass({
 });
 
 module.exports = SetupFlow;
+
+
+// <nav className="formSteps step1">
+//             <span className="current"></span>
+//               <ul>
+//               <li><a onClick={this.transBtns} href="#step-1">walk/bike</a></li>
+//               <li><a onClick={this.travelType} href="#step-2">route/loop</a></li>
+//               <li><a onClick={this.destSel} href="#step-3">to & from</a></li>
+//               <li><a onClick={this.timeSel} href="#step-4">range</a></li>
+//               </ul>
+//             </nav>
