@@ -107,19 +107,19 @@
 // });
 
 
-    //active state slider ------------->
+    // //active state slider ------------->
 
-    $(function() {
-      var $nav = $('.formSteps');
-        $('a',$nav).on('click',function(e) {
-        e.preventDefault();
-      var href = $(this).attr('href'),                 step = href.match(/\d$/)[0];
-          $nav.find('.active').removeClass('active');
-          $(this).addClass('active');
-          $nav.removeAttr('class')
-          $nav.addClass('step'+step);
-        });
-      }); 	
+    // $(function() {
+    //   var $nav = $('.formSteps');
+    //     $('a',$nav).on('click',function(e) {
+    //     e.preventDefault();
+    //   var href = $(this).attr('href'),                 step = href.match(/\d$/)[0];
+    //       $nav.find('.active').removeClass('active');
+    //       $(this).addClass('active');
+    //       $nav.removeAttr('class')
+    //       $nav.addClass('step'+step);
+    //     });
+    //   }); 	
 
 
     // range slider ----------------------->
