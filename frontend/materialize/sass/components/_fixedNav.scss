@@ -32,10 +32,19 @@
     width:100%;
 
     i {
-      top:50%;
-      font-size:100px;
-      width:100%;
+      font-size: 6em;
+      width: 100%;
     }
+  }
+
+  // To vertically center fa elements underneath 
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  .fa{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);    
   }
 }
 

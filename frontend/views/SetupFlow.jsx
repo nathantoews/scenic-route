@@ -16,8 +16,12 @@ var SetupFlow = React.createClass({
       reactBlob:
       (
         <div className="optSwitch">
-          <a className="waves-effect waves-light btn-large"><i className="fa fa-male"></i></a>
-          <a className="waves-effect waves-light btn-large"><i className="fa fa-bicycle"></i></a>
+          <a className="waves-effect waves-light btn-large">
+            <i className="fa fa-male"></i>
+          </a>
+          <a className="waves-effect waves-light btn-large">
+            <i className="fa fa-bicycle"></i>
+          </a>
         </div>
       ),
       linkTo: 'travelType'       
@@ -26,8 +30,12 @@ var SetupFlow = React.createClass({
     travelType: {
       reactBlob:(
         <div className="optSwitch">
-          <a className="waves-effect waves-light btn-large"><i className="fa fa-location-arrow"></i></a>
-          <a className="waves-effect waves-light btn-large"><i className="fa fa-refresh"></i></a>
+          <a className="waves-effect waves-light btn-large">
+            <i className="fa fa-location-arrow"></i>
+          </a>
+          <a className="waves-effect waves-light btn-large">
+            <i className="fa fa-refresh"></i>
+          </a>
         </div>
       ),
       linkTo: 'destSel'

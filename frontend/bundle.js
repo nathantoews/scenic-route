@@ -22399,7 +22399,7 @@ var ProfileNav = React.createClass({
   render: function render() {
     return React.createElement(
       'nav',
-      null,
+      { id: 'top-nav' },
       React.createElement(
         'ul',
         { id: 'slide-out', className: 'side-nav' },
@@ -22776,7 +22776,7 @@ var SetupFlow = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only sideNav' },
+      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only' },
       React.createElement(
         'div',
         { className: 'heightFix col s3' },
