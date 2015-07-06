@@ -1,0 +1,40 @@
+html, body, .table-container{
+  height: 100%;
+}
+/* Navigation Styles Below */
+.table-container {
+  display: table;
+}
+.table-container .table-row {
+  height: 100%;
+  display: table-row;
+}
+.table-container .table-row .table-col {
+  display: table-cell;
+  float: none;
+  vertical-align: top;
+}
+.fixed-nav{
+	@extend .z-depth-1;
+}
+/* Map and map control styles below */
+#map {
+  height:92%;
+	.btn{
+		color:white !important;
+	}
+}
+#map-container{
+  .map-start-btn{
+    position:fixed;
+    bottom:10%;
+    left:50%;
+    margin:0 auto;
+
+  }
+  .user-profile{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+  }
+}

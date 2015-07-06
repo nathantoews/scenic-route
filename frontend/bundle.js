@@ -22776,7 +22776,7 @@ var SetupFlow = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only' },
+      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only sideNav' },
       React.createElement(
         'div',
         { className: 'heightFix col s3' },
