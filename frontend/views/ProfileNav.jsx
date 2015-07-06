@@ -58,7 +58,7 @@ var ProfileNav = React.createClass({
   },
   render: function() {
     return (
-      <nav>
+      <nav id='top-nav'>
         <ul id="slide-out" className="side-nav">
           {this.authButtons()}
         </ul>

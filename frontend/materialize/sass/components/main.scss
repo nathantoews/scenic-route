@@ -1,7 +1,10 @@
 html, body, .table-container{
   height: 100%;
 }
+
+
 /* Navigation Styles Below */
+
 .table-container {
   display: table;
 }
@@ -37,4 +40,9 @@ html, body, .table-container{
     top: 5%;
     right: 10%;
   }
+}
+
+/* Top Nav Bar Style */
+#top-nav{
+  overflow: hidden;
 }

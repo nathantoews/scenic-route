@@ -22399,7 +22399,7 @@ var ProfileNav = React.createClass({
   render: function render() {
     return React.createElement(
       'nav',
-      null,
+      { id: 'top-nav' },
       React.createElement(
         'ul',
         { id: 'slide-out', className: 'side-nav' },
