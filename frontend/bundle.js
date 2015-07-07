@@ -22680,6 +22680,11 @@ var SetupFlow = React.createClass({
         'div',
         { className: 'optSwitch' },
         React.createElement(
+          'p',
+          { className: 'introTag' },
+          'I have'
+        ),
+        React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
           React.createElement('div', { className: 'svg svg-bike-switch' })
@@ -22697,6 +22702,11 @@ var SetupFlow = React.createClass({
       reactBlob: React.createElement(
         'div',
         { className: 'optSwitch' },
+        React.createElement(
+          'p',
+          { className: 'introTag' },
+          'I have'
+        ),
         React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
@@ -22814,7 +22824,7 @@ var SetupFlow = React.createClass({
       ),
       React.createElement(
         'div',
-        { className: 'heightFix col s10 right-padding' },
+        { className: 'heightFix col s10' },
         this.state.reactBlob
       )
     );

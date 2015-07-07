@@ -16,6 +16,7 @@ var SetupFlow = React.createClass({
       reactBlob:
       (
         <div className="optSwitch">
+          <p className="introTag">I have</p>
           <a className="waves-effect waves-light">
             <div className="svg svg-bike-switch"></div>
           </a>
@@ -30,6 +31,7 @@ var SetupFlow = React.createClass({
     travelType: {
       reactBlob:(
         <div className="optSwitch">
+          <p className="introTag">I have</p>
           <a className="waves-effect waves-light">
             <div className="svg routeBtn"></div>
           </a>
@@ -116,7 +118,7 @@ var SetupFlow = React.createClass({
               </ol>
             </div>
           </div>
-          <div className="heightFix col s10 right-padding">
+          <div className="heightFix col s10">
             {this.state.reactBlob}
           </div>
         </div>
