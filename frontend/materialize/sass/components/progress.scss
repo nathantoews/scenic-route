@@ -5,6 +5,8 @@
 .progress-meter {
   height:100%;
   overflow:hidden;
+  position:absolute;
+  padding-right: $gutter-width / 2;
 }
 
 .progress-meter {

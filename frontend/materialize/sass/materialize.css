@@ -2065,6 +2065,10 @@ html, body, .table-container {
 #top-nav {
   overflow: hidden; }
 
+/* Selection dialog column padding */
+.right-padding {
+  padding-right: 10px; }
+
 html {
   box-sizing: border-box; }
 
@@ -4911,7 +4915,7 @@ span.badge {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0; }
+    padding: 0 0.75rem; }
     .row .col.s1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -7111,7 +7115,9 @@ select {
  */
 .progress-meter {
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  position: absolute;
+  padding-right: 0.75rem; }
 
 .progress-meter {
   counter-reset: point; }

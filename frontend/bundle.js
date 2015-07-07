@@ -22814,7 +22814,7 @@ var SetupFlow = React.createClass({
       ),
       React.createElement(
         'div',
-        { className: 'heightFix col s10' },
+        { className: 'heightFix col s10 right-padding' },
         this.state.reactBlob
       )
     );

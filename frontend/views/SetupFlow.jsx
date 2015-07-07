@@ -116,7 +116,7 @@ var SetupFlow = React.createClass({
               </ol>
             </div>
           </div>
-          <div className="heightFix col s10">
+          <div className="heightFix col s10 right-padding">
             {this.state.reactBlob}
           </div>
         </div>
