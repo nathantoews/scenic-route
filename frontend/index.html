@@ -80,6 +80,9 @@
       }
       };
 
+      $(".progress-point").first().addClass('active');
+
+
       $points.on('click', 'li', function(event) {
       var _index;
       _index  = $point_arr.index(this);
@@ -105,21 +108,6 @@
 //         $(this).find('i').addClass('fa-minus-circle fa-plus-circle');
 //     });
 // });
-
-
-    // //active state slider ------------->
-
-    // $(function() {
-    //   var $nav = $('.formSteps');
-    //     $('a',$nav).on('click',function(e) {
-    //     e.preventDefault();
-    //   var href = $(this).attr('href'),                 step = href.match(/\d$/)[0];
-    //       $nav.find('.active').removeClass('active');
-    //       $(this).addClass('active');
-    //       $nav.removeAttr('class')
-    //       $nav.addClass('step'+step);
-    //     });
-    //   }); 	
 
 
     // range slider ----------------------->

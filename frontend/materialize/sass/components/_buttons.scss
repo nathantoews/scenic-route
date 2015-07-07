@@ -47,10 +47,10 @@
   @include transition(.2s ease-out);
   cursor: pointer;
 
-  &:hover {
-    background-color: lighten($button-color, 5%);
-    @extend .z-depth-1-half;
-  }
+  // &:hover {
+  //   background-color: lighten($button-color, 5%);
+  //   @extend .z-depth-1-half;
+  // }
 }
 
 // Floating button

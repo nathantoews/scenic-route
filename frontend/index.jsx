@@ -13,8 +13,6 @@ var Body = React.createClass({
       			<ProfileNav/>
             	<SetupFlow/>
             	<MapView/>
-
-
             </div>
       );
     }

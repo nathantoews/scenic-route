@@ -1994,6 +1994,41 @@ td,
 th {
   padding: 0; }
 
+.svg {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain; }
+  .svg:hover {
+    opacity: 0.5; }
+
+.svg-bike-switch {
+  background-image: url("../img/svg/bike.svg"); }
+
+.svg-walk-switch {
+  background-image: url("../img/svg/walk.svg"); }
+
+.routeBtn {
+  background-image: url("../img/svg/route.svg"); }
+
+.loopBtn {
+  background-image: url("../img/svg/loop.svg"); }
+
+.hamburger {
+  background-image: url("../img/svg/hamburger.svg"); }
+
+.walkProg {
+  background-image: url("../img/svg/walk.svg"); }
+
+.bikeProg {
+  background-image: url("../img/svg/bike.svg"); }
+
+.timeProg {
+  background-image: url("../img/svg/walk.svg"); }
+
+.navProg {
+  background-image: url("../img/svg/bike.svg"); }
+
 html, body, .table-container {
   height: 100%; }
 
@@ -2079,7 +2114,7 @@ ul {
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
-.z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
+.z-depth-1-half, .btn-floating:hover {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
@@ -5669,8 +5704,6 @@ small {
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
   cursor: pointer; }
-  .btn:hover, .btn-large:hover {
-    background-color: #f58599; }
 
 .btn-floating {
   display: inline-block;
@@ -6997,7 +7030,6 @@ select {
   will-change: opacity; }
 
 .routeSel {
-  left: -200px;
   height: 92%;
   padding: 0; }
   .routeSel ul {
@@ -7010,7 +7042,7 @@ select {
       width: 100%; }
 
 .heightFix {
-  height: 90%; }
+  height: 100%; }
 
 .optSwitch {
   height: 100%;
@@ -7018,12 +7050,9 @@ select {
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d; }
   .optSwitch a {
-    padding: 20%;
+    padding: 10%;
     height: 50%;
     width: 100%; }
-    .optSwitch a i {
-      font-size: 6em;
-      width: 100%; }
   .optSwitch .fa {
     position: relative;
     top: 50%;
@@ -7109,7 +7138,7 @@ select {
 
 .progress-meter .track {
   position: absolute;
-  left: 38px;
+  left: 23px;
   width: 4px;
   height: 92%;
   background: #bbb;
@@ -7133,7 +7162,7 @@ select {
 ol {
   height: 100%;
   width: 0;
-  padding: 28px;
+  padding: 13px;
   margin-top: 50%; }
 
 .progress-meter .progress-points {

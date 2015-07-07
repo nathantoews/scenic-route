@@ -16,11 +16,11 @@ var SetupFlow = React.createClass({
       reactBlob:
       (
         <div className="optSwitch">
-          <a className="waves-effect waves-light btn-large">
-            <i className="fa fa-male"></i>
+          <a className="waves-effect waves-light">
+            <div className="svg svg-bike-switch"></div>
           </a>
-          <a className="waves-effect waves-light btn-large">
-            <i className="fa fa-bicycle"></i>
+          <a className="waves-effect waves-light">
+            <div className="svg svg-walk-switch"></div>
           </a>
         </div>
       ),
@@ -30,11 +30,11 @@ var SetupFlow = React.createClass({
     travelType: {
       reactBlob:(
         <div className="optSwitch">
-          <a className="waves-effect waves-light btn-large">
-            <i className="fa fa-location-arrow"></i>
+          <a className="waves-effect waves-light">
+            <div className="svg routeBtn"></div>
           </a>
-          <a className="waves-effect waves-light btn-large">
-            <i className="fa fa-refresh"></i>
+          <a className="waves-effect waves-light">
+            <div className="svg loopBtn"></div>
           </a>
         </div>
       ),
@@ -75,7 +75,8 @@ var SetupFlow = React.createClass({
     // Gets the linkTo value
     var nextView = this.state.linkTo;
     // Sets the state object identified by the above property.
-    this.setState(this.routes[nextView])
+    this.setState(this.routes[nextView]);
+    $(".progress-point.active").next().trigger('click');
 
   },
 
@@ -97,14 +98,14 @@ var SetupFlow = React.createClass({
 
   render: function() {
     return (
-        <div className="row routeSel left col l3 m3 s12 hide-on-small-only">
-          <div className="heightFix col s3">
+        <div className="row routeSel left col l3 m3 s12 hide">
+          <div className="heightFix col s2">
             <div className="progress-meter">
               <div className="track">
                 <span className="progress"></span>
               </div>
-              <ol className="progress-points" data-current="1">
-                <li className="progress-point" onClick={this.transBtns} href="#step-1">
+              <ol className="progress-points">
+                <li className="progress-point active" onClick={this.transBtns} href="#step-1">
                 </li>
                 <li className="progress-point" onClick={this.travelType} href="#step-2">
                 </li>
@@ -115,11 +116,8 @@ var SetupFlow = React.createClass({
               </ol>
             </div>
           </div>
-          <div className="heightFix col s9">
+          <div className="heightFix col s10">
             {this.state.reactBlob}
-            <div className="nxtBtn">
-              <a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a>
-            </div>
           </div>
         </div>
     );
@@ -127,6 +125,11 @@ var SetupFlow = React.createClass({
 });
 
 module.exports = SetupFlow;
+
+
+// <div className="nxtBtn">
+//   <a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a>
+// </div>
 
 
 // <nav className="formSteps step1">

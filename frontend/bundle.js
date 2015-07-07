@@ -21911,16 +21911,29 @@ var Map = React.createClass({
 		L.mapbox.accessToken = 'pk.eyJ1IjoiYW5kcmV3bG91aXMiLCJhIjoiZTFmMTFiNDI0MGM1M2I4OTUxZWVjNmM3ZTIzODZiNmMifQ._dhInriKHZsQLE0qX6u-KA';
 		var map = L.mapbox.map('map', 'mapbox.streets').setView([43.64, -79.39], 9);
 	},
+
+	routeNav: function routeNav() {
+		if ($('.routeSel').hasClass('hide')) {
+			$('.routeSel').removeClass('hide');
+			$('.row').find('.l12').removeClass('l12').addClass('l9');
+		} else {
+			$('.routeSel').addClass('hide');
+			$('.row').find('.l9').removeClass('l9').addClass('l12');
+		}
+		$('.progress-point').first().addClass('active');
+		return false;
+	},
+
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'map', className: 'col l9 s12' },
+			{ id: 'map', className: 'col l12 s12' },
 			React.createElement(
 				'div',
 				{ id: 'map-container' },
 				React.createElement(
 					'a',
-					{ className: 'waves-effect waves-light btn map-start-btn' },
+					{ onClick: this.routeNav, className: 'waves-effect waves-light btn map-start-btn' },
 					React.createElement(
 						'i',
 						{ className: 'material-icons right' },
@@ -22668,13 +22681,13 @@ var SetupFlow = React.createClass({
         { className: 'optSwitch' },
         React.createElement(
           'a',
-          { className: 'waves-effect waves-light btn-large' },
-          React.createElement('i', { className: 'fa fa-male' })
+          { className: 'waves-effect waves-light' },
+          React.createElement('div', { className: 'svg svg-bike-switch' })
         ),
         React.createElement(
           'a',
-          { className: 'waves-effect waves-light btn-large' },
-          React.createElement('i', { className: 'fa fa-bicycle' })
+          { className: 'waves-effect waves-light' },
+          React.createElement('div', { className: 'svg svg-walk-switch' })
         )
       ),
       linkTo: 'travelType'
@@ -22686,13 +22699,13 @@ var SetupFlow = React.createClass({
         { className: 'optSwitch' },
         React.createElement(
           'a',
-          { className: 'waves-effect waves-light btn-large' },
-          React.createElement('i', { className: 'fa fa-location-arrow' })
+          { className: 'waves-effect waves-light' },
+          React.createElement('div', { className: 'svg routeBtn' })
         ),
         React.createElement(
           'a',
-          { className: 'waves-effect waves-light btn-large' },
-          React.createElement('i', { className: 'fa fa-refresh' })
+          { className: 'waves-effect waves-light' },
+          React.createElement('div', { className: 'svg loopBtn' })
         )
       ),
       linkTo: 'destSel'
@@ -22756,6 +22769,7 @@ var SetupFlow = React.createClass({
     var nextView = this.state.linkTo;
     // Sets the state object identified by the above property.
     this.setState(this.routes[nextView]);
+    $('.progress-point.active').next().trigger('click');
   },
 
   transBtns: function transBtns() {
@@ -22776,10 +22790,10 @@ var SetupFlow = React.createClass({
   render: function render() {
     return React.createElement(
       'div',
-      { className: 'row routeSel left col l3 m3 s12 hide-on-small-only' },
+      { className: 'row routeSel left col l3 m3 s12 hide' },
       React.createElement(
         'div',
-        { className: 'heightFix col s3' },
+        { className: 'heightFix col s2' },
         React.createElement(
           'div',
           { className: 'progress-meter' },
@@ -22790,8 +22804,8 @@ var SetupFlow = React.createClass({
           ),
           React.createElement(
             'ol',
-            { className: 'progress-points', 'data-current': '1' },
-            React.createElement('li', { className: 'progress-point', onClick: this.transBtns, href: '#step-1' }),
+            { className: 'progress-points' },
+            React.createElement('li', { className: 'progress-point active', onClick: this.transBtns, href: '#step-1' }),
             React.createElement('li', { className: 'progress-point', onClick: this.travelType, href: '#step-2' }),
             React.createElement('li', { className: 'progress-point', onClick: this.destSel, href: '#step-3' }),
             React.createElement('li', { className: 'progress-point', onClick: this.timeSel, href: '#step-4' })
@@ -22800,23 +22814,18 @@ var SetupFlow = React.createClass({
       ),
       React.createElement(
         'div',
-        { className: 'heightFix col s9' },
-        this.state.reactBlob,
-        React.createElement(
-          'div',
-          { className: 'nxtBtn' },
-          React.createElement(
-            'a',
-            { className: 'waves-effect waves-light btn-large', onClick: this.nextState },
-            'Next'
-          )
-        )
+        { className: 'heightFix col s10' },
+        this.state.reactBlob
       )
     );
   }
 });
 
 module.exports = SetupFlow;
+
+// <div className="nxtBtn">
+//   <a className="waves-effect waves-light btn-large" onClick={this.nextState}>Next</a>
+// </div>
 
 // <nav className="formSteps step1">
 //             <span className="current"></span>

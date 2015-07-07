@@ -6,11 +6,29 @@ var Map = React.createClass({
       var map = L.mapbox.map('map', 'mapbox.streets')
       			.setView([43.64, -79.39], 9);
 	},
+
+
+	routeNav: function() {
+		if ( $(".routeSel").hasClass('hide')) {
+			$(".routeSel").removeClass('hide');
+			$(".row").find('.l12').removeClass('l12').addClass('l9');
+
+			} else {
+			$(".routeSel").addClass('hide');
+			$(".row").find('.l9').removeClass('l9').addClass('l12');
+
+
+			}
+			$(".progress-point").first().addClass('active');
+			return false;
+        },
+
+
 	render: function(){
 		return (
-			<div id="map" className="col l9 s12">
+			<div id="map" className="col l12 s12">
 				<div id="map-container">
-					<a className="waves-effect waves-light btn map-start-btn">
+					<a onClick={this.routeNav} className="waves-effect waves-light btn map-start-btn">
 						<i className="material-icons right">search</i>find my route
 					</a>
 				</div>
