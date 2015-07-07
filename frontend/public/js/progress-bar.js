@@ -29,16 +29,15 @@
       });
 
     });
-
-
     // ACTIVE STATE PROGRESS METER 
 
-      $(function() {  
-      var $point_arr, $points, $progress, $trigger, active, max, tracker, val;
+          $(function() {  
+      var $point_arr, $current, $points, $progress, $trigger, active, max, tracker, val, $current;
 
       $trigger   = $('.trigger').first();
       $points    = $('.progress-points').first();
       $point_arr = $('.progress-point');
+      $current   = $('.current').first();
       $progress  = $('.progress').first();
 
       val     = +$points.data('current') - 1;
@@ -56,8 +55,9 @@
         
         $_active.addClass('active');
         
-        return $progress.css('height', (index / 3 * 100) + "%");
-      }
+        return  $current.css('top', (index / 4 * 100) + "%"),
+                $progress.css('height', (index / 4 * 100)+ "%");
+        }
       };
 
       $(".progress-point").first().addClass('active');
@@ -80,14 +80,3 @@
       }), 1000);
 
       });
-
-    //TOGGLE TIMELINE ICON!!!!! ----------------------------
-    
-//     $(function() {
-//     $('a').click(function() {
-//         $(this).find('i').addClass('fa-minus-circle fa-plus-circle');
-//     });
-// });
-
-
-    // range slider ----------------------->

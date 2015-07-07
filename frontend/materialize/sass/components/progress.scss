@@ -38,6 +38,14 @@
   background:#bbb;
   z-index:-50;
 }
+
+.progress-meter .current {
+  -moz-transition: top 1s;
+  -o-transition: top 1s;
+  -webkit-transition: top 1s;
+  transition: top 1s;
+}
+
 .progress-meter .progress {
   -moz-transition: height 1s;
   -o-transition: height 1s;
@@ -49,12 +57,13 @@
   height: 0;
   width: 4px;
   margin:0;
-  background:$secondary-color;
+  background:$primary-color;
   overflow:hidden;
   z-index:-2;
 }
 
 ol {
+  padding-left:12.5px;
   height:100%;
   width:0;
 }
@@ -86,13 +95,13 @@ ol {
   padding:100%;
   text-align: center;
   cursor: pointer;
-  color: $secondary-color;
+  color: #fff;
 }
 .progress-meter .progress-point.completed, .progress-meter .progress-point.active {
-  color:$secondary-color;
+  color:$primary-color;
 }
 .progress-meter .progress-point.completed:before {
-  border-color:$secondary-color;
+  border-color:#fff;
   background-color:$secondary-color;
 }
 .progress-meter .progress-point.active:before {
@@ -100,7 +109,7 @@ ol {
   -o-transition-delay: 1s;
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
-  border-color:$secondary-color;
+  border-color:#fff;
 }
 .progress-meter .progress-point .label:before {
   counter-increment: point;

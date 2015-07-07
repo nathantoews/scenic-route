@@ -7,7 +7,7 @@ var Parks = require('./views/ParkProfile.jsx');
 var MapView = require('./views/Map.jsx');
  
 var Body = React.createClass({
-    render: function(){
+    render: function(){ 
       return (
       		<div className="row">
       			<ProfileNav/>

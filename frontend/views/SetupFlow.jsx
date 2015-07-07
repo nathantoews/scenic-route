@@ -92,7 +92,7 @@ var SetupFlow = React.createClass({
               <div className="track">
                 <span className="current">
                   <svg height="50" width="50">
-                    <circle cx="20" cy="20" r="10" stroke="$secondary-color" stroke-width="1" fill="green"/>
+                    <circle cx="10" cy="10" r="10" stroke="$secondary-color" stroke-width="1" fill="green"/>
                   </svg>
                 </span>
                 <span className="progress"></span>
@@ -102,7 +102,7 @@ var SetupFlow = React.createClass({
                 </li>
                 <li className="progress-point" onClick={this.travelType} href="#step-2">
                 </li>
-                <li className="progress-point" onClick={this.destSel} href="#step-3">
+               <li className="progress-point" onClick={this.destSel} href="#step-3">
                 </li>
                 <li className="progress-point" onClick={this.timeSel} href="#step-4">
                 </li>
