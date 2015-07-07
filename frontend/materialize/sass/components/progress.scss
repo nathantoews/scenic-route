@@ -4,7 +4,6 @@
  */
 .progress-meter {
   height:100%;
-  overflow:hidden;
   padding-right: $gutter-width / 2;
 }
 
@@ -58,8 +57,6 @@
 ol {
   height:100%;
   width:0;
-  padding:13px;
-  margin-top:50%;
 }
 .progress-meter .progress-points {
   height:100%;

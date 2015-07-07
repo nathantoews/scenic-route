@@ -90,6 +90,11 @@ var SetupFlow = React.createClass({
           <div className="heightFix col s2">
             <div className="progress-meter">
               <div className="track">
+                <span className="current">
+                  <svg height="50" width="50">
+                    <circle cx="20" cy="20" r="10" stroke="$secondary-color" stroke-width="1" fill="green"/>
+                  </svg>
+                </span>
                 <span className="progress"></span>
               </div>
               <ol className="progress-points">
