@@ -23,22 +23,48 @@ function getSuggestions(query, cb) {
 
 var Endpoints = React.createClass({
   componentDidMount: function(){
+    var geocoder = new google.maps.Geocoder();
     $('.typeahead').typeahead(null, {
       displayKey: 'description',
       source: getSuggestions
     });
+    $('.typeahead').on('typeahead:selected', function(evt, obj){
+      console.log(evt);
+      console.log(obj);
+      window.sel = obj;
+
+      geocoder.geocode({'placeId': obj.place_id}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+              console.log("RESULT FOUND!")
+              // Do something with the results[0].geometry object.
+              console.log(results[0]);
+            } else {
+              console.log('No results found');
+            }
+          } else {
+            console.log('Geocoder failed due to: ' + status);
+          }
+        });
+    });
   }, 
+  handleSubmit: function(e){
+    return false;
+  },
   render: function() {
     return (
-        <form className="col s12">
+        <form onSubmit={this.handleSubmit}>
           <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field">
               <input placeholder="Origin" id="origin" type="text" className={inputClasses} />
             </div>
-            <div className="input-field col s12">
+            <div className="input-field">
               <input placeholder="Destination" id="destination" type="text" className={inputClasses} />
             </div>            
           </div>
+          <button id='submitRoute' className="btn waves-effect waves-light" type="submit">
+            <i className="material-icons">send</i>
+          </button>          
         </form>
     );
   }
