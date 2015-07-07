@@ -1,0 +1,59 @@
+.svg {
+  width:100%;
+  height:100%;
+  background-repeat:no-repeat;
+  background-size:contain;
+
+    &:hover {
+    opacity:0.5;
+  }
+}
+
+.svg-bike-switch {
+  background-image:url('../img/svg/bike.svg');
+}
+
+.svg-walk-switch {
+  background-image:url('../img/svg/walk.svg'); 
+}
+
+.routeBtn {
+  background-image:url('../img/svg/route.svg');
+}
+
+.loopBtn {
+  background-image:url('../img/svg/loop.svg'); 
+}
+
+.hamburger {
+  background-image:url('../img/svg/hamburger.svg');
+}
+
+.walkProg {
+  background-image:url('../img/svg/walk.svg'); 
+}
+
+.bikeProg {
+  background-image:url('../img/svg/bike.svg');
+}
+
+.timeProg {
+  background-image:url('../img/svg/walk.svg'); 
+}
+
+.navProg {
+  background-image:url('../img/svg/bike.svg');
+}
+
+
+
+
+
+
+// .svg-route-switch {
+//   background-image:url('../images/icons/svgs/alerts/Blue_Alert_Icon.svg');
+// }
+
+// .svg-loop-switch {
+//   background-image:url('../images/icons/svgs/alerts/Red_Alert_Icon.svg');
+// }
