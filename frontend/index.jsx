@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var ProfileNav = require('./views/ProfileNav.jsx');
 var config = require('./config.js');
 var SetupFlow = require('./views/SetupFlow.jsx');

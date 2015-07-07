@@ -1,14 +1,13 @@
-var React = require('react');
 var React = require('react/addons');
+var Endpoints = require('./EndpointsView.jsx');
+
 
 var SetupFlow = React.createClass({
   getInitialState: function(){
-    return this.routes.transBtns;
-    
     console.log(this.state);
     console.dir(this);
-     
-    window.reactobj = this;
+    window.reactobj = this;    
+    return this.routes.transBtns;
   },
   routes: 
   {
@@ -44,20 +43,7 @@ var SetupFlow = React.createClass({
     }
     ,
     destSel: {
-      reactBlob:(
-          <form className="col s12">
-            <div className="row">
-              <div className="input-field col s12">
-                <input id="yourLoc" type="text" className="validate" />
-                <label for="yourLoc">Location</label>
-              </div>
-              <div className="input-field col s12">
-                <input id="dest" type="text" class="validate" />
-                <label for="dest">Destination</label>
-              </div>
-            </div>
-          </form>
-      ),
+      reactBlob: (<Endpoints/>),
       linkTo: 'timeSel'      
     }
     ,

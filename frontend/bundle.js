@@ -10,7 +10,7 @@ module.exports = config;
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
+var React = require('react/addons');
 var ProfileNav = require('./views/ProfileNav.jsx');
 var config = require('./config.js');
 var SetupFlow = require('./views/SetupFlow.jsx');
@@ -34,7 +34,7 @@ var Body = React.createClass({
 
 React.render(React.createElement(Body, null), document.getElementById('content'));
 
-},{"./config.js":1,"./views/Map.jsx":177,"./views/ParkProfile.jsx":178,"./views/ProfileNav.jsx":179,"./views/RouteView.jsx":180,"./views/SetupFlow.jsx":181,"react":176}],3:[function(require,module,exports){
+},{"./config.js":1,"./views/Map.jsx":178,"./views/ParkProfile.jsx":179,"./views/ProfileNav.jsx":180,"./views/RouteView.jsx":181,"./views/SetupFlow.jsx":182,"react/addons":4}],3:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -21904,6 +21904,62 @@ module.exports = require('./lib/React');
 
 var React = require('react/addons');
 
+var cx = React.addons.classSet;
+var inputClasses = cx({
+  'validate': true,
+  'typeahead': true
+});
+
+function getSuggestions(query, cb) {
+  var TorontoBbox = new google.maps.LatLngBounds(new google.maps.LatLng(43.574896, -79.601904), new google.maps.LatLng(43.856788, -79.167944));
+  var service = new google.maps.places.AutocompleteService();
+  service.getPlacePredictions({ input: query, bounds: TorontoBbox, componentRestrictions: { country: 'CA' } }, function (predictions, status) {
+    if (status != google.maps.places.PlacesServiceStatus.OK) {
+      console.log('Autocomplete status: ' + status);
+      return;
+    }
+    return cb(predictions);
+  });
+}
+
+var Endpoints = React.createClass({
+  displayName: 'Endpoints',
+
+  componentDidMount: function componentDidMount() {
+    $('.typeahead').typeahead(null, {
+      displayKey: 'description',
+      source: getSuggestions
+    });
+  },
+  render: function render() {
+    return React.createElement(
+      'form',
+      { className: 'col s12' },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(
+          'div',
+          { className: 'input-field col s12' },
+          React.createElement('input', { placeholder: 'Origin', id: 'origin', type: 'text', className: inputClasses })
+        ),
+        React.createElement(
+          'div',
+          { className: 'input-field col s12' },
+          React.createElement('input', { placeholder: 'Destination', id: 'destination', type: 'text', className: inputClasses })
+        )
+      )
+    );
+  }
+});
+
+module.exports = Endpoints;
+
+},{"react/addons":4}],178:[function(require,module,exports){
+'use strict';
+
+var React = require('react/addons');
+
 var Map = React.createClass({
 	displayName: 'Map',
 
@@ -21947,7 +22003,7 @@ var Map = React.createClass({
 });
 module.exports = Map;
 
-},{"react/addons":4}],178:[function(require,module,exports){
+},{"react/addons":4}],179:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -22334,7 +22390,7 @@ module.exports = Parks;
 //               <li><a className="btn-floating btn-small waves-effect waves-light"><i className="fa fa-tree"></i></a>Park D</li>
 //             </ul>
 
-},{"react":176}],179:[function(require,module,exports){
+},{"react":176}],180:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -22433,7 +22489,7 @@ var ProfileNav = React.createClass({
 
 module.exports = ProfileNav;
 
-},{"../config.js":1,"react":176}],180:[function(require,module,exports){
+},{"../config.js":1,"react":176}],181:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -22657,22 +22713,20 @@ var RouteView = React.createClass({
 
 module.exports = RouteView;
 
-},{"react":176}],181:[function(require,module,exports){
+},{"react":176}],182:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
 var React = require('react/addons');
+var Endpoints = require('./EndpointsView.jsx');
 
 var SetupFlow = React.createClass({
   displayName: 'SetupFlow',
 
   getInitialState: function getInitialState() {
-    return this.routes.transBtns;
-
     console.log(this.state);
     console.dir(this);
-
     window.reactobj = this;
+    return this.routes.transBtns;
   },
   routes: {
     transBtns: {
@@ -22722,34 +22776,7 @@ var SetupFlow = React.createClass({
     },
 
     destSel: {
-      reactBlob: React.createElement(
-        'form',
-        { className: 'col s12' },
-        React.createElement(
-          'div',
-          { className: 'row' },
-          React.createElement(
-            'div',
-            { className: 'input-field col s12' },
-            React.createElement('input', { id: 'yourLoc', type: 'text', className: 'validate' }),
-            React.createElement(
-              'label',
-              { 'for': 'yourLoc' },
-              'Location'
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'input-field col s12' },
-            React.createElement('input', { id: 'dest', type: 'text', 'class': 'validate' }),
-            React.createElement(
-              'label',
-              { 'for': 'dest' },
-              'Destination'
-            )
-          )
-        )
-      ),
+      reactBlob: React.createElement(Endpoints, null),
       linkTo: 'timeSel'
     },
 
@@ -22847,4 +22874,4 @@ module.exports = SetupFlow;
 //               </ul>
 //             </nav>
 
-},{"react":176,"react/addons":4}]},{},[2]);
+},{"./EndpointsView.jsx":177,"react/addons":4}]},{},[2]);
