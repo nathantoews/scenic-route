@@ -5,3 +5,4 @@ frontend/.sass-cache
 frontend/bundle.js
 frontend/materialize/sass/materialize.css
 frontend/materialize/sass/materialize.css.map
+.DS_Store

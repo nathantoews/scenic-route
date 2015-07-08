@@ -21910,6 +21910,7 @@ var inputClasses = cx({
   'typeahead': true
 });
 
+// Builds autcomplete suggestions using the Google Directions API
 function getSuggestions(query, cb) {
   var TorontoBbox = new google.maps.LatLngBounds(new google.maps.LatLng(43.574896, -79.601904), new google.maps.LatLng(43.856788, -79.167944));
   var service = new google.maps.places.AutocompleteService();
@@ -21925,37 +21926,103 @@ function getSuggestions(query, cb) {
 var Endpoints = React.createClass({
   displayName: 'Endpoints',
 
+  getInitialState: function getInitialState() {
+    return {
+      'origin': {},
+      'destination': {}
+    };
+  },
+  getDirections: function getDirections() {
+    var api = 'https://api.tiles.mapbox.com/v4/directions/';
+    api += 'mapbox.walking';
+    api += '/';
+    api += this.state.origin.latLng.lng + ',' + this.state.origin.latLng.lat + ';';
+    api += this.state.destination.latLng.lng + ',' + this.state.destination.latLng.lat;
+    api += '.json?instructions=html&access_token=';
+    api += 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
+    return api;
+  },
+  drawRoute: function drawRoute(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    console.log('In drawRoute');
+    var directionsSetup = L.mapbox.directions({
+      profile: 'mapbox.walking'
+    });
+    directionsSetup.setOrigin(this.state.origin.latLng);
+    directionsSetup.setDestination(this.state.destination.latLng);
+    // Sends a GET request to the Mapbox API.
+
+    $.get(this.getDirections(), function (routesInfo, err) {
+      // Route coordinates formatted as (lng,lat), and
+      // must be inverted to (lat,lng) for plotting
+      console.log('IN THE GET REQUEST');
+      console.log(routesInfo);
+
+      // Grabbing map and directions
+      var poly_raw = routesInfo.routes[0].geometry.coordinates;
+      var steps = routesInfo.routes[0].steps;
+
+      poly_raw = poly_raw.map(function (e) {
+        return e.reverse();
+      });
+
+      // Draw polyline to the map
+      var path = L.polyline(poly_raw);
+      path.addTo(window.map);
+
+      // Pan to the path
+      var bounds = path.getBounds();
+      window.map.fitBounds(bounds);
+    });
+    return false;
+  },
   componentDidMount: function componentDidMount() {
     var geocoder = new google.maps.Geocoder();
     $('.typeahead').typeahead(null, {
       displayKey: 'description',
       source: getSuggestions
     });
-    $('.typeahead').on('typeahead:selected', function (evt, obj) {
+    $('.typeahead').on('typeahead:selected', (function (evt, obj) {
       console.log(evt);
       console.log(obj);
+      console.log('capturing event');
+
+      var _stateChange = {};
+
+      window.selEvt = evt;
       window.sel = obj;
 
-      geocoder.geocode({ 'placeId': obj.place_id }, function (results, status) {
+      geocoder.geocode({ 'placeId': obj.place_id }, (function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
+          // Grab the most likely candidate for the reverse geocode lookup.
           if (results[0]) {
-            console.log('RESULT FOUND!');
-            // Do something with the results[0].geometry object.
-            console.log(results[0]);
+            // Modify the state value to represent the updated values.
+            // x.geometry.location returns a google.map.LatLng object
+            _stateChange[evt.target.id] = {
+              // Convert to a Mapbox latLng object to pass into directions.
+              'latLng': L.latLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+            };
+            this.setState(_stateChange);
+            window.travelState = this.state;
           } else {
             console.log('No results found');
           }
         } else {
           console.log('Geocoder failed due to: ' + status);
         }
-      });
-    });
+      }).bind(this));
+    }).bind(this));
   },
   handleSubmit: function handleSubmit(e) {},
   render: function render() {
     return React.createElement(
       'form',
+<<<<<<< HEAD
       null,
+=======
+      { onSubmit: this.drawRoute },
+>>>>>>> ca671818203a47c1618c05a38497b3e707c43155
       React.createElement(
         'div',
         { className: 'row' },
@@ -21996,11 +22063,12 @@ var Map = React.createClass({
 	displayName: 'Map',
 
 	componentDidMount: function componentDidMount() {
-		L.mapbox.accessToken = 'pk.eyJ1IjoiYW5kcmV3bG91aXMiLCJhIjoiZTFmMTFiNDI0MGM1M2I4OTUxZWVjNmM3ZTIzODZiNmMifQ._dhInriKHZsQLE0qX6u-KA';
-		var map = L.mapbox.map('map', 'mapbox.streets').setView([43.64, -79.39], 9);
+		L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
+		window.map = L.mapbox.map('map', 'mapbox.streets').setView([43.64, -79.39], 9);
 	},
 
-	routeNav: function routeNav() {
+	routeNav: function routeNav(evt) {
+
 		if ($('.routeSel').hasClass('hide')) {
 			$('.routeSel').removeClass('hide');
 			$('.row').find('.l12').removeClass('l12').addClass('l9');
@@ -22009,6 +22077,13 @@ var Map = React.createClass({
 			$('.row').find('.l9').removeClass('l9').addClass('l12');
 		}
 		$('.progress-point').first().addClass('active');
+
+		// Resize the map following state changes.
+		console.log('This is clicked.');
+		window.map.invalidateSize();
+
+		evt.stopPropagation();
+		evt.preventDefault();
 		return false;
 	},
 
