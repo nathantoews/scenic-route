@@ -22875,7 +22875,7 @@ var SetupFlow = React.createClass({
               React.createElement(
                 'svg',
                 { height: '50', width: '50' },
-                React.createElement('circle', { cx: '10', cy: '10', r: '10', stroke: '$secondary-color', 'stroke-width': '1', fill: 'green' })
+                React.createElement('circle', { cx: '10', cy: '10', r: '10', stroke: 'rgba(56,208,149,0.5)', strokeWidth: '4', fill: '#24a45a' })
               )
             ),
             React.createElement('span', { className: 'progress' })

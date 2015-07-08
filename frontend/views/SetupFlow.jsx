@@ -92,7 +92,7 @@ var SetupFlow = React.createClass({
               <div className="track">
                 <span className="current">
                   <svg height="50" width="50">
-                    <circle cx="10" cy="10" r="10" stroke="$secondary-color" stroke-width="1" fill="green"/>
+                    <circle cx="10" cy="10" r="10" stroke="rgba(56,208,149,0.5)" strokeWidth="4" fill='#24a45a'/>
                   </svg>
                 </span>
                 <span className="progress"></span>
