@@ -2,13 +2,16 @@ var React = require('react/addons');
 
 var Map = React.createClass({
 	componentDidMount: function(){
-      L.mapbox.accessToken = 'pk.eyJ1IjoiYW5kcmV3bG91aXMiLCJhIjoiZTFmMTFiNDI0MGM1M2I4OTUxZWVjNmM3ZTIzODZiNmMifQ._dhInriKHZsQLE0qX6u-KA';
-      var map = L.mapbox.map('map', 'mapbox.streets')
+      L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
+      window.map = L.mapbox.map('map', 'mapbox.streets')
       			.setView([43.64, -79.39], 9);
+
 	},
 
 
-	routeNav: function() {
+	routeNav: function(evt) {
+
+
 		if ( $(".routeSel").hasClass('hide')) {
 			$(".routeSel").removeClass('hide');
 			$(".row").find('.l12').removeClass('l12').addClass('l9');
@@ -20,6 +23,13 @@ var Map = React.createClass({
 
 			}
 			$(".progress-point").first().addClass('active');
+	
+			// Resize the map following state changes.
+			console.log("This is clicked.");
+			window.map.invalidateSize();	
+
+			evt.stopPropagation();
+			evt.preventDefault();		
 			return false;
         },
 
