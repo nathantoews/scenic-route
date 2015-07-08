@@ -22018,11 +22018,8 @@ var Endpoints = React.createClass({
   render: function render() {
     return React.createElement(
       'form',
-<<<<<<< HEAD
       null,
-=======
       { onSubmit: this.drawRoute },
->>>>>>> ca671818203a47c1618c05a38497b3e707c43155
       React.createElement(
         'div',
         { className: 'row' },

@@ -37,22 +37,22 @@
         };
 
         function addBike(){
-        $(".progress-point.active").addClass('bikeProg');
+        $(".progress-point.active").addClass('bikeProg').removeClass('walkProg');
         nextPage();
         };
 
         function addWalk(){
-        $(".progress-point.active").addClass('walkProg');
+        $(".progress-point.active").addClass('walkProg').removeClass('bikeProg');
         nextPage();
         };
 
         function addRoute(){
-        $(".progress-point.active").addClass('routeProg');
+        $(".progress-point.active").addClass('routeProg').removeClass('loopProg');
         nextPage();
         };
 
         function addLoop(){
-        $(".progress-point.active").addClass('loopProg');
+        $(".progress-point.active").addClass('loopProg').removeClass('routeProg');
         nextPage();
         };
 
@@ -81,7 +81,7 @@
         var $_active = $point_arr.eq(active)
         
         $point_arr
-          .removeClass('completed active')
+          .removeClass('completed active ')
           .slice(0, active).addClass('completed')
         
         $_active.addClass('active');
