@@ -4,6 +4,9 @@
  */
 .progress-meter {
   height:100%;
+  position:absolute;
+  top:2%;
+  z-index:5;
   padding-right: $gutter-width / 2;
 }
 
@@ -23,18 +26,17 @@
   box-shadow: 0 0 0 2px white;
   content: "";
   display: block;
-  width: 24px;
-  height:24px;
-  border: 4px solid $primary-color;
+  width: 30px;
+  height:30px;
   text-align: center;
   background-color: white;
   color: white;
 }
 .progress-meter .track {
   position:absolute;
-  left:23px;
-  width: 4px;
-  height:92%;
+  left:21px;
+  width: 8px;
+  height:90%;
   background:#bbb;
   z-index:-50;
 }
@@ -55,7 +57,7 @@
   position: absolute;
   top: 0;
   height: 0;
-  width: 4px;
+  width: 8px;
   margin:0;
   background:$primary-color;
   overflow:hidden;
@@ -63,7 +65,8 @@
 }
 
 ol {
-  padding-left:12.5px;
+  padding-left:10px;
+  margin:0;
   height:100%;
   width:0;
 }
@@ -71,27 +74,12 @@ ol {
   height:100%;
   list-style: none;
 }
-.progress-meter .progress-points .progress-point:nth-child(1) {
-  left: 0%;
-}
-.progress-meter .progress-points .progress-point:nth-child(2) {
-  left: 25%;
-}
-.progress-meter .progress-points .progress-point:nth-child(3) {
-  left: 50%;
-}
-.progress-meter .progress-points .progress-point:nth-child(4) {
-  left: 75%;
-}
-.progress-meter .progress-points .progress-point:nth-child(5) {
-  left: 100%;
-}
 .progress-meter .progress-point {
   -moz-transition: color 1s;
   -o-transition: color 1s;
   -webkit-transition: color 1s;
   transition: color 1s;
-  height: 25%;
+  height: 30%;
   padding:100%;
   text-align: center;
   cursor: pointer;
@@ -100,10 +88,10 @@ ol {
 .progress-meter .progress-point.completed, .progress-meter .progress-point.active {
   color:$primary-color;
 }
-.progress-meter .progress-point.completed:before {
-  border-color:#fff;
-  background-color:$secondary-color;
-}
+// .progress-meter .progress-point.completed:before {
+//   border-color:#fff;
+//   background-color:$secondary-color;
+// }
 .progress-meter .progress-point.active:before {
   -moz-transition-delay: 1s;
   -o-transition-delay: 1s;

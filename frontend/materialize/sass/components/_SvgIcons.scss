@@ -30,20 +30,20 @@
   background-image:url('../img/svg/hamburger.svg');
 }
 
-.walkProg {
-  background-image:url('../img/svg/walk.svg'); 
+.walkProg.completed:before {
+  background-image:url('../img/svg/walkProg.svg'); 
 }
 
-.bikeProg {
-  background-image:url('../img/svg/bike.svg');
+.bikeProg.completed:before {
+  background-image:url('../img/svg/bikeProg.svg');
 }
 
-.timeProg {
-  background-image:url('../img/svg/walk.svg'); 
+.routeProg.completed:before {
+  background-image:url('../img/svg/routeProg.svg'); 
 }
 
-.navProg {
-  background-image:url('../img/svg/bike.svg');
+.timeProg.completed:before {
+  background-image:url('../img/svg/timeProg.svg');
 }
 
 

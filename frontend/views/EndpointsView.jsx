@@ -49,11 +49,12 @@ var Endpoints = React.createClass({
     });
   }, 
   handleSubmit: function(e){
-    return false;
+
+    // return false;
   },
   render: function() {
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className="row">
             <div className="input-field">
               <input placeholder="Origin" id="origin" type="text" className={inputClasses} />
@@ -62,9 +63,9 @@ var Endpoints = React.createClass({
               <input placeholder="Destination" id="destination" type="text" className={inputClasses} />
             </div>            
           </div>
-          <button id='submitRoute' className="btn waves-effect waves-light" type="submit">
+          <a id='submitRoute' onClick={addTime} className="btn waves-effect waves-light">
             <i className="material-icons">send</i>
-          </button>          
+          </a>          
         </form>
     );
   }

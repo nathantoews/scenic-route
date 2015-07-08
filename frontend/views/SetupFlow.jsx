@@ -17,10 +17,10 @@ var SetupFlow = React.createClass({
         <div className="optSwitch">
           <p className="introTag">I have</p>
           <a className="waves-effect waves-light">
-            <div className="svg svg-bike-switch"></div>
+            <div onClick={addBike} className="svg svg-bike-switch"></div>
           </a>
           <a className="waves-effect waves-light">
-            <div className="svg svg-walk-switch"></div>
+            <div onClick={addWalk} className="svg svg-walk-switch"></div>
           </a>
         </div>
       ),
@@ -32,10 +32,10 @@ var SetupFlow = React.createClass({
         <div className="optSwitch">
           <p className="introTag">I have</p>
           <a className="waves-effect waves-light">
-            <div className="svg routeBtn"></div>
+            <div onClick={addRoute} className="svg routeBtn"></div>
           </a>
           <a className="waves-effect waves-light">
-            <div className="svg loopBtn"></div>
+            <div onClick={addLoop} className="svg loopBtn"></div>
           </a>
         </div>
       ),
@@ -90,11 +90,6 @@ var SetupFlow = React.createClass({
           <div className="heightFix col s2">
             <div className="progress-meter">
               <div className="track">
-                <span className="current">
-                  <svg height="50" width="50">
-                    <circle cx="10" cy="10" r="10" stroke="rgba(56,208,149,0.5)" strokeWidth="4" fill='#24a45a'/>
-                  </svg>
-                </span>
                 <span className="progress"></span>
               </div>
               <ol className="progress-points">
@@ -107,6 +102,11 @@ var SetupFlow = React.createClass({
                 <li className="progress-point" onClick={this.timeSel} href="#step-4">
                 </li>
               </ol>
+              <span className="current">
+                  <svg height="50" width="50">
+                    <circle cx="25" cy="12" r="8" stroke="rgba(56,208,149,0.5)" strokeWidth="4" fill='#24a45a'/>
+                  </svg>
+              </span>
             </div>
           </div>
           <div className="heightFix col s10">

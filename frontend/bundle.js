@@ -21951,13 +21951,11 @@ var Endpoints = React.createClass({
       });
     });
   },
-  handleSubmit: function handleSubmit(e) {
-    return false;
-  },
+  handleSubmit: function handleSubmit(e) {},
   render: function render() {
     return React.createElement(
       'form',
-      { onSubmit: this.handleSubmit },
+      null,
       React.createElement(
         'div',
         { className: 'row' },
@@ -21973,8 +21971,8 @@ var Endpoints = React.createClass({
         )
       ),
       React.createElement(
-        'button',
-        { id: 'submitRoute', className: 'btn waves-effect waves-light', type: 'submit' },
+        'a',
+        { id: 'submitRoute', onClick: addTime, className: 'btn waves-effect waves-light' },
         React.createElement(
           'i',
           { className: 'material-icons' },
@@ -21986,6 +21984,8 @@ var Endpoints = React.createClass({
 });
 
 module.exports = Endpoints;
+
+// return false;
 
 },{"react/addons":4}],178:[function(require,module,exports){
 'use strict';
@@ -22773,12 +22773,12 @@ var SetupFlow = React.createClass({
         React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
-          React.createElement('div', { className: 'svg svg-bike-switch' })
+          React.createElement('div', { onClick: addBike, className: 'svg svg-bike-switch' })
         ),
         React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
-          React.createElement('div', { className: 'svg svg-walk-switch' })
+          React.createElement('div', { onClick: addWalk, className: 'svg svg-walk-switch' })
         )
       ),
       linkTo: 'travelType'
@@ -22796,12 +22796,12 @@ var SetupFlow = React.createClass({
         React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
-          React.createElement('div', { className: 'svg routeBtn' })
+          React.createElement('div', { onClick: addRoute, className: 'svg routeBtn' })
         ),
         React.createElement(
           'a',
           { className: 'waves-effect waves-light' },
-          React.createElement('div', { className: 'svg loopBtn' })
+          React.createElement('div', { onClick: addLoop, className: 'svg loopBtn' })
         )
       ),
       linkTo: 'destSel'
@@ -22869,15 +22869,6 @@ var SetupFlow = React.createClass({
           React.createElement(
             'div',
             { className: 'track' },
-            React.createElement(
-              'span',
-              { className: 'current' },
-              React.createElement(
-                'svg',
-                { height: '50', width: '50' },
-                React.createElement('circle', { cx: '10', cy: '10', r: '10', stroke: 'rgba(56,208,149,0.5)', strokeWidth: '4', fill: '#24a45a' })
-              )
-            ),
             React.createElement('span', { className: 'progress' })
           ),
           React.createElement(
@@ -22887,6 +22878,15 @@ var SetupFlow = React.createClass({
             React.createElement('li', { className: 'progress-point', onClick: this.travelType, href: '#step-2' }),
             React.createElement('li', { className: 'progress-point', onClick: this.destSel, href: '#step-3' }),
             React.createElement('li', { className: 'progress-point', onClick: this.timeSel, href: '#step-4' })
+          ),
+          React.createElement(
+            'span',
+            { className: 'current' },
+            React.createElement(
+              'svg',
+              { height: '50', width: '50' },
+              React.createElement('circle', { cx: '25', cy: '12', r: '8', stroke: 'rgba(56,208,149,0.5)', strokeWidth: '4', fill: '#24a45a' })
+            )
           )
         )
       ),

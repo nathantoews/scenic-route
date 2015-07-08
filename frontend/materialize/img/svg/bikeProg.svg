@@ -1,54 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 323.3 323.3" style="enable-background:new 0 0 323.3 323.3;" xml:space="preserve">
+	 viewBox="0 0 73.9 73.9" style="enable-background:new 0 0 73.9 73.9;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#C6AF76;}
-	.st1{fill:none;stroke:#A17644;stroke-width:3.3156;stroke-miterlimit:10;}
-	.st2{fill:#51BC96;}
-	.st3{fill:#88CCB3;}
-	.st4{fill:#34B188;}
-	.st5{fill:#FBEC60;}
-	.st6{fill:#FCE49B;}
-	.st7{fill:#E3CD8A;}
-	.st8{fill:#D9C080;}
-	.st9{fill:none;stroke:#636467;stroke-width:10.5772;stroke-miterlimit:10;}
-	.st10{fill:none;stroke:#EF6B83;stroke-width:8.9907;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st11{fill:none;stroke:#EF6B83;stroke-width:8.9907;stroke-linecap:round;stroke-miterlimit:10;}
-	.st12{fill:#CC496B;}
-	.st13{fill:#EF6B83;}
-	.st14{fill:none;stroke:#CF5C7A;stroke-width:4.9592;stroke-linecap:round;stroke-miterlimit:10;}
-	.st15{fill:#636467;}
-	.st16{fill:#FFFFFF;stroke:#636467;stroke-width:7.1491;stroke-linecap:round;stroke-miterlimit:10;}
-	.st17{fill:none;stroke:#A17644;stroke-width:3.2757;stroke-miterlimit:10;}
-	.st18{fill:#626568;}
-	.st19{fill:#E7D1B9;}
-	.st20{fill:#ED6E83;}
-	.st21{fill:#5BBBBB;}
-	.st22{fill:#DFDFDE;}
-	.st23{opacity:0.5;}
-	.st24{fill:#D2D3D4;}
-	.st25{fill:none;stroke:#A17644;stroke-width:3.6673;stroke-miterlimit:10;}
-	.st26{fill:#FFFFFF;}
-	.st27{fill:#16A457;}
-	.st28{fill:none;stroke:#51BC96;stroke-width:20.1693;stroke-linecap:round;stroke-miterlimit:10;}
-	.st29{fill:none;stroke:#51BC96;stroke-width:19.8239;stroke-linecap:round;stroke-miterlimit:10;}
-	.st30{fill-rule:evenodd;clip-rule:evenodd;fill:#EF6B83;}
-	.st31{fill:none;stroke:#59BE99;stroke-width:3.5;stroke-miterlimit:10;}
-	.st32{fill:none;stroke:#59BE99;stroke-width:3.5;stroke-linecap:round;stroke-miterlimit:10;}
-	.st33{fill:#FFFFFF;stroke:#59BE99;stroke-width:3.5;stroke-linecap:round;stroke-miterlimit:10;}
-	.st34{fill:none;stroke:#59BE99;stroke-width:4.5;stroke-linecap:round;stroke-miterlimit:10;}
-	.st35{fill:#59BE99;}
-	.st36{fill:none;stroke:#59BE99;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st37{opacity:0.8;fill:#EF6B83;}
-	.st38{opacity:0.8;fill:none;stroke:#EF6C84;stroke-width:5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st0{fill:#F46B83;}
+	.st1{fill:#C6AF75;}
+	.st2{fill:#A17644;}
+	.st3{fill:#2AD19D;}
+	.st4{fill:#79E2BC;}
+	.st5{fill:#34B188;}
+	.st6{fill:#FCED5E;}
+	.st7{fill:#FDE49C;}
+	.st8{fill:#E2CC8A;}
+	.st9{fill:#D9C081;}
+	.st10{fill:#626366;}
+	.st11{fill:#CC486A;}
+	.st12{fill:#CE5B79;}
+	.st13{fill:#FFFFFF;}
+	.st14{fill:#929496;}
+	.st15{fill:#626467;}
+	.st16{fill:#E6D0B8;}
+	.st17{fill:#EE6D83;}
+	.st18{fill:#5ABABA;}
+	.st19{fill:#DEDEDE;}
+	.st20{fill:#D1D3D4;}
+	.st21{fill:#16A457;}
+	.st22{fill:#58BD98;}
+	.st23{fill:#F6899C;}
+	.st24{fill:#1A9169;}
+	.st25{fill:#AA4660;}
+	.st26{fill-rule:evenodd;clip-rule:evenodd;fill:#F46B83;}
+	.st27{fill:#EF6B83;}
 </style>
 <g>
-	<circle class="st31" cx="178.5" cy="166.3" r="10.4"/>
-	<circle class="st31" cx="144.8" cy="166.3" r="10.4"/>
-	<polyline class="st32" points="144.5,166.3 152.1,153.1 171.7,153.1 	"/>
-	<path class="st32" d="M178.8,166.3l-9-18.8c-0.2-0.4,0.1-0.9,0.6-0.9h8.5"/>
-	<line class="st32" x1="152.1" y1="152.1" x2="148.8" y2="147.2"/>
-	<line class="st33" x1="155.4" y1="146.9" x2="145.9" y2="146.9"/>
+	<g>
+		<path class="st22" d="M53.8,53.8c-6.7,0-12.2-5.5-12.2-12.2s5.5-12.2,12.2-12.2s12.2,5.5,12.2,12.2S60.5,53.8,53.8,53.8z
+			 M53.8,32.9c-4.8,0-8.7,3.9-8.7,8.7s3.9,8.7,8.7,8.7s8.7-3.9,8.7-8.7S58.5,32.9,53.8,32.9z"/>
+	</g>
+	<g>
+		<path class="st22" d="M20.1,53.8c-6.7,0-12.2-5.5-12.2-12.2s5.5-12.2,12.2-12.2s12.2,5.5,12.2,12.2S26.8,53.8,20.1,53.8z
+			 M20.1,32.9c-4.8,0-8.7,3.9-8.7,8.7s3.9,8.7,8.7,8.7c4.8,0,8.7-3.9,8.7-8.7S24.9,32.9,20.1,32.9z"/>
+	</g>
+	<g>
+		<path class="st22" d="M19.8,43.4c-0.3,0-0.6-0.1-0.9-0.2c-0.8-0.5-1.1-1.5-0.7-2.4l8-14.1H47c1,0,1.8,0.8,1.8,1.8S48,30.1,47,30.1
+			H28.3l-7,12.4C21,43,20.4,43.4,19.8,43.4z"/>
+	</g>
+	<g>
+		<path class="st22" d="M54.1,43.4c-0.7,0-1.3-0.4-1.6-1l-9-18.8c-0.4-0.8-0.3-1.6,0.1-2.3s1.2-1.1,2-1.1h8.5c1,0,1.8,0.8,1.8,1.8
+			s-0.8,1.8-1.8,1.8h-6.7l8.3,17.3c0.4,0.9,0.1,1.9-0.8,2.3C54.6,43.3,54.3,43.4,54.1,43.4z"/>
+	</g>
+	<g>
+		<path class="st22" d="M27.3,29.1c-0.6,0-1.1-0.3-1.5-0.8l-3.3-4.8c-0.5-0.8-0.3-1.9,0.5-2.4c0.8-0.5,1.9-0.3,2.4,0.5l3.3,4.8
+			c0.5,0.8,0.3,1.9-0.5,2.4C28,29,27.7,29.1,27.3,29.1z"/>
+	</g>
+	<g>
+		<line class="st13" x1="30.6" y1="22.1" x2="21.1" y2="22.1"/>
+		<path class="st22" d="M30.6,23.9h-9.5c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8h9.5c1,0,1.8,0.8,1.8,1.8S31.6,23.9,30.6,23.9z"/>
+	</g>
 </g>
 </svg>

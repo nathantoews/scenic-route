@@ -29,6 +29,37 @@
       });
 
     });
+
+    // INSERTING IMAGE AS PROGRESS MOVES ON ----------------------------------------
+
+        function nextPage() {
+        $(".progress-point.active").next().trigger('click');
+        };
+
+        function addBike(){
+        $(".progress-point.active").addClass('bikeProg');
+        nextPage();
+        };
+
+        function addWalk(){
+        $(".progress-point.active").addClass('walkProg');
+        nextPage();
+        };
+
+        function addRoute(){
+        $(".progress-point.active").addClass('routeProg');
+        nextPage();
+        };
+
+        function addLoop(){
+        $(".progress-point.active").addClass('loopProg');
+        nextPage();
+        };
+
+        function addTime(){
+        $(".progress-point.active").addClass('timeProg');
+        nextPage();
+        }
     // ACTIVE STATE PROGRESS METER 
 
           $(function() {  
@@ -55,8 +86,8 @@
         
         $_active.addClass('active');
         
-        return  $current.css('top', (index / 4 * 100) + "%"),
-                $progress.css('height', (index / 4 * 100)+ "%");
+        return  $current.css('top', (index / 3.3333333 * 100) + "%"),
+                $progress.css('height', (index / 3 * 100)+ "%");
         }
       };
 
