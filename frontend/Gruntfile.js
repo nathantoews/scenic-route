@@ -48,5 +48,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	// Registering tasks
-	grunt.registerTask('default',['connect:server','watch']);
+	grunt.registerTask('default',[
+									'connect:server',
+									'browserify',
+									'sass',
+									'watch'
+								]);
+
 };

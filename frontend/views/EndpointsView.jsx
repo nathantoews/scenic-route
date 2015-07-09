@@ -133,6 +133,7 @@ var Endpoints = React.createClass({
               };
               this.setState(_stateChange);
               window.travelState = this.state;
+
             } else {
               console.log('No results found');
             }
