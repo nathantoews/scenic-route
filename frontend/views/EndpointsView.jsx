@@ -157,9 +157,9 @@ var Endpoints = React.createClass({
               <input placeholder="Destination" id="destination" type="text" className={inputClasses} />
             </div>            
           </div>
-          <a id='submitRoute' onClick={addTime} className="btn waves-effect waves-light">
+          <button id='submitRoute' className="btn waves-effect waves-light">
             <i className="material-icons">send</i>
-          </a>          
+          </button>          
         </form>
     );
   }
