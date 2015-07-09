@@ -6,7 +6,7 @@ var inputClasses = cx({
   'typeahead': true
 });
 
-// Builds autcomplete suggestions using the Google Directions API
+// Builds autocomplete suggestions using the Google Directions API
 function getSuggestions(query, cb) {
     var TorontoBbox = new google.maps.LatLngBounds(
         new google.maps.LatLng(43.574896,-79.601904),
@@ -26,52 +26,88 @@ var Endpoints = React.createClass({
   getInitialState: function(){
     return {
       "origin": {},
-      "destination": {}
+      "destination": {},
+      "greenpoints": []
     };
   },
-  getDirections: function(){
+  // Sample query: http://104.131.189.81/greenify?origin=-79.380658,43.645388&dest=-79.391974,43.647957  
+  buildGreenifyURL: function(){
+    var api = "http://104.131.189.81/greenify?";
+    api += "origin=" + this.state.origin.latLng.lng + ',' + this.state.origin.latLng.lat;
+    api += "&";
+    api += "dest=" + this.state.destination.latLng.lng + ',' + this.state.destination.latLng.lat;
+    return api;
+  },
+  // Should invoke the previous method within a GET.
+  getGreenpoints: function(){
+
+  },
+  buildMapboxDirectionsURL: function(){
     var api = "https://api.tiles.mapbox.com/v4/directions/";
     api += 'mapbox.walking';
     api += '/';
     api += this.state.origin.latLng.lng + ',' + this.state.origin.latLng.lat + ';';
+
+    // Affix green waypoints here!
+    console.log("In build", this.state.greenpoints);
+
+    // Only viewing fastest green route right now.
+    var testpoints = JSON.parse(this.state.greenpoints.results[0].scenic_route);
+    
+    testpoints.map(function(it){
+      var lng = it[0];
+      var lat = it[1];
+      api += lng + ',' + lat + ';';
+    });
+
+    window.blah = JSON.parse(this.state.greenpoints.results[0].scenic_route);
+
+
     api += this.state.destination.latLng.lng + ',' + this.state.destination.latLng.lat;
     api += '.json?instructions=html&access_token=';
     api += 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
     return api;
   },
-  drawRoute: function(evt){
+  generateRoute: function(evt){
     evt.preventDefault();
     evt.stopPropagation();
-    console.log("In drawRoute");
+    console.log("In generateRoute");
+
+    // Setup directions Mapbox Directions object.
     var directionsSetup = L.mapbox.directions({
         profile: 'mapbox.walking',
     });
     directionsSetup.setOrigin(this.state.origin.latLng);
     directionsSetup.setDestination(this.state.destination.latLng);
-    // Sends a GET request to the Mapbox API.
 
-    $.get(this.getDirections(), function(routesInfo, err){
-      // Route coordinates formatted as (lng,lat), and
-      // must be inverted to (lat,lng) for plotting
-      console.log("IN THE GET REQUEST");
-      console.log(routesInfo);
+    // Get green waypoints, before you request for directions.
+    $.get(this.buildGreenifyURL(), function(results,err){
+        console.log("Hit Greenify API", results);
 
-      // Grabbing map and directions
-      var poly_raw = routesInfo.routes[0].geometry.coordinates;
-      var steps = routesInfo.routes[0].steps;
+        this.setState({'greenpoints': results});
 
-      poly_raw = poly_raw.map(function(e){
-        return e.reverse();
-      });
+        // Sends a GET request to the Mapbox API.
+        $.get(this.buildMapboxDirectionsURL(), function(routesInfo, err){
+          console.log("IN THE GET REQUEST");
+          console.log(routesInfo);
 
-      // Draw polyline to the map
-      var path = L.polyline(poly_raw);
-      path.addTo(window.map)
-
-      // Pan to the path
-      var bounds = path.getBounds();
-      window.map.fitBounds(bounds);
-    });
+          // Grabbing map and directions
+          var poly_raw = routesInfo.routes[0].geometry.coordinates;
+          var steps = routesInfo.routes[0].steps;
+          // Route coordinates formatted as (lng,lat), and
+          // must be inverted to (lat,lng) for plotting
+          poly_raw = poly_raw.map(function(e){
+            return e.reverse();
+          });
+          // Draw polyline to the map
+          var path = L.polyline(poly_raw);
+          path.addTo(window.map)
+          // Pan to the path
+          var bounds = path.getBounds();
+          window.map.fitBounds(bounds);
+        });
+    }.bind(this));
+    
     return false;
   },
   componentDidMount: function(){
@@ -81,16 +117,10 @@ var Endpoints = React.createClass({
       source: getSuggestions
     });
     $('.typeahead').on('typeahead:selected', function(evt, obj){
-      console.log(evt);
       console.log(obj);
       console.log("capturing event");
 
       var _stateChange = {};
-      
-      
-      window.selEvt = evt;
-      window.sel = obj;
-
       geocoder.geocode({'placeId': obj.place_id}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             // Grab the most likely candidate for the reverse geocode lookup.
@@ -118,8 +148,7 @@ var Endpoints = React.createClass({
   },
   render: function() {
     return (
-        <form>
-        <form onSubmit={this.drawRoute}>
+        <form onSubmit={this.generateRoute}>
           <div className="row">
             <div className="input-field">
               <input placeholder="Origin" id="origin" type="text" className={inputClasses} />
