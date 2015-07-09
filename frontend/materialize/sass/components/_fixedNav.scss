@@ -1,5 +1,10 @@
 .routeSel {
-  height:92%;
+  height:100%;
+  
+  /* So it sits tightly under the navbar */
+  display: block;
+  position: relative;
+  
   padding:0 !important;
   ul {
     height:100%;
