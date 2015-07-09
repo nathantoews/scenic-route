@@ -4,12 +4,11 @@ var React = require('react');
 
 var TimeDrag = React.createClass({
 componentDidMount: function(){
-
   var svgCanvas = document.querySelector('.drag');
   var svgNS = 'http://www.w3.org/2000/svg';
   var rectangles = [];
 
-  function Rectangle (x, y, w, h, svgCanvas) {
+  function Rectangle (x, y, w, h) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -47,8 +46,8 @@ componentDidMount: function(){
 
     // return a suitable object for interact.js
     return {
-      left  : rectangle.x,
-      top   : rectangle.y,
+      left  : rectangle.x + rectangle.h,
+      top   : rectangle.y + rectangle.w,
       right : rectangle.x + rectangle.w,
       bottom: rectangle.y + rectangle.h
     };
