@@ -1,11 +1,12 @@
 var React = require('react/addons');
 var Endpoints = require('./EndpointsView.jsx');
+var TimeDrag = require('./DragInt.jsx')
 
 
 var SetupFlow = React.createClass({
   getInitialState: function(){
     console.log(this.state);
-    console.dir(this);
+    console.dir(this); 
     window.reactobj = this;    
     return this.routes.transBtns;
   },
@@ -49,11 +50,7 @@ var SetupFlow = React.createClass({
     ,
     timeSel: {
       reactBlob:(
-        <form action="#">
-          <p className="range-field"><input type="range" id="test5" min="0" max="100" />start</p>
-          <p className="range-field"><input type="range" id="test5" min="0" max="100" />end</p>
-
-        </form>
+        (<TimeDrag/>)
       ),
       linkTo: 'transBtns'
     }
