@@ -4,8 +4,8 @@
  */
 .progress-meter {
   height:100%;
-  position:absolute;
-  top:1%;
+  position:fixed;
+  top:3%;
   z-index:5;
   padding-right: $gutter-width / 2;
 }
