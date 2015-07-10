@@ -2,6 +2,8 @@ var React = require('react/addons');
 var Endpoints = require('./EndpointsView.jsx');
 var TimeDrag = require('./DragInt.jsx')
 
+var ScenicStore = require('../stores/Stores.jsx');
+var Actions = require('../stores/Actions.jsx');
 
 var SetupFlow = React.createClass({
   getInitialState: function(){
@@ -107,7 +109,7 @@ var SetupFlow = React.createClass({
               </span>
             </div>
           </div>
-          <div className="heightFix col s10">
+          <div className="heightFix col s9">
             {this.state.reactBlob}
           </div>
         </div>

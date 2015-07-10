@@ -29,11 +29,12 @@ html, body, .table-container{
 }
 #map-container{
   .map-start-btn{
-    position:fixed;
-    bottom:10%;
-    left:50%;
-    margin:0 auto;
-
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
   .user-profile{
     position: absolute;
@@ -122,6 +123,7 @@ span.twitter-typeahead{
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;  
+
 }
 
 #green_loader{
@@ -150,3 +152,6 @@ span.twitter-typeahead{
 .hidden{
   display:none !important;
 }
+
+/* Hack! Did we fuck up the grid?? */
+

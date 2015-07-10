@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 		    tasks: ['sass'],
 		  },
 		  react:{
-		  	files: ['index.jsx','views/*.jsx'],
+		  	files: ['index.jsx','views/*.jsx','stores/*.jsx'],
 		  	tasks: ['browserify']
 		  }
 		}

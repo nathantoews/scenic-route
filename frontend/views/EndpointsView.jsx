@@ -1,4 +1,6 @@
 var React = require('react/addons');
+var ScenicStore = require('../stores/Stores.jsx');
+var Actions = require('../stores/Actions.jsx');
 
 var cx = React.addons.classSet;
 var inputClasses = cx({
@@ -84,7 +86,7 @@ var Endpoints = React.createClass({
     directionsSetup.setDestination(this.state.destination.latLng);
     
     // Get green waypoints, before you request for directions.
-    this.props.isLoading(true);
+    Actions.isLoading(true);
     console.log("In generateRoute", this.props.bodyState);
 
     $.get(this.buildGreenifyURL(), function(results,err){
@@ -111,7 +113,7 @@ var Endpoints = React.createClass({
           // Pan to the path
           var bounds = path.getBounds();
           window.map.fitBounds(bounds);
-          this.props.isLoading(false);          
+          Actions.isLoading(false);          
         }.bind(this));
     }.bind(this));
     // In case the GET request above hangs.
@@ -156,12 +158,10 @@ var Endpoints = React.createClass({
         <form onSubmit={this.generateRoute}>
           <div className="row">
             <div className="input-field">
-              <input id="origin" type="text" className={inputClasses} />
-              <label for="origin">Im starting here</label>
+              <input id="origin" type="text" placeholder="I'm Starting Here" className={inputClasses} />
             </div>
             <div className="input-field">
-              <input id="destination" type="text" className={inputClasses} />
-              <label for="destination">Im going there</label>
+              <input id="destination" type="text" placeholder="I'm Going To" className={inputClasses} />
             </div>            
           </div>
           <button id='submitRoute' className="btn waves-effect waves-light">
