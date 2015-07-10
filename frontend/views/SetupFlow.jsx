@@ -7,78 +7,79 @@ var SetupFlow = React.createClass({
   getInitialState: function(){
     console.log(this.state);
     console.dir(this); 
-    window.reactobj = this;    
-    return this.routes.transBtns;
+    window.reactobj = this.routes().transBtns;    
+    return this.routes().transBtns;
   },
-  routes: 
-  {
-    transBtns:{
-      reactBlob:
-      (
-        <div className="optSwitch">
-          <p className="introTag">I have</p>
-          <a className="waves-effect waves-light">
-            <div onClick={addBike} className="svg svg-bike-switch"></div>
-          </a>
-          <a className="waves-effect waves-light">
-            <div onClick={addWalk} className="svg svg-walk-switch"></div>
-          </a>
-        </div>
-      ),
-      linkTo: 'travelType'       
+  routes: function(){
+     return {
+        transBtns:{
+          reactBlob:
+          (
+            <div className="optSwitch">
+              <p className="introTag">I have</p>
+              <a className="waves-effect waves-light">
+                <div onClick={addBike} className="svg svg-bike-switch"></div>
+              </a>
+              <a className="waves-effect waves-light">
+                <div onClick={addWalk} className="svg svg-walk-switch"></div>
+              </a>
+            </div>
+          ),
+          linkTo: 'travelType'       
+        }
+        ,
+        travelType: {
+          reactBlob:(
+            <div className="optSwitch">
+              <p className="introTag">I have</p>
+              <a className="waves-effect waves-light">
+                <div onClick={addRoute} className="svg routeBtn"></div>
+              </a>
+              <a className="waves-effect waves-light">
+                <div onClick={addLoop} className="svg loopBtn"></div>
+              </a>
+            </div>
+          ),
+          linkTo: 'destSel'
+        }
+        ,
+        destSel: {
+          reactBlob: (<Endpoints bodyState={this.props.parentState} isLoading={this.props.isLoading}/>),
+          linkTo: 'timeSel'      
+        }
+        ,
+        timeSel: {
+          reactBlob:(
+            (<TimeDrag/>)
+          ),
+          linkTo: 'transBtns'
+        }
+      }
     }
-    ,
-    travelType: {
-      reactBlob:(
-        <div className="optSwitch">
-          <p className="introTag">I have</p>
-          <a className="waves-effect waves-light">
-            <div onClick={addRoute} className="svg routeBtn"></div>
-          </a>
-          <a className="waves-effect waves-light">
-            <div onClick={addLoop} className="svg loopBtn"></div>
-          </a>
-        </div>
-      ),
-      linkTo: 'destSel'
-    }
-    ,
-    destSel: {
-      reactBlob: (<Endpoints/>),
-      linkTo: 'timeSel'      
-    }
-    ,
-    timeSel: {
-      reactBlob:(
-        (<TimeDrag/>)
-      ),
-      linkTo: 'transBtns'
-    }
-  }
   , 
   nextState: function(){
     // Gets the linkTo value
     var nextView = this.state.linkTo;
     // Sets the state object identified by the above property.
-    this.setState(this.routes[nextView]);
+    this.setState(this.routes()[nextView]);
     $(".progress-point.active").next().trigger('click');
 
   },
 
   transBtns: function() {
-    this.setState(this.routes.transBtns);
+    this.setState(this.routes().transBtns);
 
   },
     travelType: function() {
-    this.setState(this.routes.travelType);
+    this.setState(this.routes().travelType);
   },
 
   destSel: function() {
-    this.setState(this.routes.destSel);
+    this.setState(this.routes().destSel);
   },
 
   timeSel: function() {
-    this.setState(this.routes.timeSel);
+    this.setState(this.routes().timeSel);
   },
 
   render: function() {

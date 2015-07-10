@@ -21,6 +21,7 @@ html, body, .table-container{
 }
 /* Map and map control styles below */
 #map {
+  z-index:2;
   height:100%;
 	.btn{
 		color:white !important;
@@ -109,4 +110,43 @@ span.twitter-typeahead{
   width: 100%;
   margin-top: 10%;
   height: 10vh;  
+}
+
+/* Loading screen styles */
+
+/* 
+  Modify the containing main row to
+  listen to the vertical alignment hack.
+ */
+#containerRow{
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;  
+}
+
+#green_loader{
+  top:  0px;
+  left: 0px;
+  height: 100%;
+  width:  100%;
+  position: absolute;
+  background: white;
+  z-index: 4;
+  .loading_content{
+    img{
+      max-width: 100%;
+    }
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 33.333%;
+    color: $secondary-color-dark;    
+  }  
+}
+
+.hidden{
+  display:none !important;
 }

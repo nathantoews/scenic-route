@@ -24,6 +24,8 @@ function getSuggestions(query, cb) {
 
 var Endpoints = React.createClass({
   getInitialState: function(){
+    console.log("In Endpoints");
+    console.log(this.props.bodyState);
     return {
       "origin": {},
       "destination": {},
@@ -71,7 +73,8 @@ var Endpoints = React.createClass({
   generateRoute: function(evt){
     evt.preventDefault();
     evt.stopPropagation();
-    console.log("In generateRoute");
+
+
 
     // Setup directions Mapbox Directions object.
     var directionsSetup = L.mapbox.directions({
@@ -79,8 +82,11 @@ var Endpoints = React.createClass({
     });
     directionsSetup.setOrigin(this.state.origin.latLng);
     directionsSetup.setDestination(this.state.destination.latLng);
-
+    
     // Get green waypoints, before you request for directions.
+    this.props.isLoading(true);
+    console.log("In generateRoute", this.props.bodyState);
+
     $.get(this.buildGreenifyURL(), function(results,err){
         console.log("Hit Greenify API", results);
 
@@ -105,9 +111,11 @@ var Endpoints = React.createClass({
           // Pan to the path
           var bounds = path.getBounds();
           window.map.fitBounds(bounds);
-        });
+          this.props.isLoading(false);          
+        }.bind(this));
     }.bind(this));
-    
+    // In case the GET request above hangs.
+    // this.props.isLoading(false);
     return false;
   },
   componentDidMount: function(){
@@ -142,10 +150,6 @@ var Endpoints = React.createClass({
           }
         }.bind(this));
     }.bind(this));
-  }, 
-  handleSubmit: function(e){
-
-    // return false;
   },
   render: function() {
     return (
