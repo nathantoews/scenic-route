@@ -56,8 +56,8 @@
         nextPage();
         };
 
-        function addTime(){
-        $(".progress-point.active").addClass('timeProg');
+        function addLoc(){
+        $(".progress-point.active").addClass('navProg');
         nextPage();
         }
     // ACTIVE STATE PROGRESS METER 

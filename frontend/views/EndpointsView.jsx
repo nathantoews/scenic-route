@@ -156,10 +156,12 @@ var Endpoints = React.createClass({
         <form onSubmit={this.generateRoute}>
           <div className="row">
             <div className="input-field">
-              <input placeholder="Origin" id="origin" type="text" className={inputClasses} />
+              <input id="origin" type="text" className={inputClasses} />
+              <label for="origin">Im starting here</label>
             </div>
             <div className="input-field">
-              <input placeholder="Destination" id="destination" type="text" className={inputClasses} />
+              <input id="destination" type="text" className={inputClasses} />
+              <label for="destination">Im going there</label>
             </div>            
           </div>
           <button id='submitRoute' className="btn waves-effect waves-light">
