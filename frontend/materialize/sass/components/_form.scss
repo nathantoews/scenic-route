@@ -49,14 +49,11 @@ textarea.materialize-textarea {
   // General Styles
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $input-border-color;
   border-radius: 0;
   outline: none;
-  height: 3rem;
   width: 100%;
-
   font-size: 1rem;
-  margin: 0 0 15px 0;
+  margin-top:2.5rem;
   padding: 0;
   box-shadow: none;
   @include box-sizing(content-box);
@@ -97,8 +94,12 @@ textarea.materialize-textarea {
 
 // Styling for input field wrapper
 .input-field {
+  border-radius: 10px;
+  height: 5px;
+  width: 100%;
+  box-shadow: 0 55px 0 0 $secondary-color-light;
   position: relative;
-  margin-top: 1rem;
+  margin-bottom:8rem;
 
   label {
     color: $input-border-color;
@@ -110,8 +111,8 @@ textarea.materialize-textarea {
     @include transition(.2s ease-out);
   }
   label.active {
-    font-size: $label-font-size;
-    @include transform(translateY(-140%));
+    font-size:1.3em;
+    @include transform(translateY(-60%));
   }
 
   // Prefix Icons

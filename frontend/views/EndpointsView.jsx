@@ -3,11 +3,9 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Actions = require('../stores/Actions.jsx');
 var Navigate = require('../stores/Navigate.jsx');
 
-var cx = React.addons.classSet;
-var inputClasses = cx({
-  'validate': true,
-  'typeahead': true
-});
+
+var inputClassnames = require('classnames');
+var inputClasses = inputClassnames('validate','typeahead');
 
 var Endpoints = React.createClass({
   getInitialState: function(){
@@ -44,6 +42,10 @@ var Endpoints = React.createClass({
           }
         }.bind(this));
     }.bind(this));
+  }, 
+  handleSubmit: function(e){
+
+    // return false;
   },
   // Looks at the store state and decides whether
   // to show one or two inputs.
@@ -87,8 +89,7 @@ var Endpoints = React.createClass({
               })
             }
           </div>
-          <button id='submitRoute' onClick={this.validate} className="btn waves-effect waves-light">
-            <i className="material-icons">send</i>
+          <button id='submitRoute' onClick={this.validate} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
           </button>          
         </div>
     );

@@ -149,3 +149,19 @@ button.btn-floating {
     font-size: 1.6rem;
   }
 }
+
+.btn-primary {
+  @extend .btn;
+  font-weight:100;
+  background-color:$primary-color;
+
+  &:hover {
+    background-color:$primary-color;
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  font-weight:100;
+  background-color:$secondary-color;
+}

@@ -10,6 +10,11 @@
   }
 }
 
+.rangeBox {
+  background-image:url('../img/svg/rangeBox.svg');
+  background-size:100% 100%;
+}
+
 .svg-bike-switch {
   background-image:url('../img/svg/bike.svg');
 }
@@ -32,22 +37,29 @@
 
 .walkProg.completed:before {
   background-image:url('../img/svg/walkProg.svg'); 
+  background-position-x:50%;
 }
 
 .bikeProg.completed:before {
   background-image:url('../img/svg/bikeProg.svg');
+  background-position-x:50%;
+
 }
 
 .routeProg.completed:before {
   background-image:url('../img/svg/routeProg.svg'); 
+  background-position-x:50%;
 }
 
 .timeProg.completed:before {
   background-image:url('../img/svg/timeProg.svg');
+  background-position-x:50%;
 }
 
 .loopProg.completed:before {
   background-image:url('../img/svg/loopProg.svg');
+  background-position-x:50%;
+
 }
 
 

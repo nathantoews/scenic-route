@@ -113,7 +113,7 @@ var SetupFlow = React.createClass({
               </ol>
               <span className="current">
                   <svg height="50" width="50">
-                    <circle cx="25" cy="12" r="8" stroke="rgba(56,208,149,0.5)" strokeWidth="4" fill='#24a45a'/>
+                    <circle cx="26" cy="18" r="8" stroke="rgba(56,208,149,0.5)" strokeWidth="8" fill='rgb(88,189,152)'/>
                   </svg>
               </span>
             </div>

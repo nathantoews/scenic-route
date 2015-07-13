@@ -14,7 +14,7 @@ interact('.resize-drag')
   .on('resizemove', function (event) {
     var target = event.target,
         x = (parseFloat(target.getAttribute('data-x')) || 0),
-        y = (parseFloat(target.getAttribute('data-y')) || 0);
+        y = (parseFloat(target.getAttribute('data-y')) || 275);
 
     // update the element's style
     target.style.width  = event.rect.width + 'px';
@@ -29,23 +29,36 @@ interact('.resize-drag')
 
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
-    target.textContent = event.rect.width + '×' + event.rect.height;
+
+      // display range in other div ---////////////////////////////
+
+    var _height = $(".resize-container").height()
+    var maxRange = Math.round(((300/_height) * (_height - y))) + ' m';
+    var minRange = Math.round(((300/_height) * (_height - (y + event.rect.height)))) +' m';
+    var range =  minRange + ' to ' + maxRange;
+    document.getElementById('timeRange').textContent = range;
+
+
+  
   });
+
 },  
 render: function() {
     return (
-      <div className="timeSlider">
-        <div className="timeRange">
-          <p className="introTag">I have</p>
+      <div className="row" id="timeSlider">
+        <p className="introTag">I have</p>
+        <div id="timeRange"></div>
+        <div className="resize-container rangeBox">
+          <div className="resize-drag"></div>
         </div>
-        <div className="resize-container">
-          <div className="resize-drag">
-        </div>
-        </div>
+        <div id="minRange"></div>
+        <button className="btn-primary waves-effect waves-light col s4 offset-s1">skip</button>  
+        <button className="btn-secondary waves-effect waves-light col s4 offset-s2">submit</button>      
       </div>
     );
   }
 });
+
 
 module.exports = TimeDrag;
 
