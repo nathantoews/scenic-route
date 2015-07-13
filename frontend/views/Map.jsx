@@ -10,8 +10,6 @@ var Map = React.createClass({
 	      			.setView([43.64, -79.39], 9);
 	    window.addEventListener("resize", this.updateDimensions);	      			
 
-	    console.log("PARENT STATE:", this.props.parentState);
-	    // this.props.setParentState({test:'YOU PASSED PROPS SONN'});
 	    // Parent mounts only after all children elements mount!
 	    // console.log("CHANGING PARENT STATE...", this.props.parentState);
 	},

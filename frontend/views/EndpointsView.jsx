@@ -27,7 +27,6 @@ function getSuggestions(query, cb) {
 var Endpoints = React.createClass({
   getInitialState: function(){
     console.log("In Endpoints");
-    console.log(this.props.bodyState);
     return {
       "origin": {},
       "destination": {},
@@ -41,10 +40,6 @@ var Endpoints = React.createClass({
     api += "&";
     api += "dest=" + this.state.destination.latLng.lng + ',' + this.state.destination.latLng.lat;
     return api;
-  },
-  // Should invoke the previous method within a GET.
-  getGreenpoints: function(){
-
   },
   buildMapboxDirectionsURL: function(){
     var api = "https://api.tiles.mapbox.com/v4/directions/";
@@ -75,9 +70,7 @@ var Endpoints = React.createClass({
   generateRoute: function(evt){
     evt.preventDefault();
     evt.stopPropagation();
-
-
-
+    
     // Setup directions Mapbox Directions object.
     var directionsSetup = L.mapbox.directions({
         profile: 'mapbox.walking',
@@ -87,13 +80,10 @@ var Endpoints = React.createClass({
     
     // Get green waypoints, before you request for directions.
     Actions.isLoading(true);
-    console.log("In generateRoute", this.props.bodyState);
 
     $.get(this.buildGreenifyURL(), function(results,err){
         console.log("Hit Greenify API", results);
-
         this.setState({'greenpoints': results});
-
         // Sends a GET request to the Mapbox API.
         $.get(this.buildMapboxDirectionsURL(), function(routesInfo, err){
           console.log("IN THE GET REQUEST");
@@ -153,16 +143,41 @@ var Endpoints = React.createClass({
         }.bind(this));
     }.bind(this));
   },
+  // Looks at the store state and decides whether
+  // to show one or two inputs.
+  routeInputs: function(){
+      console.log("Returning Route Inputs");
+      if (this.props.loop){
+        // Show looping inputs!
+        console.log("I'M LOOPING");
+        return [
+              <div className="input-field">
+                <input id="origin" type="text" placeholder="Looping From" className={inputClasses} />
+              </div>
+        ];
+      }
+      else{
+        // Show routing inputs
+        console.log("I'M ROUTING!");
+        return [
+              <div className="input-field">
+                <input id="origin" type="text" placeholder="I'm Starting Here" className={inputClasses} />
+              </div>,
+              <div className="input-field">
+                <input id="destination" type="text" placeholder="I'm Going To" className={inputClasses} />
+              </div>
+        ];        
+      }
+  },
   render: function() {
     return (
         <form onSubmit={this.generateRoute}>
           <div className="row">
-            <div className="input-field">
-              <input id="origin" type="text" placeholder="I'm Starting Here" className={inputClasses} />
-            </div>
-            <div className="input-field">
-              <input id="destination" type="text" placeholder="I'm Going To" className={inputClasses} />
-            </div>            
+            {
+              this.routeInputs().map(function(reactComponent){
+                return reactComponent;
+              })
+            }
           </div>
           <button id='submitRoute' className="btn waves-effect waves-light">
             <i className="material-icons">send</i>

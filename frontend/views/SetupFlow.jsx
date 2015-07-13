@@ -6,11 +6,21 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Actions = require('../stores/Actions.jsx');
 
 var SetupFlow = React.createClass({
-  getInitialState: function(){
-    console.log(this.state);
-    console.dir(this); 
-    window.reactobj = this.routes().transBtns;    
-    return this.routes().transBtns;
+  getInitialState: function(){    
+    var _seed = this.routes().transBtns;
+    var _initState = {};
+    
+    _initState['reactBlob'] = _seed.reactBlob;
+    _initState['linkTo'] = _seed.linkTo;
+    _initState['sessionState'] = ScenicStore.getSessionState();
+
+    return _initState;
+  },
+  componentDidMount: function(){
+    ScenicStore.addChangeListener(this.updateState);
+  },
+  updateState: function(){
+    this.state.sessionState = ScenicStore.getSessionState();
   },
   routes: function(){
      return {
@@ -20,14 +30,14 @@ var SetupFlow = React.createClass({
             <div className="optSwitch">
               <p className="introTag">I have</p>
               <a className="waves-effect waves-light">
-                <div onClick={addBike} className="svg svg-bike-switch"></div>
+                <div onClick={addBike.bind(this, Actions)} className="svg svg-bike-switch"></div>
               </a>
               <a className="waves-effect waves-light">
-                <div onClick={addWalk} className="svg svg-walk-switch"></div>
+                <div onClick={addWalk.bind(this, Actions)} className="svg svg-walk-switch"></div>
               </a>
             </div>
           ),
-          linkTo: 'travelType'       
+          linkTo: 'travelType'
         }
         ,
         travelType: {
@@ -35,10 +45,10 @@ var SetupFlow = React.createClass({
             <div className="optSwitch">
               <p className="introTag">I have</p>
               <a className="waves-effect waves-light">
-                <div onClick={addRoute} className="svg routeBtn"></div>
+                <div onClick={addRoute.bind(this, Actions)} className="svg routeBtn"></div>
               </a>
               <a className="waves-effect waves-light">
-                <div onClick={addLoop} className="svg loopBtn"></div>
+                <div onClick={addLoop.bind(this, Actions)} className="svg loopBtn"></div>
               </a>
             </div>
           ),
@@ -46,8 +56,8 @@ var SetupFlow = React.createClass({
         }
         ,
         destSel: {
-          reactBlob: (<Endpoints bodyState={this.props.parentState} isLoading={this.props.isLoading}/>),
-          linkTo: 'timeSel'      
+          reactBlob: (<Endpoints loop={this.state && this.state.sessionState.loop} isLoading={this.props.isLoading}/>),
+          linkTo: 'timeSel'
         }
         ,
         timeSel: {
@@ -65,7 +75,6 @@ var SetupFlow = React.createClass({
     // Sets the state object identified by the above property.
     this.setState(this.routes()[nextView]);
     $(".progress-point.active").next().trigger('click');
-
   },
 
   transBtns: function() {
@@ -92,14 +101,14 @@ var SetupFlow = React.createClass({
               <div className="track">
                 <span className="progress"></span>
               </div>
-              <ol className="progress-points">
-                <li className="progress-point active" onClick={this.transBtns} href="#step-1">
+              <ol className="progress-points" data-current="1">
+                <li id="transBtns" className="progress-point active" onClick={this.transBtns} href="#step-1">
                 </li>
-                <li className="progress-point" onClick={this.travelType} href="#step-2">
+                <li id="travelType" className="progress-point disabled" onClick={this.travelType} href="#step-2">
                 </li>
-               <li className="progress-point" onClick={this.destSel} href="#step-3">
+               <li id="destSel" className="progress-point disabled" onClick={this.destSel} href="#step-3">
                 </li>
-                <li className="progress-point" onClick={this.timeSel} href="#step-4">
+                <li id="timeSel" className="progress-point disabled" onClick={this.timeSel.bind(this)} href="#step-4">
                 </li>
               </ol>
               <span className="current">

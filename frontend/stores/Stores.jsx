@@ -11,8 +11,10 @@ var dataText = "Test A";
 // Easily accessible to React components in every state.
 var sessionState = {
   'isLoading': false,
+  'transit': null,
   'origin': null,
-  'destination': null
+  'destination': null,
+  'loop': false
 };
 
 var ScenicStore = assign({}, EventEmitter.prototype, {
@@ -53,11 +55,21 @@ Dispatcher.register(function(payload) {
         dataText = "Test B";
         ScenicStore.emitChange();
         break;
+      case 'setTransitMode':
+        console.log("Changing Transit", payload.transit);
+        sessionState.transit = payload.transit;
+        ScenicStore.emitChange();
+        break;
+      // for toggling the loop flag.
+      case 'setMode': 
+        console.log("Changing loop or route mode", payload.loop);
+        sessionState.loop = payload.loop;
+        ScenicStore.emitChange();
+        break;
       case 'isLoading':
         console.log("isLoading Store is now", payload.isLoading)
         sessionState.isLoading = payload.isLoading;
         ScenicStore.emitChange();
-      break;
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
 
