@@ -14,7 +14,8 @@ var sessionState = {
   'transit': null,
   'origin': null,
   'destination': null,
-  'loop': false
+  'loop': false,
+  'greenpoints': null
 };
 
 var ScenicStore = assign({}, EventEmitter.prototype, {
@@ -66,10 +67,22 @@ Dispatcher.register(function(payload) {
         sessionState.loop = payload.loop;
         ScenicStore.emitChange();
         break;
+      case 'setGreenpoints':
+        console.log("In Stores, setGreenpoints");
+        sessionState.greenpoints = payload.greenpoints;
+        ScenicStore.emitChange();
+        break;
       case 'isLoading':
         console.log("isLoading Store is now", payload.isLoading)
         sessionState.isLoading = payload.isLoading;
         ScenicStore.emitChange();
+        break;
+      case 'setSessionState':
+        console.log("Setting Session State");
+        console.log("prop", payload.prop);
+        console.log("value", payload.value);
+        sessionState[payload.prop] = payload.value;
+        break;
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
 

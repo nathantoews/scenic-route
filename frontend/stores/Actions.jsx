@@ -28,6 +28,19 @@ var ScenicActions = {
       loop: false
     });
   },
+  setGreenpoints: function(_results){
+    Dispatcher.dispatch({
+      actionType: 'setGreenpoints',
+      greenpoints: _results
+    });
+  },
+  setSessionState: function(_prop, _value){
+    Dispatcher.dispatch({
+      actionType: 'setSessionState',
+      prop: _prop,
+      value: _value
+    });
+  },
   isLoading: function(_isLoading){
     Dispatcher.dispatch({
       actionType: 'isLoading',
