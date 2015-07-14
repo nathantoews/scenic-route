@@ -9,7 +9,6 @@
     opacity:0.5;
   }
 }
-
 .rangeBox {
   background-image:url('../img/svg/rangeBox.svg');
   background-size:100% 100%;
@@ -33,34 +32,69 @@
 
 .hamburger {
   background-image:url('../img/svg/hamburger.svg');
+  background-size:100% 100%;
+  height:100%;
+  width:40px;
 }
 
 .walkProg.completed:before {
   background-image:url('../img/svg/walkProg.svg'); 
-  background-position-x:50%;
+  background-position:50%;
+  background-repeat:no-repeat;
+
 }
 
 .bikeProg.completed:before {
   background-image:url('../img/svg/bikeProg.svg');
-  background-position-x:50%;
-
+  background-position:50%;
+  background-repeat:no-repeat;
 }
 
 .routeProg.completed:before {
   background-image:url('../img/svg/routeProg.svg'); 
-  background-position-x:50%;
+  background-position:50%;
+  background-repeat:no-repeat;
 }
 
 .timeProg.completed:before {
   background-image:url('../img/svg/timeProg.svg');
-  background-position-x:50%;
+  background-position:50%;
+  background-repeat:no-repeat;
+}
+
+.navProg.completed:before {
+  background-image:url('../img/svg/navProg.svg');
+  background-position:50%;
+  background-repeat:no-repeat;
 }
 
 .loopProg.completed:before {
   background-image:url('../img/svg/loopProg.svg');
-  background-position-x:50%;
+  background-position:50%;
+  background-repeat:no-repeat;
 
 }
+
+/// TURN DIRECTIONS SVG's //////////////////////////////////////////////
+
+.routeChoice {
+  float: left;
+  background-image:url('../img/svg/selRoute.svg');
+  background-size:100% 100%;
+  width:20%;
+  height:50px;
+  margin:auto;
+}
+
+.favorite {
+  float: right;
+  width:20%;
+  background-image:url('../img/svg/notSelFav.svg');
+  background-size:100% 100%;
+  height:50px;
+  margin:auto;
+}
+
 
 
 

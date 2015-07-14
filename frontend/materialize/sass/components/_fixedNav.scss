@@ -1,26 +1,25 @@
+/// TOGGLE SWITCHING FOR ROUTE SETUP//////////////////////////////////////////////////////////////////////////
+
 .routeSel {
   height:100%;
   z-index: 2;
   /* So it sits tightly under the navbar */
   display: block;
   position: relative;
-  
   padding:0 !important;
   ul {
     height:100%;
   }
-
   .nxtBtn {
     width:100%;
     height:10%;
-    
-    a {
-      height:100%;
-      width:100%;
+
+  a {
+    height:100%;
+    width:100%;
     }
   }
 }
-
 .current {
   position:absolute;
   top:0;
@@ -39,7 +38,7 @@
 
 .col.s2 {
     padding:0 !important;
-  }
+}
 
 .optSwitch {
   height:90%;
@@ -118,12 +117,10 @@
 .distContainer {
   height:100%;
   position:relative;
-  margin:20% 0 20% 0;
+  margin:20% 0 50% 0;
 }
 
-#submiteRoute {
-
-}
+/// TURN BY TURN DIRECTIONS /////////////////////////////////////////////////
 
 
 

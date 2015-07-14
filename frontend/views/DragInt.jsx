@@ -52,8 +52,8 @@ render: function() {
           <div className="resize-drag"></div>
         </div>
         <div id="minRange"></div>
-        <button className="btn-primary waves-effect waves-light col s4 offset-s1">skip</button>  
-        <button className="btn-secondary waves-effect waves-light col s4 offset-s2">submit</button>      
+        <button className="btn-secondary waves-effect waves-light col s4 offset-s1">skip</button>  
+        <button className="btn-primary waves-effect waves-light col s4 offset-s2">continue</button>      
       </div>
     );
   }

@@ -62,8 +62,8 @@ var ProfileNav = React.createClass({
         <ul id="slide-out" className="side-nav">
           {this.authButtons()}
         </ul>
-        <a data-activates="slide-out" className="button-collapse show-on-large right">
-          <i className="large material-icons">reorder</i>
+        <a data-activates="slide-out" className="button-collapse show-on-large right ">
+          <div className="hamburger"></div>
         </a>
       </nav>
     );

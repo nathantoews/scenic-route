@@ -5,7 +5,7 @@ var Navigate = require('../stores/Navigate.jsx');
 
 
 var inputClassnames = require('classnames');
-var inputClasses = inputClassnames('validate','typeahead');
+var inputClasses = inputClassnames('typeahead');
 
 var Endpoints = React.createClass({
   getInitialState: function(){
@@ -65,10 +65,14 @@ var Endpoints = React.createClass({
         console.log("I'M ROUTING!");
         return [
               <div className="input-field">
-                <input id="origin" type="text" placeholder="I'm Starting Here" className={inputClasses} />
+                <input id="origin" type="text" placeholder="Critical Mass" className={inputClasses} />
+                <label className="active" htmlFor="origin">Im starting here</label>
+
               </div>,
               <div className="input-field">
-                <input id="destination" type="text" placeholder="I'm Going To" className={inputClasses} />
+                <input id="destination" type="text" placeholder="Critical Mass" className={inputClasses} />
+                <label className="active" htmlFor="origin">Im going there</label>
+
               </div>
         ];        
       }
@@ -76,13 +80,13 @@ var Endpoints = React.createClass({
   validate: function(){
     // Ensure the inputs are filled in!
     console.log("Ensure the inputs are filled in!");
-    $("#timeSel").removeClass("disabled");
-    nextPage();
+    addLoc();
+
   },
   render: function() {
     return (
         <div>
-          <div className="row">
+          <div className="distContainer row">
             {
               this.routeInputs().map(function(reactComponent){
                 return reactComponent;

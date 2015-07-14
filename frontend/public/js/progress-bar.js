@@ -68,8 +68,9 @@
 
     function addLoc(){
       $(".progress-point.active").addClass('navProg');
+      $("#timeSel").removeClass("disabled");
       nextPage();
-    }
+    };
     // ACTIVE STATE PROGRESS METER 
 
           $(function() {  
