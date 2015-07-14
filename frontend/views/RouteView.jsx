@@ -16,10 +16,10 @@ var RouteView = React.createClass({
                 <li className="destLbl">
                   <span className="activator grey-text text-darken-4">300 Bay St</span>
                 </li>
-                <li className="distLbl">
+                <li className="distLbl left">
                   <span className="activator grey-text text-darken-4">2.3km</span>
                 </li>
-                <li className="timeLbl">
+                <li className="timeLbl left">
                   <span className="activator grey-text text-darken-4">45min</span>
                 </li>
               </ul>
