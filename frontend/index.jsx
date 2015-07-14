@@ -38,7 +38,10 @@ var Body = React.createClass({
     render: function(){ 
       return (
       		<div id='containerRow' className="row">
-				<RouteView/>
+				<ProfileNav/>
+				<SetupFlow parentState={this.state} isLoading={Actions.isLoading} />
+				<MapView />
+				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} />
             </div>
       );
     },

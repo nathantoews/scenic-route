@@ -47,6 +47,7 @@ input[type=search],
 textarea.materialize-textarea {
 
   // General Styles
+  position:relative;
   background-color: transparent;
   border: none;
   border-radius: 0;
@@ -61,35 +62,35 @@ textarea.materialize-textarea {
 
 
   // Disabled input style
-  &:disabled, &[readonly="readonly"] {
-    color: $input-disabled-color;
-    border-bottom: 1px dotted $input-disabled-color;
-  }
-  // Disabled label style
-  &:disabled+label, &[readonly="readonly"]+label {
-    color: $input-disabled-color;
-  }
-  // Focused input style
-  &:focus:not([readonly]) {
-    border-bottom: 1px solid $input-focus-color;
-    box-shadow: 0 1px 0 0 $input-focus-color;
-  }
-  // Focused label style
-  &:focus:not([readonly])+label {
-    color: $input-focus-color;
-  }
-  // Valid Input Style
-  &.valid,
-  &:focus.valid {
-    border-bottom: 1px solid $input-success-color;
-    box-shadow: 0 1px 0 0 $input-success-color;
-  }
-  // Invalid Input Style
-  &.invalid,
-  &:focus.invalid {
-    border-bottom: 1px solid $input-error-color;
-    box-shadow: 0 1px 0 0 $input-error-color;
-  }
+  // &:disabled, &[readonly="readonly"] {
+  //   color: $input-disabled-color;
+  //   border-bottom: 1px dotted $input-disabled-color;
+  // }
+  // // Disabled label style
+  // &:disabled+label, &[readonly="readonly"]+label {
+  //   color: $input-disabled-color;
+  // }
+  // // Focused input style
+  // &:focus:not([readonly]) {
+  //   border-bottom: 1px solid $input-focus-color;
+  //   box-shadow: 0 1px 0 0 $input-focus-color;
+  // }
+  // // Focused label style
+  // &:focus:not([readonly])+label {
+  //   color: $input-focus-color;
+  // }
+  // // Valid Input Style
+  // &.valid,
+  // &:focus.valid {
+  //   border-bottom: 1px solid $input-success-color;
+  //   box-shadow: 0 1px 0 0 $input-success-color;
+  // }
+  // // Invalid Input Style
+  // &.invalid,
+  // &:focus.invalid {
+  //   border-bottom: 1px solid $input-error-color;
+  //   box-shadow: 0 1px 0 0 $input-error-color;
+  // }
 }
 
 // Styling for input field wrapper
@@ -99,7 +100,7 @@ textarea.materialize-textarea {
   width: 100%;
   box-shadow: 0 55px 0 0 $secondary-color-light;
   position: relative;
-  margin-bottom:8rem;
+  margin-bottom:10rem;
 
   label {
     color: $input-border-color;
@@ -111,6 +112,8 @@ textarea.materialize-textarea {
     @include transition(.2s ease-out);
   }
   label.active {
+    left:0;
+    top:0;
     font-size:1.3em;
     @include transform(translateY(-60%));
   }

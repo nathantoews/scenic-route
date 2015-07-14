@@ -9,6 +9,17 @@
     opacity:0.5;
   }
 }
+
+.yourLoc {
+  top:20px;
+  right:0;
+  position:absolute;
+  background-image:url('../img/svg/yourLoc.svg');
+  background-size:100% 100%;
+  width:20%;
+  height:30px;
+}
+
 .rangeBox {
   background-image:url('../img/svg/rangeBox.svg');
   background-size:100% 100%;

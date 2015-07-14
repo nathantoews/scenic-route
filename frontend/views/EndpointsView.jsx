@@ -65,7 +65,9 @@ var Endpoints = React.createClass({
         console.log("I'M ROUTING!");
         return [
               <div className="input-field">
-                <input id="origin" type="text" placeholder="Critical Mass" className={inputClasses} />
+                <div className="yourLoc"></div>
+                <input id="origin" type="text" placeholder="Home" className={inputClasses} />
+
                 <label className="active" htmlFor="origin">Im starting here</label>
 
               </div>,
