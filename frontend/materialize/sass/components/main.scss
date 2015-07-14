@@ -48,13 +48,21 @@ html, body, .table-container{
   overflow: hidden;
 }
 
-
 /* Selection dialog column padding */
 .right-padding{
   padding-right:10px;
 }
 
 /* Typeahead Styles */
+
+/* Overriding the materialize input to allow more padding down below */
+.distContainer{
+  .input-field{
+    box-shadow: 0 62px 0 0 $secondary-color-light !important;
+    height: 2px !important;
+  }
+} 
+
 /* Since typeahead wraps the input elements in this span */
 span.twitter-typeahead{
   width: 100%;
@@ -121,7 +129,6 @@ span.twitter-typeahead{
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;  
-
 }
 
 #green_loader{
