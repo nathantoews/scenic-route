@@ -41,6 +41,12 @@ var ScenicActions = {
       value: _value
     });
   },
+  updateMenu: function(_menuState){
+    Dispatcher.dispatch({
+      actionType: 'updateMenu',
+      menuState: _menuState
+    });
+  },
   isLoading: function(_isLoading){
     Dispatcher.dispatch({
       actionType: 'isLoading',

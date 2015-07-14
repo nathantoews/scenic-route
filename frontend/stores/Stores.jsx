@@ -18,6 +18,36 @@ var sessionState = {
   'greenpoints': null
 };
 
+/*
+ * Toggling CSS classes based on whether
+ * the side-menu is active.
+ */
+var layout = {
+  map: "s12 m12 l12",
+  nav: "hide", 
+  state: "inactive",
+  menuDeactivate: function(){
+    this.map = "s12 m12 l12";
+    this.nav = "hide";
+    this.state = "inactive";
+  },
+  menuActivate: function(){
+    this.map = "hide-on-small m7 l9";
+    this.nav = "l3 m5 s12";
+    this.state = "active";
+  },
+  menuToggle: function(){
+    if (this.state == "active"){ 
+      this.menuDeactivate();
+    }
+    else if (this.state == "inactive"){
+      this.menuActivate();  
+    }
+  }
+};
+
+window._layout = layout;
+
 var ScenicStore = assign({}, EventEmitter.prototype, {
   /**
    * Get the entire collection of TODOs.
@@ -28,6 +58,9 @@ var ScenicStore = assign({}, EventEmitter.prototype, {
   },
   getSessionState: function(){
     return sessionState;
+  },
+  getLayout: function(){
+    return layout;
   },
   emitChange: function() {
     console.log("Change Emitted");
@@ -82,10 +115,25 @@ Dispatcher.register(function(payload) {
         console.log("prop", payload.prop);
         console.log("value", payload.value);
         sessionState[payload.prop] = payload.value;
+        ScenicStore.emitChange();
+        break;
+      case 'updateMenu':
+        console.log("Layout is being updated to", payload.menuState);
+        // Update internal layout state
+        if (payload.menuState == 'active'){
+          layout.menuActivate();
+        }
+        else if (payload.menuState == 'inactive'){
+          layout.menuDeactivate();
+        }
+        else if (payload.menuState == 'toggle'){
+          layout.menuToggle();
+        }
+        ScenicStore.emitChange();
+        console.log("CHANGE HAS BEEN EMITTED");
         break;
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
-
     return true; // No errors. Needed by promise in Dispatcher.
 });
 

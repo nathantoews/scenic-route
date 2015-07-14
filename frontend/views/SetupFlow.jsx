@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var Classnames = require('classnames');
 var Endpoints = require('./EndpointsView.jsx');
 var TimeDrag = require('./DragInt.jsx')
 
@@ -13,6 +14,7 @@ var SetupFlow = React.createClass({
     _initState['reactBlob'] = _seed.reactBlob;
     _initState['linkTo'] = _seed.linkTo;
     _initState['sessionState'] = ScenicStore.getSessionState();
+    _initState['layout'] = Classnames('row','routeSel','left','col', this.props.layout);
 
     return _initState;
   },
@@ -21,6 +23,7 @@ var SetupFlow = React.createClass({
   },
   updateState: function(){
     this.state.sessionState = ScenicStore.getSessionState();
+    this.state.layout = Classnames('row','routeSel','left','col', ScenicStore.getLayout().nav);
   },
   routes: function(){
      return {
@@ -95,7 +98,7 @@ var SetupFlow = React.createClass({
 
   render: function() {
     return (
-        <div className="row routeSel left col l3 m3 s12 hide">
+        <div className={this.state.layout}>
           <div className="heightFix col s2">
             <div className="progress-meter">
               <div className="track">

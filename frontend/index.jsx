@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var Classnames = require('classnames');
 var ProfileNav = require('./views/ProfileNav.jsx');
 var config = require('./config.js');
 var SetupFlow = require('./views/SetupFlow.jsx');
@@ -9,13 +10,17 @@ var Loader = require('./views/Loader.jsx');
 var ScenicStore = require('./stores/Stores.jsx');
 var Actions = require('./stores/Actions.jsx');
 
+
+
 var Body = React.createClass({
 
 	getInitialState: function(){
 		console.log(ScenicStore);
-		window.blargh = Actions;
+		window._Actions = Actions;
+		window._Store = ScenicStore;
 		return {
 			hideLoader: ScenicStore.getSessionState().isLoading,
+			layout: ScenicStore.getLayout(),
 			test: ScenicStore.getData()
 		};
 	},
@@ -39,9 +44,9 @@ var Body = React.createClass({
       return (
       		<div id='containerRow' className="row">
 				<ProfileNav/>
-				<SetupFlow parentState={this.state} isLoading={Actions.isLoading} />
-				<MapView />
-				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} />
+				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
+				<MapView layout={this.state.layout.map} />
+				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} /> 
             </div>
       );
     },
@@ -50,9 +55,13 @@ var Body = React.createClass({
     },
     _onChange: function(){
     	console.log("Change Receeived");
+
     	// this.setState({test: ScenicStore.getData()});
     	console.log(ScenicStore.getSessionState());
-    	this.setState({hideLoader: ScenicStore.getSessionState().isLoading})
+    	// Set Loader State
+    	this.setState({hideLoader: ScenicStore.getSessionState().isLoading});
+    	// Set Updated Layouts State
+    	this.setState({layout: ScenicStore.getLayout()});
     }
 });
  

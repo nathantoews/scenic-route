@@ -1,10 +1,9 @@
 var React = require('react/addons');
+var inputClassnames = require('classnames');
 var ScenicStore = require('../stores/Stores.jsx');
 var Actions = require('../stores/Actions.jsx');
 var Navigate = require('../stores/Navigate.jsx');
 
-
-var inputClassnames = require('classnames');
 var inputClasses = inputClassnames('typeahead');
 
 var Endpoints = React.createClass({
@@ -83,7 +82,6 @@ var Endpoints = React.createClass({
     // Ensure the inputs are filled in!
     console.log("Ensure the inputs are filled in!");
     addLoc();
-
   },
   render: function() {
     return (

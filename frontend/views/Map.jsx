@@ -1,8 +1,17 @@
 var React = require('react/addons');
+var Actions = require('../stores/Actions.jsx');
+var ScenicStore = require('../stores/Stores.jsx');
+var Classnames = require('classnames');
 
 var Map = React.createClass({
+	getInitialState: function(){
+		return{
+			layout: Classnames('col', this.props.layout)
+		};
+	},
 	componentWillMount: function(){
 		this.updateDimensions();
+		ScenicStore.addChangeListener(this.updateState);
 	},
 	componentDidMount: function(){
 	    L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
@@ -15,25 +24,22 @@ var Map = React.createClass({
 	},
 	// Invoked to keep the map consistent on screen
 	updateDimensions: function(){
-		console.log("In update dimensions");
 		if (window && window.map){
 			window.map.invalidateSize();
-			console.log("map invalidated");
+			console.log("Map Invalidated");
 		}
-		this.setState({width: $(window).width(), height: $(window).height()});
+		// this.setState({width: $(window).width(), height: $(window).height()});
+	},
+	updateState: function(){
+		this.state.layout = Classnames('col','leaflet-container','leaflet-fade-anim', ScenicStore.getLayout().map);
+	},
+	componentDidUpdate: function(){
+		this.updateDimensions();
 	},
 	routeNav: function(evt) {
-		if ($(".routeSel").hasClass('hide')) {
-			$(".routeSel").removeClass('hide');
-			$(".row").find('.l12').removeClass('l12').addClass('l9');
-		} 
-		else {
-			$(".routeSel").addClass('hide');
-			$(".row").find('.l9').removeClass('l9').addClass('l12');
-		}
+		Actions.updateMenu('toggle');
 		$(".progress-point").first().addClass('active');
 		// Resize the map following state changes.
-		console.log("This is clicked.");
 		this.updateDimensions();
 		evt.stopPropagation();
 		evt.preventDefault();		
@@ -44,7 +50,7 @@ var Map = React.createClass({
     },
 	render: function(){
 		return (
-			<div id="map" className="col l12 s12">
+			<div id="map" className={this.state.layout}>
 				<div id="map-container">
 					<a onClick={this.routeNav} className="col s8 m4 l2 waves-effect waves-light btn map-start-btn">
 						<i className="material-icons right">search</i>find my route
