@@ -15,7 +15,7 @@ var Map = React.createClass({
 	},
 	componentDidMount: function(){
 	    L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
-	    window.map = L.mapbox.map('map', 'mapbox.streets')
+	    window.map = L.mapbox.map('map', 'mapbox.streets',{closePopupOnClick: false})
 	      			.setView([43.64, -79.39], 9);
 	    window.addEventListener("resize", this.updateDimensions);	      			
 

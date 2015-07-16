@@ -93,7 +93,7 @@ var Endpoints = React.createClass({
               })
             }
           </div>
-          <button id='submitRoute' onClick={this.validate} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
+          <button id='submitRoute' onClick={Navigate.generateRoute} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
           </button>          
         </div>
     );
