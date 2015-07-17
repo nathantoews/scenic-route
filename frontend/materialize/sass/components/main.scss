@@ -164,3 +164,97 @@ span.twitter-typeahead{
 
 /* Hack! Did we fuck up the grid?? */
 
+/// TURN DIRECTIONS STYLES ///////////////////////////////////////////////////////
+
+#routeInfo {
+  ul{
+    width:60%;
+    float: left;
+    display:inline-block;
+    margin:auto;
+    li {
+      text-align:center;
+    }
+    .left {
+      width:50%;
+    }
+    .centerLine {
+      float: left;
+      width:50%;
+      border-right:3px solid #666;
+    }
+  }
+}
+
+.turnDirect {
+  height:90%;
+  ul {
+    position:relative;
+    height:100%;
+    text-indent:none;
+    text-decoration:none;
+    list-style-type:none;
+    .ui-menu-item {
+      color:#666;
+      display: inline-block;
+      height:11.25%;
+      width:100%;
+      font-family:Roboto;
+      font-weight:300;
+      font-size:15px;
+      border-bottom:2px solid #ccc;
+
+      li {
+        vertical-align: middle;
+      }
+
+      .menuitem {
+        margin-left:10%;
+      }
+
+    }
+
+  }
+}
+
+.ui-menu-item:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+#listTop {
+  height:10%;
+}
+
+.destLbl {
+  color:#666;
+  font-family:Roboto;
+  font-size:15px;
+  font-weight:300;
+}
+
+.distLbl {
+  font-family:Roboto-Slab;
+  font-weight:400;
+  color:#666;
+  font-size:20px;
+  font-weight:700;
+}
+
+.timeLbl {
+  font-family:Roboto-Slab;
+  font-weight:400;
+  color:#666;
+  font-size:20px;
+  font-weight:700;
+}
+.HeaderRoute {
+  background-color:#fff;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px; 
+}
+

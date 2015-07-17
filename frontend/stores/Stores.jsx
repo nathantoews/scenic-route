@@ -15,7 +15,12 @@ var sessionState = {
   'origin': null,
   'destination': null,
   'loop': false,
-  'greenpoints': null
+  'greenpoints': null,
+  'steps': null,
+  'routeTime':null,
+  'routeDist':null,
+  'routeDest':null,
+  'destinationName': null
 };
 
 /*

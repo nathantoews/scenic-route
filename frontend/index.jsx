@@ -47,6 +47,7 @@ var Body = React.createClass({
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
 				<MapView layout={this.state.layout.map} />
 				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} /> 
+				<RouteView />
             </div>
       );
     },

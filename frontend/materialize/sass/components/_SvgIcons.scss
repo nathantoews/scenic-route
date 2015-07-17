@@ -107,6 +107,36 @@
 }
 
 
+.rightTurn {
+  float: left;
+  background-image:url('../img/svg/turnRight.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:30px;
+  height:100%;
+}
+
+.leftTurn {
+  float: left;
+  background-image:url('../img/svg/turnLeft.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:30px;
+  height:100%;
+}
+
+.straight {
+  float: left;
+  background-image:url('../img/svg/straight.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:30px;
+  height:100%;
+
+}
+
+
+
 
 
 

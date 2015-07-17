@@ -172,6 +172,8 @@ function fetchData(callback) {
                 // Grabbing map and directions
                 var poly_raw = routesInfo.routes[0].geometry.coordinates;
                 var steps = routesInfo.routes[0].steps;
+
+
                 // Route coordinates received as (lng,lat), and
                 // must be inverted to (lat,lng) for plotting
                 poly_raw = poly_raw.map(function(e){
@@ -188,6 +190,12 @@ function fetchData(callback) {
                 path.active = (index == 0) ? true : false;
                 path.duration = routesInfo.routes[0].duration;
                 path.distance = routesInfo.routes[0].distance;
+                
+                /* REFACTOR */
+                Actions.setSessionState('steps',steps);      
+                Actions.setSessionState('routeTime',path.duration);
+                Actions.setSessionState('routeDist',path.distance);
+
                 // Adding path click handler.
                 path.addEventListener('click', onPathClick);
                 // Plug it into the local-global variable paths.

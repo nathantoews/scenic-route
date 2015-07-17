@@ -36,3 +36,30 @@
         url("#{$roboto-font-path}Roboto-Bold.ttf") format("truetype");
     font-weight: 700;
 }
+
+/// ROBOTO SLAB //////////////////////////
+
+@font-face {
+    font-family: "Roboto-Slab";
+    src: url("#{$roboto-font-path}RobotoSlab-Thin.ttf") format("truetype");
+    font-weight: 200;
+}
+
+
+@font-face {
+    font-family: "Roboto-Slab";
+    src: url("#{$roboto-font-path}RobotoSlab-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Roboto-Slab";
+    src: url("#{$roboto-font-path}RobotoSlab-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto-Slab";
+    src: url("#{$roboto-font-path}RobotoSlab-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
