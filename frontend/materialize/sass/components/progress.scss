@@ -2,7 +2,7 @@
 .progress-meter {
   height:100%;
   position:fixed;
-  top:3%;
+  top:1.5%;
   z-index:5;
   padding-right: $gutter-width / 2;
 }
@@ -37,7 +37,7 @@
     height:96%;
   }
   .progress-meter .progress-point:before {
-    margin-top:-22.5px;
+    margin-top:-20px;
   }
 }
 

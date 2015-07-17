@@ -6,6 +6,7 @@ var Navigate = require('../stores/Navigate.jsx');
 var TimeDrag = React.createClass({
 componentDidMount: function(){
   var _height = $(".resize-container").height();
+  var valueSnap = [1,2,3,4];
 
     $('.resize-drag').attr("data-y",(_height - 40));
     $('.resize-drag').css('transform', 'translateY('+ (_height - 40) +'px)'),
@@ -19,7 +20,17 @@ interact('.resize-drag')
     restrict: {
       restriction: 'parent',
     },
-    edges: { bottom: true, top: true }
+    edges: { top: true },
+      snap: {
+      targets: [
+        // snap to the point (0, 450)
+        { y: (_height/0), range: 25, value:1 },
+        { y: (_height/3), range: 25, value:2 },
+        { y: (_height/1.5), range: 25, value:3},
+        { y: (_height/1), range: 25, value:4},
+
+      ]
+    }
   })
   .on('resizemove', function (event) {
     var target = event.target,
@@ -42,10 +53,10 @@ interact('.resize-drag')
 
       // display range in other div ---////////////////////////////
 
-    var maxRange = Math.round(((120/_height) * (_height - y))) + ' m';
-    var minRange = Math.round(((120/_height) * (_height - (y + event.rect.height)))) +' m';
-    var range =  minRange + ' - ' + maxRange;
-    document.getElementById('timeRange').textContent = range;
+    // var maxRange = Math.round(((120/_height) * (_height - y))) + ' m';
+    // var minRange = Math.round(((120/_height) * (_height - (y + event.rect.height)))) +' m';
+    // var range =  minRange + ' - ' + maxRange;
+    // document.getElementById('timeRange').textContent = range;
   });
 
 },  
@@ -53,8 +64,7 @@ render: function() {
     return (
       <div className="row" id="timeSlider">
         <p className="introTag">I have</p>
-        <div id="timeRange"></div>
-        <div className="resize-container rangeBox">
+        <div className="resize-container">
           <div className="resize-drag"></div>
         </div>
         <div id="minRange"></div>
