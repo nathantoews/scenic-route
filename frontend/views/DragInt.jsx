@@ -1,20 +1,30 @@
 var React = require('react');
+var Navigate = require('../stores/Navigate.jsx');
 
 
 
 var TimeDrag = React.createClass({
 componentDidMount: function(){
+  var _height = $(".resize-container").height();
+
+    $('.resize-drag').attr("data-y",(_height - 40));
+    $('.resize-drag').css('transform', 'translateY('+ (_height - 40) +'px)'),
+                         ('-webkit-transform', 'translateY('+ (_height - 40) +'px)'),
+                         ('-ms-transform', 'translateY('+ (_height - 40) +')'),
+                         ('-moz-transform', 'translateY('+ (_height - 40) +'px)'),
+                         ('-o-transform', 'translateY('+ (_height - 40) +'px)');
+
 interact('.resize-drag')
   .resizable({
     restrict: {
-      restriction: 'parent',   
+      restriction: 'parent',
     },
     edges: { bottom: true, top: true }
   })
   .on('resizemove', function (event) {
     var target = event.target,
         x = (parseFloat(target.getAttribute('data-x')) || 0),
-        y = (parseFloat(target.getAttribute('data-y')) || 275);
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
 
     // update the element's style
     target.style.width  = event.rect.width + 'px';
@@ -32,14 +42,10 @@ interact('.resize-drag')
 
       // display range in other div ---////////////////////////////
 
-    var _height = $(".resize-container").height()
-    var maxRange = Math.round(((300/_height) * (_height - y))) + ' m';
-    var minRange = Math.round(((300/_height) * (_height - (y + event.rect.height)))) +' m';
-    var range =  minRange + ' to ' + maxRange;
+    var maxRange = Math.round(((120/_height) * (_height - y))) + ' m';
+    var minRange = Math.round(((120/_height) * (_height - (y + event.rect.height)))) +' m';
+    var range =  minRange + ' - ' + maxRange;
     document.getElementById('timeRange').textContent = range;
-
-
-  
   });
 
 },  
@@ -52,8 +58,8 @@ render: function() {
           <div className="resize-drag"></div>
         </div>
         <div id="minRange"></div>
-        <button className="btn-secondary waves-effect waves-light col s4 offset-s1">skip</button>  
-        <button className="btn-primary waves-effect waves-light col s4 offset-s2">continue</button>      
+        <button className="btn-secondary waves-effect waves-light col s4">skip</button>  
+        <button onClick={Navigate.generateRoute} className="btn-primary waves-effect waves-light col s4">continue</button>      
       </div>
     );
   }
@@ -61,7 +67,6 @@ render: function() {
 
 
 module.exports = TimeDrag;
-
 
 
 

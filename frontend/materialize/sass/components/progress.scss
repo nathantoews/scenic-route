@@ -2,7 +2,7 @@
 .progress-meter {
   height:100%;
   position:fixed;
-  top:3%;
+  top:1.5%;
   z-index:5;
   padding-right: $gutter-width / 2;
 }
@@ -14,7 +14,7 @@
   -webkit-mask-box-image: url("../img/svg/negative.svg");
   mask-border: url("../img/svg/negative.svg") ;
   content: "";
-  margin-top:-20px;
+  margin-top:-17px;
   margin-left:-4px;
   display: block;
   width: 40px;
@@ -27,10 +27,20 @@
   position:absolute;
   left:21px;
   width: 10px;
-  height:90%;
+  height:97%;
   background:$secondary-color-light;
   z-index:-50;
 }
+
+@media screen and (min-height: 700px){
+  .progress-meter .track {
+    height:96%;
+  }
+  .progress-meter .progress-point:before {
+    margin-top:-22.5px;
+  }
+}
+
 
 .progress-meter .current {
   -moz-transition: top 1s;

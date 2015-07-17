@@ -111,7 +111,7 @@ var SetupFlow = React.createClass({
                 </li>
                <li id="destSel" className="progress-point disabled" onClick={this.destSel} href="#step-3">
                 </li>
-                <li id="timeSel" className="progress-point disabled" onClick={this.timeSel.bind(this)} href="#step-4">
+                <li id="timeSel" className="progress-point disabled" onClick={this.timeSel} href="#step-4">
                 </li>
               </ol>
               <span className="current">

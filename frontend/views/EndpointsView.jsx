@@ -56,6 +56,8 @@ var Endpoints = React.createClass({
         return [
               <div className="input-field">
                 <input id="origin" type="text" placeholder="Looping From" className={inputClasses} />
+                <label className="active" htmlFor="origin">Im looping too</label>
+
               </div>
         ];
       }
@@ -85,15 +87,13 @@ var Endpoints = React.createClass({
   },
   render: function() {
     return (
-        <div>
-          <div className="distContainer row">
+        <div className="distContainer row">
             {
               this.routeInputs().map(function(reactComponent){
                 return reactComponent;
               })
             }
-          </div>
-          <button id='submitRoute' onClick={Navigate.generateRoute} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
+          <button id='submitRoute' onClick={this.validate} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
           </button>          
         </div>
     );

@@ -52,7 +52,7 @@ var Map = React.createClass({
 		return (
 			<div id="map" className={this.state.layout}>
 				<div id="map-container">
-					<a onClick={this.routeNav} className="col s8 m4 l2 waves-effect waves-light btn map-start-btn">
+					<a onClick={this.routeNav} className="col s8 m4 l2 waves-effect waves-light btn map-start-btn btn-secondary">
 						<i className="material-icons right">search</i>find my route
 					</a>
 				</div>

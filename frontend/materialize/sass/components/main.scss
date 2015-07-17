@@ -258,3 +258,199 @@ span.twitter-typeahead{
   border-radius: 15px 15px 0px 0px; 
 }
 
+/// TIME SLIDER STYLES ////////////////////////////////////////////////////
+
+/// TOGGLE SWITCHING FOR ROUTE SETUP//////////////////////////////////////////////////////////////////////////
+
+.routeSel {
+  height:100%;
+  z-index: 2;
+  /* So it sits tightly under the navbar */
+  display: block;
+  position: relative;
+  padding:0 !important;
+  ul {
+    height:100%;
+  }
+  .nxtBtn {
+    width:100%;
+    height:10%;
+
+  a {
+    height:100%;
+    width:100%;
+    }
+  }
+}
+.current {
+  position:absolute;
+  top:0;
+}
+
+.introTag {
+  margin-top:0;
+  font-size:1.5em;
+  color:#a1a1a1;
+  font-spacing:1px;
+  font-family:Roboto;
+  letter-spacing:1.2px;
+  font-size:1.3em;
+  font-weight:100;
+  text-align:center;
+}
+
+.heightFix {
+  height:90%;
+}
+
+.col.s2 {
+    padding:0 !important;
+}
+
+.optSwitch {
+  height:90%;
+
+  a {
+    padding:10%;
+    height:50%;
+    width:100%;
+  }
+  // To vertically center fa elements underneath 
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  .fa{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);    
+  }
+}
+
+// TIME SELECTION ----------------------------------------------------
+
+#timeSlider {
+  position: relative;
+}
+#submitRoute {
+  left:0;
+  right:0;
+  margin:auto;
+  bottom:20%; 
+}
+// TIME SELECTION ----------------------------------------------------
+#minRange {
+  font-size:1.0em;
+  font-weight:300;
+  text-align:center;
+  color: #000;
+  width:100%;
+  height:50px;
+}
+#timeRange {
+  font-size:1.0em;
+  font-weight:300;
+  font-family:Roboto-Slab;
+  font-size:2.0em;
+  font-weight:500;
+  text-align:center;
+  color: #000;
+  color:$primary-color;
+  width:100%;
+  height:50px;
+}
+.resize-drag {
+  position:relative;
+  background-color: $primary-color;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-top:10px solid #4D4D4D;
+  border-bottom:10px solid #4D4D4D;
+  border-radius: 3px;
+  width:50%;
+  padding:10px;
+  margin:0 auto;
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+.resize-drag:after {
+  position:absolute;
+  width:50%;
+}
+
+.resize-drag:after {
+  position:absolute;
+  width:50%;
+}
+
+
+.resize-container {
+  width: 100%;
+  height: 60%;
+}
+
+//  DESTINATION SELECTION ////////////////////////////////////////////////
+
+.distContainer {
+  height:100%;
+  position:relative;
+  margin:20% 0 50% 0;
+}
+
+/// BUTTTON STYLES /////////////////////////////////////////////////////////
+
+.btn-primary {
+  @extend .btn;
+  position: absolute !important;
+  bottom:10%;
+  right:5%;
+  font-weight:100;
+  background-color:$primary-color;
+
+  &:hover {
+    background-color:$primary-color;
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  position: absolute !important;
+  bottom:10%;
+  left:5%;
+  font-weight:100;
+  background-color:$secondary-color;
+
+  &:hover {
+    background-color:$secondary-color;
+  }
+}
+
+// styles for form active ///////////////////////////////////
+
+  label.active {
+    left:0;
+    top:0;
+    font-family:Roboto-Slab;
+    font-weight:700;
+    font-size:1.3em;
+    @include transform(translateY(-60%));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
