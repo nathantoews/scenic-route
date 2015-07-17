@@ -14,17 +14,17 @@ var RouteView = React.createClass({
   },
   getInitialState: function(){
     var listItem = {
-          list: ScenicStore.getSessionState().steps,
-          travelTime: null,
-          travelDist: null,
+          list: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.steps : [],
+          travelTime: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.duration : null,
+          travelDist: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.distance : null,
           travelDest: null,
           turns: null
         };
         return listItem;
   },
   createList: function(){
-     var Directions = ScenicStore.getSessionState().steps;
-
+    var Directions = this.state.list;
+  
     var updatedStateProp = {
       turns: (<ul tabIndex="-1">
                   {Directions.map(function(row, i){
@@ -62,19 +62,22 @@ var RouteView = React.createClass({
                     }
                   }
               )}
-              </ul>),
+            </ul>),
     }
     this.setState(updatedStateProp);
 
   },
 
     _onChange: function(){
-    console.log("Change Received");
     console.log(ScenicStore.getSessionState())
-    this.setState({travelTime: ScenicStore.getSessionState().routeTime,
-                   travelDist: ScenicStore.getSessionState().routeDist,
+    this.setState({
+                   list: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.steps : [],
+                   travelTime: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.duration : null,
+                   travelDist: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.distance : null,
                    travelDest: ScenicStore.getSessionState().destinationName
-                  })
+                  });  
+    console.log('Invoking createList to update the list.');
+    this.createList();
   },
 
   render: function() {
@@ -91,10 +94,10 @@ var RouteView = React.createClass({
                   <span className="activator">{this.state.travelDest}</span>
                 </li>
                 <li className="distLbl centerLine">
-                  <span className="activator">{Math.round((this.state.travelDist/1000)*10)/10 + ' km'}</span>
+                  <span className="activator">{this.state.travelDist}</span>
                 </li>
                 <li className="timeLbl left">
-                  <span className="activator">{Math.round((this.state.travelTime/60)*10)/10 + ' min'}</span>
+                  <span className="activator">{this.state.travelTime}</span>
                 </li>
               </ul>
           </div>

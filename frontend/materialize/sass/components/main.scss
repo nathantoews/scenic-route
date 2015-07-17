@@ -22,10 +22,15 @@ html, body, .table-container{
 /* Map and map control styles below */
 #map {
   z-index:2;
-  height:100%;
+  height: calc(100% - 56px) !important;
 	.btn{
 		color:white !important;
 	}
+}
+@media #{$medium-and-up}{
+  #map{
+    height: calc(100% - 64px) !important;  
+  }
 }
 #map-container{
   .map-start-btn{
@@ -128,7 +133,15 @@ span.twitter-typeahead{
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;  
+  /* Where's this 1% of overflow coming from????? */
 }
+
+/*
+ * Maximum height of container must be 
+ * 100% - (height of navbar)
+*/
+
+
 
 #green_loader{
   top:  0px;
@@ -262,7 +275,7 @@ span.twitter-typeahead{
 /// TOGGLE SWITCHING FOR ROUTE SETUP//////////////////////////////////////////////////////////////////////////
 
 .routeSel {
-  height:100%;
+  height: calc(100% - 56px) !important;
   z-index: 2;
   /* So it sits tightly under the navbar */
   display: block;
@@ -279,6 +292,11 @@ span.twitter-typeahead{
     height:100%;
     width:100%;
     }
+  }
+}
+@media #{$medium-and-up}{
+  .routeSel{
+    height: calc(100% - 64px) !important;  
   }
 }
 .current {
@@ -389,8 +407,8 @@ span.twitter-typeahead{
 
 .distContainer {
   height:100%;
-  position:relative;
-  margin:20% 0 50% 0;
+  position: relative;
+  padding: 20% 0 50% 0;
 }
 
 /// BUTTTON STYLES /////////////////////////////////////////////////////////
