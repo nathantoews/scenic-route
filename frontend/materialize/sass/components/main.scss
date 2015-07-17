@@ -129,7 +129,17 @@ span.twitter-typeahead{
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;  
+  height: calc(100% - $navbar-height-mobile);
 }
+@media #{$medium-and-up}{
+  height: calc(100% - $navbar-height);
+}
+/*
+ * Maximum height of container must be 
+ * 100% - (height of navbar)
+*/
+
+
 
 #green_loader{
   top:  0px;

@@ -20,7 +20,8 @@ var sessionState = {
   'routeTime':null,
   'routeDist':null,
   'routeDest':null,
-  'destinationName': null
+  'destinationName': null,
+  'activePath': null
 };
 
 /*
@@ -136,6 +137,11 @@ Dispatcher.register(function(payload) {
         }
         ScenicStore.emitChange();
         console.log("CHANGE HAS BEEN EMITTED");
+        break;
+      case 'updateActivePath':
+        sessionState.activePath = payload.activePath;
+        ScenicStore.emitChange();
+        console.log("Updated Active Path.");
         break;
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }

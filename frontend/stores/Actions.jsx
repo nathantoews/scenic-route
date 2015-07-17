@@ -47,6 +47,12 @@ var ScenicActions = {
       menuState: _menuState
     });
   },
+  updateActivePath: function(_activePath){
+    Dispatcher.dispatch({
+      actionType: 'updateActivePath',
+      activePath: _activePath
+    });
+  },
   isLoading: function(_isLoading){
     Dispatcher.dispatch({
       actionType: 'isLoading',
