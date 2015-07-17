@@ -59,7 +59,6 @@ html, body, .table-container{
 .distContainer{
   .input-field{
     box-shadow: 0 62px 0 0 $secondary-color-light !important;
-    height: 2px !important;
   }
 } 
 
@@ -359,7 +358,7 @@ span.twitter-typeahead{
   height:50px;
 }
 .resize-drag {
-  position:relative;
+  position:absolute;
   background-color: $primary-color;
   color: white;
   font-size: 20px;
@@ -367,7 +366,7 @@ span.twitter-typeahead{
   border-top:10px solid #4D4D4D;
   border-bottom:10px solid #4D4D4D;
   border-radius: 3px;
-  width:50%;
+  width:100%;
   padding:10px;
   margin:0 auto;
   /* This makes things *much* easier */
@@ -377,15 +376,12 @@ span.twitter-typeahead{
   position:absolute;
   width:50%;
 }
-
-.resize-drag:after {
-  position:absolute;
-  width:50%;
-}
-
-
 .resize-container {
-  width: 100%;
+  posiiton:relative;
+  -webkit-mask-box-image: url("../img/svg/routeMap.svg");
+  mask-border: url("../img/svg/routeMap.svg");
+  margin:auto;
+  width: 60%;
   height: 60%;
 }
 

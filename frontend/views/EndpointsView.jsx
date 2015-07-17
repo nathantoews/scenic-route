@@ -56,8 +56,7 @@ var Endpoints = React.createClass({
         return [
               <div className="input-field">
                 <input id="origin" type="text" placeholder="Looping From" className={inputClasses} />
-                <label className="active" htmlFor="origin">Im looping too</label>
-
+                
               </div>
         ];
       }

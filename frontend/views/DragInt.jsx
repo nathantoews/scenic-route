@@ -54,7 +54,7 @@ render: function() {
       <div className="row" id="timeSlider">
         <p className="introTag">I have</p>
         <div id="timeRange"></div>
-        <div className="resize-container rangeBox">
+        <div className="resize-container">
           <div className="resize-drag"></div>
         </div>
         <div id="minRange"></div>
