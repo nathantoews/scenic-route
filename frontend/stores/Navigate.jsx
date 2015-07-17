@@ -285,7 +285,15 @@ var Navigate = {
   // Sample query: http://104.131.189.81/greenify?origin=-79.380658,43.645388&dest=-79.391974,43.647957   
   buildGreenifyURL: function(){
     var origin = ScenicStore.getSessionState().origin;
-    var destination = ScenicStore.getSessionState().destination;
+
+    var destination;
+    if (ScenicStore.getSessionState().loop){
+      destination = ScenicStore.getSessionState().origin;
+    }
+    else{
+      destination = ScenicStore.getSessionState().destination;
+    }
+
     var api = "http://104.131.189.81/greenify?";
     api += "origin=" + origin.latLng.lng + ',' + origin.latLng.lat;
     api += "&";
@@ -294,7 +302,13 @@ var Navigate = {
   },
   buildMapboxDirectionsURL: function(item){
     var origin = ScenicStore.getSessionState().origin;
-    var destination = ScenicStore.getSessionState().destination;
+
+    var destination;
+    if (ScenicStore.getSessionState().loop)
+      destination = ScenicStore.getSessionState().origin;
+    else
+      destination = ScenicStore.getSessionState().destination;
+    
     var greenpoints = ScenicStore.getSessionState().greenpoints;
 
     var api = "https://api.tiles.mapbox.com/v4/directions/";
@@ -321,7 +335,16 @@ var Navigate = {
     event.stopPropagation();
 
     var origin = ScenicStore.getSessionState().origin;
-    var destination = ScenicStore.getSessionState().destination;
+
+    var destination;
+    if (ScenicStore.getSessionState().loop){
+      console.log("im in generate route and im looping");
+      destination = ScenicStore.getSessionState().origin;
+      console.log(destination);
+    }
+    else{
+      destination = ScenicStore.getSessionState().destination;
+    }
 
     // Setup directions Mapbox Directions object.
     var directionsSetup = L.mapbox.directions({
@@ -350,7 +373,12 @@ var Navigate = {
             drawMarkers();
             // Only for initialization.
             syncActivePath();
+            
+            // Handle the state change. 
+            // Find a better place to put this?
+
             Actions.isLoading(false);           
+            Actions.setDirectionsState(true);
         })
     });
     return false;
@@ -374,6 +402,7 @@ $(document).on('click','.leaflet-popup',function(){
     return;
   }
 });
+
 
 
 module.exports = Navigate;

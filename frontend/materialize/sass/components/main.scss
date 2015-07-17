@@ -455,8 +455,24 @@ span.twitter-typeahead{
   }
 
 
+/* Styles for Directions Tab */
+#directionsContainer{
+  min-height: 95px;
+  max-height: 80%;
+  position: absolute;
+  bottom: 0px;
+}
 
-
+@media #{$medium-and-down} {
+    /* Styles for Directions Tab */
+    #directionsContainer{
+      min-height: 95px;
+      max-height: 100%;
+      position: absolute;
+      bottom: 0;
+      padding: 0;
+    }    
+}
 
 
 

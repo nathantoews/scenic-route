@@ -47,6 +47,13 @@ var ScenicActions = {
       menuState: _menuState
     });
   },
+  // Takes in true or false
+  setDirectionsState: function(_directionsState){
+    Dispatcher.dispatch({
+      actionType: 'setDirectionsState',
+      directionsState: _directionsState
+    });
+  },
   updateActivePath: function(_activePath){
     Dispatcher.dispatch({
       actionType: 'updateActivePath',

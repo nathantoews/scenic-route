@@ -31,7 +31,9 @@ var sessionState = {
 var layout = {
   map: "s12 m12 l12",
   nav: "hide", 
+  // `state` corresponds to menu state
   state: "inactive",
+  directions: "hide",
   menuDeactivate: function(){
     this.map = "s12 m12 l12";
     this.nav = "hide";
@@ -41,6 +43,7 @@ var layout = {
     this.map = "hide-on-small m7 l9";
     this.nav = "l3 m5 s12";
     this.state = "active";
+    this.directionsDeactivate();
   },
   menuToggle: function(){
     if (this.state == "active"){ 
@@ -48,6 +51,21 @@ var layout = {
     }
     else if (this.state == "inactive"){
       this.menuActivate();  
+    }
+  },
+  // Once you have directions, lock behaviour
+  // such that you either see the side menu tab or 
+  // the directions tab.
+  directionsActivate: function(){
+    if (this.state == "active"){
+      this.menuDeactivate();
+      this.directions = "";
+    }
+  },
+  directionsDeactivate: function(){
+    if (this.state == "inactive"){
+      this.menuActivate();
+      this.directions = "hide";
     }
   }
 };
@@ -136,7 +154,14 @@ Dispatcher.register(function(payload) {
           layout.menuToggle();
         }
         ScenicStore.emitChange();
-        console.log("CHANGE HAS BEEN EMITTED");
+        break;
+      case 'setDirectionsState':
+        console.log("Directions tab state is being updated");
+        if (payload.directionsState)
+          layout.directionsActivate();
+        else
+          layout.directionsDeactivate();
+        ScenicStore.emitChange();
         break;
       case 'updateActivePath':
         sessionState.activePath = payload.activePath;
