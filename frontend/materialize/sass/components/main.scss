@@ -17,15 +17,15 @@ html, body, .table-container{
   vertical-align: top;
 }
 .fixed-nav{
-	@extend .z-depth-1;
+  @extend .z-depth-1;
 }
 /* Map and map control styles below */
 #map {
   z-index:2;
   height: calc(100% - 56px) !important;
-	.btn{
-		color:white !important;
-	}
+  .btn{
+    color:white !important;
+  }
 }
 @media #{$medium-and-up}{
   #map{
@@ -413,6 +413,34 @@ span.twitter-typeahead{
 }
 
 
+#resizer {
+  // -webkit-transform: translate(0px, 0px);
+  // transform: translate(0px, 0px);
+  width: 40px;
+  height: 40px;
+  
+  background-color: #92e;
+  border: solid 4px #fff;
+  border-radius: 100%;
+  
+  cursor: move;
+  z-index: 10;
+  position:absolute;
+  bottom:0px;
+}
+
+/* HEIGHTS OF THE TWO BELOW HAVE TO BE THE SAME!*/
+#drag-cont{
+  height:200px;
+  position:relative;
+  min-height:1px;
+}
+
+#resize-cont{
+  height:200px;
+  position: relative;
+}
+
 #resizable-element {
   user-select: none;
   background-color: #29e;
@@ -426,21 +454,12 @@ span.twitter-typeahead{
 
   /* This makes things *much* easier */
   box-sizing: border-box;
+  z-index: 5;
+
+  position:absolute;
+  bottom:0px;
 }
-#resize-handle {
-  position: absolute;
-  // -webkit-transform: translate(0px, 0px);
-  // transform: translate(0px, 0px);
-  top: -70px;
-  width: 40px;
-  height: 40px;
-  
-  background-color: #92e;
-  border: solid 4px #fff;
-  border-radius: 100%;
-  
-  curosr: move;
-}
+
 
 //  DESTINATION SELECTION ////////////////////////////////////////////////
 
@@ -510,7 +529,6 @@ span.twitter-typeahead{
       padding: 0;
     }    
 }
-
 
 
 
