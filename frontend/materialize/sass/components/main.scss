@@ -193,7 +193,7 @@ span.twitter-typeahead{
     .centerLine {
       float: left;
       width:50%;
-      border-right:3px solid #666;
+      border-right:3px solid $text-color;
     }
   }
 }
@@ -201,32 +201,40 @@ span.twitter-typeahead{
 .turnDirect {
   height:90%;
   ul {
+    margin:0;
     position:relative;
     height:100%;
     text-indent:none;
     text-decoration:none;
     list-style-type:none;
     .ui-menu-item {
-      color:#666;
+      position:relative;
+      color:$text-color;
       display: inline-block;
       height:11.25%;
       width:100%;
       font-family:Roboto;
       font-weight:300;
       font-size:15px;
-      border-bottom:2px solid #ccc;
+      border-bottom:1px solid $text-color;
 
       li {
         vertical-align: middle;
       }
-
       .menuitem {
-        margin-left:10%;
+        margin-left:15%;
       }
-
     }
-
   }
+}
+.ui-menu-item:after {
+  content: "";
+  display:block;
+  width:15%;
+  height:2px;
+  background-color:white;
+  position: absolute;
+  top:-1px;
 }
 
 .ui-menu-item:before {
@@ -242,25 +250,28 @@ span.twitter-typeahead{
 }
 
 .destLbl {
-  color:#666;
+  color:$text-color;
   font-family:Roboto;
   font-size:15px;
   font-weight:300;
+  &.activator {
+      cursor: pointer;
+    }
 }
 
 .distLbl {
   font-family:Roboto-Slab;
   font-weight:400;
-  color:#666;
-  font-size:20px;
+  color:$text-color;
+  font-size:18px;
   font-weight:700;
 }
 
 .timeLbl {
   font-family:Roboto-Slab;
   font-weight:400;
-  color:#666;
-  font-size:20px;
+  color:$text-color;
+  font-size:18px;
   font-weight:700;
 }
 .HeaderRoute {
@@ -346,13 +357,13 @@ span.twitter-typeahead{
 // TIME SELECTION ----------------------------------------------------
 
 #timeSlider {
-  position: relative;
 }
+
 #submitRoute {
   left:0;
   right:0;
   margin:auto;
-  bottom:20%; 
+  bottom:10%; 
 }
 // TIME SELECTION ----------------------------------------------------
 #minRange {
@@ -377,13 +388,10 @@ span.twitter-typeahead{
 }
 .resize-drag {
   position:absolute;
-  background-color: $primary-color;
+  background-color:$secondary-color;
   color: white;
   font-size: 20px;
   font-family: sans-serif;
-  border-top:10px solid #4D4D4D;
-  border-bottom:10px solid #4D4D4D;
-  border-radius: 3px;
   width:100%;
   padding:10px;
   margin:0 auto;
@@ -395,12 +403,43 @@ span.twitter-typeahead{
   width:50%;
 }
 .resize-container {
-  posiiton:relative;
+  position:relative;
   -webkit-mask-box-image: url("../img/svg/routeMap.svg");
   mask-border: url("../img/svg/routeMap.svg");
+  background-color:$secondary-color-light;
   margin:auto;
   width: 60%;
   height: 60%;
+}
+
+
+#resizable-element {
+  user-select: none;
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 8px;
+
+  width: 200px;
+  height: 200px;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+#resize-handle {
+  position: absolute;
+  // -webkit-transform: translate(0px, 0px);
+  // transform: translate(0px, 0px);
+  top: -70px;
+  width: 40px;
+  height: 40px;
+  
+  background-color: #92e;
+  border: solid 4px #fff;
+  border-radius: 100%;
+  
+  curosr: move;
 }
 
 //  DESTINATION SELECTION ////////////////////////////////////////////////
@@ -417,7 +456,7 @@ span.twitter-typeahead{
   @extend .btn;
   position: absolute !important;
   bottom:10%;
-  right:5%;
+  left:5%;
   font-weight:100;
   background-color:$primary-color;
 
@@ -430,7 +469,7 @@ span.twitter-typeahead{
   @extend .btn;
   position: absolute !important;
   bottom:10%;
-  left:5%;
+  right:5%;
   font-weight:100;
   background-color:$secondary-color;
 
@@ -447,6 +486,7 @@ span.twitter-typeahead{
     font-family:Roboto-Slab;
     font-weight:700;
     font-size:1.3em;
+    color:$secondary-color;
     @include transform(translateY(-60%));
   }
 
@@ -457,6 +497,7 @@ span.twitter-typeahead{
   max-height: 80%;
   position: absolute;
   bottom: 0px;
+  padding:0px;
 }
 
 @media #{$medium-and-down} {

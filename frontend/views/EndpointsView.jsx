@@ -28,6 +28,13 @@ var Endpoints = React.createClass({
           if (status == google.maps.GeocoderStatus.OK) {
             // Grab the most likely candidate for the reverse geocode lookup.
             if (results[0]){
+              //setting store with destination sessions state////////////////
+              if (evt.target.id == 'destination') {
+                 var _Name = $('#destination.typeahead').typeahead('val');
+                 _Name = _Name.split(',', 1).join("");
+                Actions.setSessionState('destinationName', _Name );
+
+              }
               // Modify the state value to represent the updated values.
               // x.geometry.location returns a google.map.LatLng object
               Actions.setSessionState(evt.target.id, {
@@ -56,7 +63,7 @@ var Endpoints = React.createClass({
         return [
               <div className="input-field">
                 <input id="origin" type="text" placeholder="Looping From" className={inputClasses} />
-                
+
               </div>
         ];
       }
@@ -92,7 +99,7 @@ var Endpoints = React.createClass({
                 return reactComponent;
               })
             }
-          <button id='submitRoute' onClick={this.validate} className="btn-primary waves-effect waves-light col s8 offset-s2">continue
+          <button id='submitRoute' onClick={this.validate} className="btn-secondary waves-effect waves-light col s8 offset-s2">continue
           </button>          
         </div>
     );

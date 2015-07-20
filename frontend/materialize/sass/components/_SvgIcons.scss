@@ -109,30 +109,45 @@
 
 
 .rightTurn {
+  position:absolute;
   float: left;
   background-image:url('../img/svg/turnRight.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:30px;
-  height:100%;
+  width:10%;
+  height:20px;
 }
 
 .leftTurn {
+  position:absolute;
   float: left;
   background-image:url('../img/svg/turnLeft.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:30px;
-  height:100%;
+  width:10%;
+  height:20px;
+
 }
 
 .straight {
+  position:absolute;
   float: left;
   background-image:url('../img/svg/straight.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:30px;
-  height:100%;
+  width:10%;
+  height:20px;
+
+}
+
+.parkIcon {
+  position:absolute;
+  float: left;
+  background-image:url('../img/svg/park.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:20px;
 
 }
 

@@ -5,34 +5,14 @@ var Navigate = require('../stores/Navigate.jsx');
 
 var TimeDrag = React.createClass({
 componentDidMount: function(){
-  var _height = $(".resize-container").height();
-  var valueSnap = [1,2,3,4];
-
-    $('.resize-drag').attr("data-y",(_height - 40));
-    $('.resize-drag').css('transform', 'translateY('+ (_height - 40) +'px)'),
-                         ('-webkit-transform', 'translateY('+ (_height - 40) +'px)'),
-                         ('-ms-transform', 'translateY('+ (_height - 40) +')'),
-                         ('-moz-transform', 'translateY('+ (_height - 40) +'px)'),
-                         ('-o-transform', 'translateY('+ (_height - 40) +'px)');
-
-interact('.resize-drag')
+  interact('#resizable-element')
+  .styleCursor(false)
   .resizable({
-    restrict: {
-      restriction: 'parent',
-    },
-    edges: { top: true },
-      snap: {
-      targets: [
-        // snap to the point (0, 450)
-        { y: (_height/0), range: 25, value:1 },
-        { y: (_height/3), range: 25, value:2 },
-        { y: (_height/1.5), range: 25, value:3},
-        { y: (_height/1), range: 25, value:4},
-
-      ]
-    }
+    edges: {top: true }
   })
   .on('resizemove', function (event) {
+  
+  console.log(event.rect);
     var target = event.target,
         x = (parseFloat(target.getAttribute('data-x')) || 0),
         y = (parseFloat(target.getAttribute('data-y')) || 0);
@@ -50,26 +30,54 @@ interact('.resize-drag')
 
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
-
-      // display range in other div ---////////////////////////////
-
-    // var maxRange = Math.round(((120/_height) * (_height - y))) + ' m';
-    // var minRange = Math.round(((120/_height) * (_height - (y + event.rect.height)))) +' m';
-    // var range =  minRange + ' - ' + maxRange;
-    // document.getElementById('timeRange').textContent = range;
+  
+    moveHandler(event, document.getElementById('resize-handle'));
   });
 
+
+interact('#resize-handle').on('down', function (event) {
+  var interaction = event.interaction,
+      handle = event.currentTarget;
+
+  interaction.start({
+      name: 'resize',
+      edges: {
+        top   : handle.dataset.top,
+      }   
+    },  
+    interact('#resizable-element'),               // target Interactable
+    document.getElementById('resizable-element'));   // target Element
+});
+
+
+  function moveHandler (event, handlerElement) {
+    var target = handlerElement,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || $("#resizable-element").height());
+
+    // translate the element
+    target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + event.rect.right + 'px, ' + event.rect.top + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+    console.log(event);
+  }
 },  
 render: function() {
     return (
       <div className="row" id="timeSlider">
         <p className="introTag">I have</p>
         <div className="resize-container">
-          <div className="resize-drag"></div>
+          <div id="resizable-element"></div>
         </div>
+        <div id="resize-handle" data-top="false"></div>
         <div id="minRange"></div>
-        <button className="btn-secondary waves-effect waves-light col s4">skip</button>  
-        <button onClick={Navigate.generateRoute} className="btn-primary waves-effect waves-light col s4">continue</button>      
+        <button className="btn-primary waves-effect waves-light col s4">skip</button> 
+        <button onClick={Navigate.generateRoute} className="btn-secondary waves-effect waves-light col s4">map it</button>       
       </div>
     );
   }

@@ -3,30 +3,6 @@
 
 
 
-#routeInfo {
-  ul{
-    width:60%;
-    float: left;
-    display:inline-block;
-    margin:auto;
-    li {
-      text-align:center;
-    }
-    .left {
-      width:50%;
-    }
-    .centerLine {
-      border-right:3px solid #bbb;
-    }
-  }
-}
-
-.HeaderRoute {
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 3px 3px 0px 0px;
-  border-radius: 3px 3px 0px 0px; 
-}
-
 /// CARDS STYLESS ////////////////////////////////////////
 
 .card-panel {
@@ -137,7 +113,7 @@
     position:absolute;
     bottom:0;
     z-index:4;
-    padding: $card-padding;
+    padding:15px;
     border-radius: 15px 15px 0px 0px;
 
 

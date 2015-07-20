@@ -1,11 +1,16 @@
 /*** Colors ***/
-$primary-color: rgb(56,208,159) !default;
+$primary-color: rgb(244,107,131) !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: rgb(243,109,133) !default;
+
+$secondary-color: rgb(42,209,157) !default;
 $secondary-color-light: rgb(205,235,224) !default;
 $secondary-color-dark: rgb(88,189,152) !default;
+
+$empty-slider-color: rgb(226,242,235) !default;
+$text-color: rgb(146,148,150) !default;
+
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;

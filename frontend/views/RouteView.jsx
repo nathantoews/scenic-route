@@ -24,6 +24,14 @@ var RouteView = React.createClass({
         };
         return listItem;
   },
+
+  // shortenDestination: function() {
+  //       var destShort = ScenicStore.getSessionState().destinationName;
+  //       var shortenDest = destShort.indexOf('Toronto');
+  //       destShort = destShort.substring(0, n != -1 ? n : s.length);
+  // },
+
+
   createList: function(){
     var Directions = this.state.list;
   
@@ -32,10 +40,12 @@ var RouteView = React.createClass({
                   {Directions.map(function(row, i){
                     var rightTurn = "right";
                     var leftTurn = "left";
-                    var straight = "Continue"
+                    var straight = "Continue";
+                    var waypoint = "waypoint";
                     var rExp = new RegExp('\\b' + rightTurn + '\\b');
                     var lExp = new RegExp('\\b' + leftTurn + '\\b');
                     var sExp = new RegExp('\\b' + straight + '\\b');
+                    var pExp = new RegExp('\\b' + waypoint + '\\b');
                     if (rExp.test(row.maneuver.instruction)){
                       return (
                         <div className="ui-menu-item"><li className="rightTurn"></li>
@@ -54,12 +64,17 @@ var RouteView = React.createClass({
                         <li dangerouslySetInnerHTML={{__html:row.maneuver.instruction}}  className="menuitem">
                         </li></div>
                       )
+                    } else if (pExp.test(row.maneuver.instruction)){
+                      return(
+                        <div className="ui-menu-item"><li className="parkIcon"></li>
+                        <li dangerouslySetInnerHTML={{__html:row.maneuver.instruction}}  className="menuitem">
+                        </li></div>
+                      )
                     } else {
                       return (
                         <div className="ui-menu-item">
                         <li dangerouslySetInnerHTML={{__html:row.maneuver.instruction}} className="menuitem">
-                        </li>
-                        </div>
+                        </li></div>
                       )
                     }
                   }
