@@ -293,11 +293,14 @@ var Navigate = {
     else{
       destination = ScenicStore.getSessionState().destination;
     }
+    var greenness = ScenicStore.getSessionState().greenness;
 
     var api = "http://104.131.189.81/greenify?";
     api += "origin=" + origin.latLng.lng + ',' + origin.latLng.lat;
     api += "&";
     api += "dest=" + destination.latLng.lng + ',' + destination.latLng.lat;
+    api += "&";
+    api += "greenness=" + (greenness*3);
     return api;    
   },
   buildMapboxDirectionsURL: function(item){

@@ -71,7 +71,9 @@ var RouteView = React.createClass({
   },
 
     _onChange: function(){
-    console.log(ScenicStore.getSessionState())
+    console.log("in directions view, the following is the updated directions list.");
+    console.log(ScenicStore.getLayout().directions);
+
     this.setState({
                      list: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.steps : [],
                      travelTime: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.duration : null,

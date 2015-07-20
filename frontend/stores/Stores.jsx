@@ -21,7 +21,10 @@ var sessionState = {
   'routeDist':null,
   'routeDest':null,
   'destinationName': null,
-  'activePath': null
+  'activePath': null,
+  // Default the "greenLevel" to 1.
+  // Should be sent as 3*(1,2,3,4)
+  'greenness': 1 
 };
 
 /*
@@ -38,12 +41,15 @@ var layout = {
     this.map = "s12 m12 l12";
     this.nav = "hide";
     this.state = "inactive";
+
+    /* Not sure about this? */
+    this.directions = "";
   },
   menuActivate: function(){
     this.map = "hide-on-small m7 l9";
     this.nav = "l3 m5 s12";
     this.state = "active";
-    this.directionsDeactivate();
+    this.directions = "hide";
   },
   menuToggle: function(){
     if (this.state == "active"){ 

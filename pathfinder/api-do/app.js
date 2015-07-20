@@ -9,7 +9,7 @@ var conString = "postgres://postgres:criticalmass@localhost:5432/postgres";
 
 app.use(cors());
 
-// Eg. http://104.131.189.81/greenify?origin=-79.380658,43.645388&dest=-79.391974,43.647957
+// Eg. http://104.131.189.81/greenify?origin=-79.380658,43.645388&dest=-79.391974,43.647957&greenness=3
 app.get('/greenify', function(req,res){
 	console.log("Received request");
 	
@@ -20,6 +20,8 @@ app.get('/greenify', function(req,res){
 		destination: req.query.dest.trim()
 	};
 
+	var greenness = req.query.greenness.trim();
+
 	pg.connect(conString, function(err, client, done) {
 	  if(err) {
 	    res.send(err);
@@ -29,7 +31,7 @@ app.get('/greenify', function(req,res){
 	  client.query(queryBuilder.initialization());
 	  client.query(queryBuilder.waypoints(directions));
 	  
-	  client.query('select scenic_route()' , function(err, result) {
+	  client.query('select p_scenic_route('+ greenness +')' , function(err, result) {
 	    //call `done()` to release the client back to the pool
 	    done();
 	    if(err) {
@@ -43,9 +45,10 @@ app.get('/greenify', function(req,res){
 
 	    // Clean up malformed reponse	
 	    var greenpoints = [];	
+	    console.log(result.rows);
 	    result.rows.map(function(obj){
 		//var clean = (obj.scenic_route.split("(")[2]).split(")")[0].replace(" ",",");
-		var myString = obj.scenic_route;
+		var myString = obj.p_scenic_route;
 
 		myString = myString.replace(/"/g,'');
 
