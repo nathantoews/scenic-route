@@ -48,31 +48,18 @@ app.get('/greenify', function(req,res){
 	    console.log(result.rows);
 	    result.rows.map(function(obj){
 		//var clean = (obj.scenic_route.split("(")[2]).split(")")[0].replace(" ",",");
-		var myString = obj.p_scenic_route;
-
-		myString = myString.replace(/"/g,'');
-
-		// Get everything in parentheses
-		var start = myString.indexOf('{')
-		var stop = myString.indexOf('}');
-		myString = myString.substring(start+1,stop);
-
-		// Replace round brackets with angular ones!
-		var clean = new String();
-		clean += "[";
-		for (var i = 0; i < myString.length; i++){
-   			if (myString[i] == ')') 
-        			clean += ']';
-   			else if (myString[i] == '(')
-        			clean += '[';
-   			else if (myString[i] == ' ')
-        			clean += ',';
-   			else
-        			clean += myString[i];
-		}
-		clean += "]";
-	    	greenpoints.push({scenic_route: clean});
-	    });	
+		var row = obj.p_scenic_route;
+		
+		// Getting rid of bounding round brackets
+		row = row.substring(1,row.length-1)
+		row = row.split(",");
+		
+		// row[0] is (x y) (x y)...
+		console.log(row[1]);
+		row[0] = "[" + row[0].split("\"").join("").split("(").join("[").split(")").join("]").split(" ").join(",") + "]";
+	    	row[1] = row[1].split("\"").join("").split("-");
+		greenpoints.push({scenic_route: JSON.parse(row[0]), names: row[1]})
+		});
 
 	    res.send({results: greenpoints});
 	  });
