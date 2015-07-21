@@ -548,24 +548,24 @@ span.twitter-typeahead{
 /// PARK PROFILE PAGE ///////////////////////////////////////////////
 /*Doc setup*/
 
-* {&:before,&:after{box-sizing: inherit;}}
-html {
-  box-sizing: border-box;
-}
+// * {&:before,&:after{box-sizing: inherit;}}
+// html {
+//   box-sizing: border-box;
+// }
 
-html,body {margin: 0;padding: 0;height: 100%;
-  font: normal 100%/1.5 source-sans-pro, sans-serif;
-  font-weight: 400;
-  color: #333;
-  background: #ccc;
-}
+// html,body {margin: 0;padding: 0;height: 100%;
+//   font: normal 100%/1.5 source-sans-pro, sans-serif;
+//   font-weight: 400;
+//   color: #333;
+//   background: #ccc;
+// }
 
-body,.google-expando__card{
-  display: flex;flex-direction: column;align-items: center;justify-content: center;
-}
-img {
-  max-width: 100%;
-}
+// body,.google-expando__card{
+//   display: flex;flex-direction: column;align-items: center;justify-content: center;
+// }
+// img {
+//   max-width: 100%;
+// }
 
 
 // Google Expando Config
