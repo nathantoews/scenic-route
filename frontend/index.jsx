@@ -6,7 +6,7 @@ var SetupFlow = require('./views/SetupFlow.jsx');
 var RouteView = require('./views/RouteView.jsx');
 var Parks = require('./views/ParkProfile.jsx');
 
-var ParkInfo = require('./views/ParkInfo.jsx');
+// var ParkInfo = require('./views/ParkInfo.jsx');
 
 var MapView = require('./views/Map.jsx');
 var Loader = require('./views/Loader.jsx');

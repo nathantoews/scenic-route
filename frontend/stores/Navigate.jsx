@@ -213,6 +213,12 @@ function fetchData(callback) {
         (function(index){
             var mapboxCallback = function(routesInfo, err){
                 // Grabbing map and directions
+
+                routesInfo = JSON.parse(routesInfo.responseText);
+
+                console.log(routesInfo);
+
+
                 var poly_raw = routesInfo.routes[0].geometry.coordinates;
 
                 // Route coordinates received as (lng,lat), and
@@ -237,6 +243,7 @@ function fetchData(callback) {
                   distance: formatDistanceRaw(path.distance)
                 };
                 path.steps = routesInfo.routes[0].steps;
+                path.info = ScenicStore.getSessionState().greenpoints.results[index];
                 
                 /* REFACTOR */
                 Actions.setSessionState('steps', path.steps);      
@@ -250,7 +257,13 @@ function fetchData(callback) {
                 return; 
             };
 
-            requests.push( $.get(Navigate.buildMapboxDirectionsURL(index),mapboxCallback) );
+            requests.push($.ajax({
+              url: Navigate.buildMapboxDirectionsURL(index),
+              async: false,
+              complete: mapboxCallback
+            }));
+
+            // requests.push( $.get(Navigate.buildMapboxDirectionsURL(index),mapboxCallback) );
         })(i);
     }
 
@@ -319,15 +332,18 @@ var Navigate = {
     api += '/';
     api += origin.latLng.lng + ',' + origin.latLng.lat + ';';
     // Affix green waypoints here!
-    console.log("In build", greenpoints);
+    console.log("GREENPOINTS", greenpoints);
+    console.log("ITEM", item);
     // Only viewing fastest green route right now.
-    var testpoints = JSON.parse(greenpoints.results[item].scenic_route);
-    testpoints.map(function(it){
+    var coords = greenpoints.results[item].scenic_route;
+    console.log("COORDS", coords);
+    coords.map(function(it){
+      window._it = it;
+      console.log("IT", it);
       var lng = it[0];
       var lat = it[1];
       api += lng + ',' + lat + ';';
     });
-    window.blah = JSON.parse(greenpoints.results[item].scenic_route);
     api += destination.latLng.lng + ',' + destination.latLng.lat;
     api += '.json?instructions=html&access_token=';
     api += 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
@@ -369,6 +385,8 @@ var Navigate = {
             // Debugging variable below.
             console.log("Finished getting everything");
             window._paths = paths;
+            console.log(array);
+            console.log(paths);
             // Get the bounds of the longest route.
             var bounds = paths[2].getBounds();
             window.map.fitBounds(bounds);          
