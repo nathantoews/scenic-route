@@ -357,6 +357,7 @@ span.twitter-typeahead{
 // TIME SELECTION ----------------------------------------------------
 
 #timeSlider {
+  position:relative;
 }
 
 #submitRoute {
@@ -386,31 +387,31 @@ span.twitter-typeahead{
   width:100%;
   height:50px;
 }
-.resize-drag {
-  position:absolute;
-  background-color:$secondary-color;
-  color: white;
-  font-size: 20px;
-  font-family: sans-serif;
-  width:100%;
-  padding:10px;
-  margin:0 auto;
-  /* This makes things *much* easier */
-  box-sizing: border-box;
-}
-.resize-drag:after {
-  position:absolute;
-  width:50%;
-}
-.resize-container {
-  position:relative;
-  -webkit-mask-box-image: url("../img/svg/routeMap.svg");
-  mask-border: url("../img/svg/routeMap.svg");
-  background-color:$secondary-color-light;
-  margin:auto;
-  width: 60%;
-  height: 60%;
-}
+// .resize-drag {
+//   position:absolute;
+//   background-color:$secondary-color;
+//   color: white;
+//   font-size: 20px;
+//   font-family: sans-serif;
+//   width:100%;
+//   padding:10px;
+//   margin:0 auto;
+//   /* This makes things *much* easier */
+//   box-sizing: border-box;
+// }
+// .resize-drag:after {
+//   position:absolute;
+//   width:50%;
+// }
+// .resize-container {
+//   position:relative;
+//   -webkit-mask-box-image: url("../img/svg/routeMap.svg");
+//   mask-border: url("../img/svg/routeMap.svg");
+//   background-color:$secondary-color-light;
+//   margin:auto;
+//   width: 60%;
+//   height: 60%;
+// }
 
 
 #resizer {
@@ -418,46 +419,60 @@ span.twitter-typeahead{
   // transform: translate(0px, 0px);
   width: 40px;
   height: 40px;
-  
-  background-color: #92e;
-  border: solid 4px #fff;
-  border-radius: 100%;
-  
   cursor: move;
   z-index: 10;
   position:absolute;
   bottom:0px;
+  transform: translateY(-50%);
+
 }
 
 /* HEIGHTS OF THE TWO BELOW HAVE TO BE THE SAME!*/
 #drag-cont{
-  height:200px;
+  height:60%;
   position:relative;
   min-height:1px;
 }
 
 #resize-cont{
-  height:200px;
+  -webkit-mask-box-image: url("../img/svg/routeMap.svg");
+  mask-border: url("../img/svg/routeMap.svg");
+  background-color:$empty-slider-color;
+  height:60%;
+  width:60%;
   position: relative;
 }
 
 #resizable-element {
   user-select: none;
-  background-color: #29e;
+  background-color: $secondary-color;
   color: white;
   font-size: 20px;
   font-family: sans-serif;
-  border-radius: 8px;
-
-  width: 200px;
-  height: 200px;
-
+  width: 100%;
+  height:10%;
   /* This makes things *much* easier */
   box-sizing: border-box;
   z-index: 5;
-
   position:absolute;
   bottom:0px;
+  left:0;
+}
+
+#resizable-element-two:after {
+  user-select: none;
+  border-top:4px solid $primary-color;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  width: 100%;
+  height:10%;
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+  z-index: 5;
+  position:absolute;
+  bottom:0px;
+  left:0;
 }
 
 
@@ -530,11 +545,151 @@ span.twitter-typeahead{
     }    
 }
 
+/// PARK PROFILE PAGE ///////////////////////////////////////////////
+/*Doc setup*/
+
+* {&:before,&:after{box-sizing: inherit;}}
+html {
+  box-sizing: border-box;
+}
+
+html,body {margin: 0;padding: 0;height: 100%;
+  font: normal 100%/1.5 source-sans-pro, sans-serif;
+  font-weight: 400;
+  color: #333;
+  background: #ccc;
+}
+
+body,.google-expando__card{
+  display: flex;flex-direction: column;align-items: center;justify-content: center;
+}
+img {
+  max-width: 100%;
+}
 
 
+// Google Expando Config
+$google_expando_radius: 2px;
+$google_expando_whsp: 48px;
+
+$google_materialshadow_ambient: (
+  shadow1: 0 1px 1.5px rgba(0, 0, 0, 0.12),
+  shadow2: 0 1px 1px rgba(0, 0, 0, 0.24)
+);
+
+$google_materialshadow: (
+  ambient: map-values($google_materialshadow_ambient)
+);
+
+$google_expando_proportions: (
+  icon_size: 24px,
+  card_size: 340px
+);
+
+$google_expando_transition: (
+  transition_one: .2s all cubic-bezier(.4,0,.2,1)
+);
 
 
+// Google Expando Styles !Required!
+.google-expando {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  &--wrap {
+    position: relative;
+    width: 100%;
+    height:100%;
+  }
+}
+
+.google-expando__icon {
+  border-radius: 90%;
+  box-shadow: map-get($google_materialshadow, ambient);
+  height: 4em;
+  width: 4em;
+  padding: $google_expando_whsp/8;
+  transition: map-values($google_expando_transition);
+  z-index: 2;
+  text-align: center;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.google-expando__card {
+  background-image:url('../img/svg/ParkModeShape.svg');
+  background-repeat:no-repeat;
+  border-radius: $google_expando_radius;
+  height:100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: (map-get($google_expando_proportions, icon_size) * 2) / 3;
+  left: 0;
+  right: 0;
+  transform: scale(0) translateZ(0);
+  transition: map-values($google_expando_transition);
+  transform-origin: top center;
+  z-index: 1;
+  opacity: 0;
+}
+
+
+// Google Expando State
+.google-expando__icon.active {
+  transform: rotate(45deg);
+}
+
+.google-expando__card.active {
+  margin-top:15%;
+  height: 35%;
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+}
+
+
+// Google Expando Utility Helpers
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.expandedInfo {
+  position:absolute;
+  top:20%;
+  background-color:white;
+  height:0px;
+  width:100%;
+}
+
+.expandedInfo-none {
+  position:absolute;
+  top:20%;
+  background-color:white;
+  height:0px;
+  width:100%;
+}
 
 
 

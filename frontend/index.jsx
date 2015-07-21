@@ -5,6 +5,9 @@ var config = require('./config.js');
 var SetupFlow = require('./views/SetupFlow.jsx');
 var RouteView = require('./views/RouteView.jsx');
 var Parks = require('./views/ParkProfile.jsx');
+
+var ParkInfo = require('./views/ParkInfo.jsx');
+
 var MapView = require('./views/Map.jsx');
 var Loader = require('./views/Loader.jsx');
 var ScenicStore = require('./stores/Stores.jsx');
@@ -42,7 +45,7 @@ var Body = React.createClass({
 	},
     render: function(){ 
       return (
-      		<div id='containerRow' className="row">
+			<div id='containerRow' className="row">
 				<ProfileNav/>
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
 				<MapView layout={this.state.layout.map} />

@@ -151,11 +151,51 @@
 
 }
 
+.locIcon {
+  position:absolute;
+  float: left;
+  background-image:url('../img/svg/locIcon.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:20px;
+
+}
+
+.greenBoob {
+  position:absolute;
+  float: left;
+  background-image:url('../img/svg/greenBoob.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:20px;
+
+}
 
 
+.parkBtn {
+  background-image:url('../img/svg/park.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:20px;
 
+}
 
+.openInfo {
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:20px;
+}
 
+.openInfo.active {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
 
 
 // .svg-route-switch {

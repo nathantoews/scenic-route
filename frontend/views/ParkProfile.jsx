@@ -13,6 +13,10 @@ var Parks = React.createClass({
                 <li className="tab col s3"><a href="#test2">Park B</a></li>
                 <li className="tab col s3"><a href="#test3">Park C</a></li>
                 <li className="tab col s3"><a href="#test4">Park D</a></li>
+                <li className="tab col s3"><a href="#test5">Park C</a></li>
+                <li className="tab col s3"><a href="#test6">Park C</a></li>
+                <li className="tab col s3"><a href="#test7">Park C</a></li>
+
               </ul>
             </div>
               <div id="test1" className="col s12">
