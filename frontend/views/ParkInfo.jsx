@@ -9,16 +9,18 @@ var ParkTab = React.createClass({
 	mixins: [Carousel.ControllerMixin],
 
 	componentDidMount: function(){
+		    ScenicStore.addChangeListener(this._onChange);
 	    console.log(ScenicStore.getSessionState().activePath);
-      console.log("parkInfo mounted");
+	    window.myParkState = this.state;
   	},
 
 
 getInitialState: function(){
 	var parkList = {
-		parkName: null,
-		parkFac: null,
-		parkPic: null,
+		parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
+		parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
+		parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
+
 	};
 	return parkList;
  },
@@ -27,10 +29,26 @@ getInitialState: function(){
  	createParkList: function() {
  	var Parks = this.state.parkName;
  	var updatedStateProp = {
- 		
+ 		parkName: Parks.map(function(row, i){
+                      return (
+                        <h3 dangerouslySetInnerHTML={{__html:row.info.parks}}>
+                        </h3>
+                      )
+                  }
+              ),
  		}
 	this.setState(updatedStateProp);
     },
+
+	_onChange: function(){
+		this.setState({
+			parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
+			parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
+			parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],             
+		      });  
+		console.log('Invoking createList to update the list.');
+		this.createParkList();
+	},
 
 
 
@@ -47,10 +65,12 @@ getInitialState: function(){
           <div className="google-expando__card" aria-hidden="true">
 
 			<Carousel className="parkMenu">
-				<h3>park rocks</h3>
-				<h3>park big trees</h3>
-				<h3>park trails</h3>
-				<h3>park awesome</h3>
+				<h3>HEY</h3>
+								<h3>HEY</h3>
+
+				<h3>HEY</h3>
+
+
 			</Carousel>
 
           	<div className="openInfo"></div>

@@ -28,7 +28,7 @@ $('.openInfo').on('click', function() {
 	$('.openInfo').toggleClass('active');
 	$( ".expandedInfo" ).slideToggle( 400, function() {
 		$(".expandedInfo").animate({
-			height:(_parkHeight/1.3)
+			height:(100 + "vh")
 		},200);
   	});
 });
