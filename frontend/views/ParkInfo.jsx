@@ -10,7 +10,7 @@ var ParkTab = React.createClass({
 
 	componentDidMount: function(){
 	    console.log(ScenicStore.getSessionState().activePath);
-
+      console.log("parkInfo mounted");
   	},
 
 
@@ -56,7 +56,7 @@ getInitialState: function(){
           	<div className="openInfo"></div>
           	<div className="expandedInfo">
           		<ul>
-          			<h4>I'm going to see</h4>
+          			<h4>Im going to see</h4>
           			<li>picnic area</li>
           			<li>rec center</li>
           			<li>off leash areas</li>
