@@ -4,7 +4,7 @@ var MapView = require('./Map.jsx');
 var Navigate = require('../stores/Navigate.jsx');
 var Actions = require('../stores/Actions.jsx');
 var ScenicStore = require('../stores/Stores.jsx');
-
+var ParkInfo = require('./ParkInfo.jsx');
 
 var RouteView = React.createClass({
   componentDidMount: function(){
@@ -106,7 +106,7 @@ var RouteView = React.createClass({
     return (
 
     <div id="directionsContainer" className={this.state.directionsState}>
-      <ParkInfo/>
+    <ParkInfo/>
       <div className="card-image">
       </div>
         <div className="HeaderRoute card-content">

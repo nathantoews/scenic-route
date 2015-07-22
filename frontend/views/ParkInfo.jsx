@@ -16,9 +16,9 @@ var ParkTab = React.createClass({
 
 getInitialState: function(){
 	var parkList = {
-		parkName: ScenicStore.getSessionState().activePath.info.parks,
-		parkFac: ScenicStore.getSessionState().activePath.info.facilities,
-		parkPic: ScenicStore.getSessionState().activePath.info.pictures,
+		parkName: null,
+		parkFac: null,
+		parkPic: null,
 	};
 	return parkList;
  },

@@ -554,13 +554,13 @@ span.twitter-typeahead{
 //   background: #ccc;
 // }
 
-// body,
-// .google-expando__card{
-//   display: flex;flex-direction: column;align-items: center;justify-content: center;
+body,
+.google-expando__card{
+  display: flex;flex-direction: column;align-items: center;justify-content: center;
+}
+// img {
+//   max-width: 100%;
 // }
-// // img {
-// //   max-width: 100%;
-// // }
 
 
 // Google Expando Config
@@ -603,11 +603,11 @@ $google_expando_transition: (
 .google-expando__icon {
   border-radius: 90%;
   box-shadow: map-get($google_materialshadow, ambient);
-  height: 4em;
-  width: 4em;
+  height: 5em;
+  width: 5em;
   padding: $google_expando_whsp/8;
   transition: map-values($google_expando_transition);
-  z-index: 2;
+  z-index: 11;
   text-align: center;
   color: white;
 
@@ -630,7 +630,7 @@ $google_expando_transition: (
   transform: scale(0) translateZ(0);
   transition: map-values($google_expando_transition);
   transform-origin: top center;
-  z-index: 1;
+  z-index: 10;
   opacity: 0;
 }
 
@@ -747,7 +747,7 @@ hr {
 }
 
 .slider.parkMenu {
-  z-index:10000000;
+  z-index:10;
   position:absolute !important;
   top:10%;
   text-align:center;
