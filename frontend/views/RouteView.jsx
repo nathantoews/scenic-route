@@ -106,6 +106,7 @@ var RouteView = React.createClass({
     return (
 
     <div id="directionsContainer" className={this.state.directionsState}>
+      <ParkInfo/>
       <div className="card-image">
       </div>
         <div className="HeaderRoute card-content">
