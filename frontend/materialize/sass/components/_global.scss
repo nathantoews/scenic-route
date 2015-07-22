@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 
 //Default styles
@@ -474,10 +474,10 @@ td, th{
       border-bottom: none;
     }
 
-    &.active {
-      background-color: $collection-active-bg-color;
-      color: $collection-active-color;
-    }
+    // &.active {
+    //   background-color: $collection-active-bg-color;
+    //   color: $collection-active-color;
+    // }
   }
   a.collection-item{
     display: block;

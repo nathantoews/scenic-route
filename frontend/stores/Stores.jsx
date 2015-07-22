@@ -33,7 +33,7 @@ var sessionState = {
  */
 var layout = {
   map: "s12 m12 l12",
-  nav: "hide", 
+  nav: "hide",
   // `state` corresponds to menu state
   state: "inactive",
   directions: "hide",

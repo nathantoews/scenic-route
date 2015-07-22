@@ -117,12 +117,6 @@ span.twitter-typeahead{
 .tt-suggestion p {
   margin: 0;
 }
-
-/* Styling the button to submit a route */
-#submitRoute{
-  
-}
-
 /* Loading screen styles */
 
 /* 
@@ -560,12 +554,13 @@ span.twitter-typeahead{
 //   background: #ccc;
 // }
 
-// body,.google-expando__card{
+// body,
+// .google-expando__card{
 //   display: flex;flex-direction: column;align-items: center;justify-content: center;
 // }
-// img {
-//   max-width: 100%;
-// }
+// // img {
+// //   max-width: 100%;
+// // }
 
 
 // Google Expando Config
@@ -642,7 +637,8 @@ $google_expando_transition: (
 
 // Google Expando State
 .google-expando__icon.active {
-  transform: rotate(45deg);
+  transform: scale(1.1);
+;
 }
 
 .google-expando__card.active {
@@ -676,21 +672,133 @@ $google_expando_transition: (
 }
 
 .expandedInfo {
+  display:none;
   position:absolute;
   top:20%;
   background-color:white;
   height:0px;
   width:100%;
+  padding:20% 5%;
+    h4 {
+      text-align:center;
+      margin-bottom:5%;
+      font-size:1.5rem;
+      font-family:Roboto-Slab;
+      color:$text-color;
+      font-weight:600 !important;
+    } 
+
+  ul {
+    display:inline-block;
+    padding-bottom:5%;
+    margin:0% 5% 5% 5%;
+    border-bottom:2px solid $text-color;
+    text-align:center;
+    font-family:Roboto;
+    font-size:1.2em;
+    font-color:$text-color;
+    font-weight:100;
+    li {
+      display:inline-block;
+      float: left;
+      width:50%;
+    }
+  }
 }
 
-.expandedInfo-none {
-  position:absolute;
-  top:20%;
-  background-color:white;
-  height:0px;
-  width:100%;
+.imgGrid {
+
 }
 
+.square {
+
+    float: left;
+    position: relative;
+    width:31.25%;
+    padding-bottom : 30% !important; /* = width for a 1:1 aspect ratio */
+    margin:1%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
+.img1 {
+  background-image:url('http://www.placecage.com/c/500/400');
+}
+.img2 {
+  background-image:url('http://www.placecage.com/c/200/300');
+}
+.img3 {
+  background-image:url('http://www.placecage.com/c/600/200');
+}
+.img4 {
+  background-image:url('http://www.placecage.com/c/500/300');
+}
+.img5 {
+  background-image:url('http://www.placecage.com/c/100/100');
+}
+.img6 {
+  background-image:url('http://www.placecage.com/c/300/500');
+}
+
+
+hr {
+    margin-top:10%;
+}
+
+.slider.parkMenu {
+  z-index:10000000;
+  position:absolute !important;
+  top:10%;
+  text-align:center;
+  height:100%;
+
+    h3 {
+      margin:0;
+      font-size:2rem;
+      font-family:Roboto-Slab;
+      color:$secondary-color;
+      font-weight:600 !important;
+    }
+}
+
+
+
+.slider-decorator-0 button{
+  background-color:#fff;
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:50%;
+  height:100%;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+    :focus {
+    background-color:#fff;
+  }
+
+}
+
+.slider-decorator-1 button {
+  background-color:#fff;
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:50%;
+  height:100%;
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+
+    button:selected {
+    background-color:#fff;
+  }
+}
+
+.slider-decorator-2 {
+  display:none;
+}
 
 
 

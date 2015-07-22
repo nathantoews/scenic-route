@@ -184,17 +184,27 @@
 }
 
 .openInfo {
+  z-index:10000000000;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
   background-image:url('../img/svg/downChev.svg');
   background-size:100% 100%;
   background-position:50%;
   width:10%;
-  height:20px;
+  height:30px;
 }
 
 .openInfo.active {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
+  z-index:10000000;
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:10%;
+  height:30px;
+  -ms-transform: rotate(0deg); /* IE 9 */
+  -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+  transform: rotate(0deg);
 }
 
 
