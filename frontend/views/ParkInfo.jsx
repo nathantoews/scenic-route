@@ -17,7 +17,7 @@ var ParkTab = React.createClass({
 
 getInitialState: function(){
 	var parkList = {
-		parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
+		parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info : [],
 		parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
 		parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
 
@@ -27,11 +27,11 @@ getInitialState: function(){
 
 
  	createParkList: function() {
- 	var Parks = this.state.parkName;
+ 	var ParkState = this.state.parkName;
  	var updatedStateProp = {
- 		parkName: Parks.map(function(row, i){
+ 		parkName: ParkState.map(function(row, i){
                       return (
-                        <h3 dangerouslySetInnerHTML={{__html:row.info.parks}}>
+                        <h3 dangerouslySetInnerHTML={{__html:row.parks}}>
                         </h3>
                       )
                   }
@@ -46,7 +46,7 @@ getInitialState: function(){
 			parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
 			parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],             
 		      });  
-		console.log('Invoking createList to update the list.');
+		console.log(ScenicStore.getSessionState().activePath);
 		this.createParkList();
 	},
 
