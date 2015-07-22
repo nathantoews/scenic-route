@@ -24,7 +24,8 @@ var sessionState = {
   'activePath': null,
   // Default the "greenLevel" to 1.
   // Should be sent as 3*(1,2,3,4)
-  'greenness': 1 
+  'greenness': 1,
+  'activeCarousel': 0
 };
 
 /*
