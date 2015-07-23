@@ -721,7 +721,19 @@ hr {
     }
 }
 
+.carouselNav{
+  background-color:#fff;
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:30px;
+  height:100%;
+}
 
+.slider-decorator-0,.slider-decorator-1 {
+  height: 100%;
+  top: 0 !important;
+}
 
 .slider-decorator-0 button{
   background-color:#fff;
@@ -741,15 +753,8 @@ hr {
 
 .slider-decorator-1 button {
   background-color:#fff;
-  background-image:url('../img/svg/downChev.svg');
-  background-size:100% 100%;
-  background-position:50%;
   width:50%;
   height:100%;
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-  transform: rotate(-90deg);
-
     button:selected {
     background-color:#fff;
   }

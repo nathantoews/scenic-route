@@ -3,7 +3,42 @@ var Carousel = require('nuka-carousel');
 var ScenicStore = require('../stores/Stores.jsx');
 var Actions = require('../stores/Actions.jsx');
 
-
+var Decorators = [{
+  component: React.createClass({
+    render() {
+      return (
+        <div
+          className="carouselNav"
+          onClick={this.props.previousSlide}>
+        </div>
+      )
+    }
+  }),
+  position: 'CenterLeft',
+  style: { 
+    WebkitTransform: 'rotate(90deg)',
+    msTransform: 'rotate(90deg)',
+    transform: 'rotate(90deg)'
+  }
+},
+{
+  component: React.createClass({
+    render() {
+      return (
+        <div
+          className="carouselNav"
+          onClick={this.props.nextSlide}>
+        </div>
+      )
+    }
+  }),
+  position: 'CenterRight',
+  style: {
+    WebkitTransform: 'rotate(-90deg)',
+    msTransform: 'rotate(-90deg)',
+    transform: 'rotate(-90deg)'
+  }
+}];
 
 var ParkCarousel = React.createClass({
   getInitialState: function(){
@@ -34,7 +69,7 @@ var ParkCarousel = React.createClass({
     return (
         <Carousel ref='parkCarousel' 
                   className="parkMenu" 
-
+                  decorators={Decorators}
                   data={this.setCarouselData.bind(this, 'parkCarousel')}>
           {
             this.state.parks.map(function(park){

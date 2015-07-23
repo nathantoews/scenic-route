@@ -378,6 +378,7 @@ var Navigate = {
     $.get(Navigate.buildGreenifyURL(), function(results,err){
         console.log("Hit Greenify API", results);
         // Do the click handler stuff here...
+        results = results.slice(Math.max(arr.length - 3, 1))
         Actions.setGreenpoints(results);
         // console.log("Inspect _routesInfo");
         // window._routesInfo = routesInfo;   
