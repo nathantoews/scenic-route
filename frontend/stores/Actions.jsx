@@ -41,6 +41,12 @@ var ScenicActions = {
       value: _value
     });
   },
+  setGreenness: function(_greenness){
+    Dispatcher.dispatch({
+      actionType: 'setGreenness',
+      greenness: _greenness
+    })
+  },
   updateMenu: function(_menuState){
     Dispatcher.dispatch({
       actionType: 'updateMenu',

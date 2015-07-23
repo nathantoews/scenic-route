@@ -38,11 +38,13 @@ var layout = {
   // `state` corresponds to menu state
   state: "inactive",
   directions: "hide",
+  // logoState is added to the
+  // start button as well as the logo
+  logoState: "",
   menuDeactivate: function(){
     this.map = "s12 m12 l12";
     this.nav = "hide";
     this.state = "inactive";
-
     /* Not sure about this? */
     this.directions = "";
   },
@@ -51,6 +53,7 @@ var layout = {
     this.nav = "l4 m5 s12";
     this.state = "active";
     this.directions = "hide";
+    this.logoState = "hide";
   },
   menuToggle: function(){
     if (this.state == "active"){ 
@@ -146,6 +149,11 @@ Dispatcher.register(function(payload) {
         console.log("prop", payload.prop);
         console.log("value", payload.value);
         sessionState[payload.prop] = payload.value;
+        ScenicStore.emitChange();
+        break;
+      case 'setGreenness':
+        console.log('setting greenness');
+        sessionState.greenness = payload.greenness;
         ScenicStore.emitChange();
         break;
       case 'updateMenu':

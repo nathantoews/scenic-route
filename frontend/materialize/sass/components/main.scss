@@ -322,7 +322,8 @@ span.twitter-typeahead{
 }
 
 .introTag {
-  margin-bottom:20%;
+  // why was this here??
+  // margin-bottom:10%;
   font-size:1.5em;
   color:#a1a1a1;
   font-spacing:1px;
@@ -394,6 +395,12 @@ span.twitter-typeahead{
 }
 
 
+#drag-container{
+  padding-top: 6vh;
+  @media #{$small-and-down} {
+  }  
+}
+
 #resizer {
   // -webkit-transform: translate(0px, 0px);
   // transform: translate(0px, 0px);
@@ -419,8 +426,10 @@ span.twitter-typeahead{
   mask-border: url("../img/svg/routeMap.svg");
   background-color:$empty-slider-color;
   height:60%;
-  width:60%;
+  // width:60%;
   position: relative;
+  // past this point it gets choppy.
+  max-width: 136px !important;
 }
 
 #resizable-element {
@@ -430,7 +439,7 @@ span.twitter-typeahead{
   font-size: 20px;
   font-family: sans-serif;
   width: 100%;
-  height:10%;
+  height:0%;
   /* This makes things *much* easier */
   box-sizing: border-box;
   z-index: 5;

@@ -1,12 +1,35 @@
 var React = require('react');
+var Actions = require('../stores/Actions.jsx');
 var Navigate = require('../stores/Navigate.jsx');
 
-
+function normalize(percentage){
+  percentage = Math.floor(percentage*100);
+  switch (percentage){
+    case 0:
+      return 1;
+    case 33:
+      return 2;
+    case 66:
+      return 3;
+    case 100:
+      return 4;
+  }
+}
 
 var TimeDrag = React.createClass({
+initResizer: function(){
+  if ($('#drag-cont').length && $('#resizer').length){
+    // Plant the draggable to where it should be.
+    var seedResizer = ($("#drag-cont").height()-$("#resizable-element").height()) + 'px';
+    // Doesn't seem to set the top attribute the jQuery way?
+    document.getElementById('resizer').style.top= seedResizer;
+  }
+},
 componentDidMount: function(){
   var _height = $('#resizer').height()/2;
   var _height_Cont = $('#resize-cont').height();
+
+  this.initResizer();
 
   $('#resizer').draggable({
       drag: function() {
@@ -28,29 +51,37 @@ componentDidMount: function(){
             top: new_top,
             opacity: 1,
         }, 200);
-
         var adjustTo = sliderHeight - new_top;
+
+        var greenness = normalize(adjustTo/$("#resizable-element").parent().height());
+        Actions.setGreenness(greenness);
+
         $("#resizable-element").animate({height:adjustTo},200);
       },
   });
+
+  window.addEventListener('resize', function() {
+    this.initResizer();
+  }.bind(this));
 },  
 render: function() {
     return (
       <div className="row" id="timeSlider">
         <p className="introTag">I have</p>
       
-        <div className="row">                 
-          <div id="resize-cont" className="col s10 offset-s2 m10 offset-m2 l10 offset-l2">
-            <div id="resizable-element">
+        <div id="drag-container" className="row">  
+
+            <div id="resize-cont" className="col s6 offset-s3 m7 offset-m2 l5 offset-l3">
+              <div id="resizable-element">
+              </div>
             </div>
-          </div>
-          <div id="drag-cont" className="col s2 m2 l2">
-            <div id="resizer" className="greenBoob">
-          </div>
-          </div>                     
+            <div id="drag-cont" className="col s2 m2 l2">
+              <div id="resizer" className="greenBoob">
+              </div>
+            </div>
+
         </div>
       
-        <div id="minRange"></div>
         <button className="btn-primary waves-effect waves-light col s4">skip</button> 
         <button onClick={Navigate.generateRoute} className="btn-secondary waves-effect waves-light col s4">map it</button>       
       </div>

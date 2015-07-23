@@ -4,28 +4,30 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Classnames = require('classnames');
 
 
-	 function toggleFullScreen(){
-	 	if ($(window).width() <= 800) {
-			var doc = window.document;
-			var docEl = doc.documentElement;
+ function toggleFullScreen(){
+ 	if ($(window).width() <= 800) {
+		var doc = window.document;
+		var docEl = doc.documentElement;
 
-			var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-			var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+		var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+		var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
-			if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-			requestFullScreen.call(docEl);
-			}
-			else {
-			cancelFullScreen.call(doc);
-			}
+		if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+		requestFullScreen.call(docEl);
 		}
-	};
+		else {
+		cancelFullScreen.call(doc);
+		}
+	}
+};
 
 var Map = React.createClass({
 
 	getInitialState: function(){
 		return{
-			layout: Classnames('col', this.props.layout)
+			layout: Classnames('col', this.props.layout),
+			logoStyle: Classnames('logo', ScenicStore.getLayout().logoState),
+			startButtonStyle: Classnames('col s4 m4 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState)
 		};
 	},
 	componentWillMount: function(){
@@ -47,10 +49,13 @@ var Map = React.createClass({
 			window.map.invalidateSize();
 			console.log("Map Invalidated");
 		}
-		// this.setState({width: $(window).width(), height: $(window).height()});
 	},
 	updateState: function(){
 		this.state.layout = Classnames('col','leaflet-container','leaflet-fade-anim', ScenicStore.getLayout().map);
+
+		/* Hide the logo and the start button upon activating menu. */
+		this.state.logoStyle = Classnames('logo', ScenicStore.getLayout().logoState);
+		this.state.startButtonStyle = Classnames('col s4 m4 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState);
 	},
 	componentDidUpdate: function(){
 		this.updateDimensions();
@@ -72,8 +77,8 @@ var Map = React.createClass({
 		return (
 			<div id="map" className={this.state.layout}>
 				<div id="map-container">
-					<div className="logo"></div>
-					<a onClick={this.routeNav} className="col s4 m4 l2 map-start-btn btn-secondary">
+					<div className={this.state.logoStyle}></div>
+					<a id='Start_Home' onClick={this.routeNav} className={this.state.startButtonStyle}>
 						begin
 					</a>
 				</div>
