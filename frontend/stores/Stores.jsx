@@ -47,8 +47,8 @@ var layout = {
     this.directions = "";
   },
   menuActivate: function(){
-    this.map = "hide-on-small m7 l9";
-    this.nav = "l3 m5 s12";
+    this.map = "hide-on-small m7 l8";
+    this.nav = "l4 m5 s12";
     this.state = "active";
     this.directions = "hide";
   },

@@ -11,19 +11,27 @@ componentDidMount: function(){
   $('#resizer').draggable({
       drag: function() {
           var adjustTo = $(this).parent().height() - $(this).position().top - _height;
+          // $('#resizable-element-two').css('height',  adjustTo ); 
           $('#resizable-element').css('height',  adjustTo ); 
-          $('#resizable-element-two').css('height',  adjustTo ); 
-
       },
-      snap:true,
-      grid: [0, (_height_Cont/3)],
       axis: 'y',
       containment: '#resize-cont',
-      stop: function(){
-            var adjustTo = $(this).parent().height() - $(this).position().top - _height;        
-            $('#resizable-element').css('height', adjustTo);
-            $('#resizable-element-two').css('height', adjustTo);
-      }
+      stop: function(e, ui) {
+        var grid_x = 0;
+        var grid_y = _height_Cont/3;
+        var elem = $( this );
+        var sliderHeight = parseInt($('#resize-cont').css('height')); 
+        var top = parseInt(elem.css('top'));
+        var cy = (top % grid_y);
+        var new_top = (Math.abs(cy)+0.5*grid_y >= grid_y) ? (top - cy + (top/Math.abs(top))*grid_y) : (top - cy);
+        ui.helper.stop(true).animate({
+            top: new_top,
+            opacity: 1,
+        }, 200);
+
+        var adjustTo = sliderHeight - new_top;
+        $("#resizable-element").animate({height:adjustTo},200);
+      },
   });
 },  
 render: function() {
@@ -32,7 +40,7 @@ render: function() {
         <p className="introTag">I have</p>
       
         <div className="row">                 
-          <div id="resize-cont" className="col s10 offset-s2 m10 l10">
+          <div id="resize-cont" className="col s10 offset-s2 m10 offset-m2 l10 offset-l2">
             <div id="resizable-element">
             </div>
           </div>

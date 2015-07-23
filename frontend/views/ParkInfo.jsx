@@ -118,7 +118,7 @@ getInitialState: function(){
           	<div className="openInfo"></div>
           	<div className="expandedInfo">
           		<ul>
-          			<h4>Im going to see</h4>
+          			<h4>i'm going to see</h4>
                 {
                   (this.state.parkFac && this.state.parkFac[this.state.activeCarousel]) ? 
                   this.state.parkFac[this.state.activeCarousel].map(function(it){
@@ -139,7 +139,7 @@ getInitialState: function(){
                   (this.state.parkPic && this.state.parkPic[this.state.activeCarousel]) ? 
                   this.state.parkPic[this.state.activeCarousel].map(function(it){
                     if (it == "NULL"){
-                      return <div className="square">No images here!</div>  
+                      return <div className="noParkImg">No images here!</div>  
                     }
                     else{
                       var divStyle = {

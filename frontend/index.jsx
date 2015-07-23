@@ -9,11 +9,7 @@ var MapView = require('./views/Map.jsx');
 var Loader = require('./views/Loader.jsx');
 var ScenicStore = require('./stores/Stores.jsx');
 var Actions = require('./stores/Actions.jsx');
-
-
-
 var Body = React.createClass({
-
 	getInitialState: function(){
 		console.log(ScenicStore);
 		window._Actions = Actions;

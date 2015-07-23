@@ -208,6 +208,27 @@
 }
 
 
+.logo {
+  top:5%;
+  left:0;
+  right:0;
+  margin:auto;
+  width:70%;
+  height:100px;
+  position:absolute;
+  background-image:url('../img/svg/logo.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  z-index:50;
+}
+
+.noParkImg {
+  background-image:url('../img/svg/logo.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  z-index:50;
+}
+
 // .svg-route-switch {
 //   background-image:url('../images/icons/svgs/alerts/Blue_Alert_Icon.svg');
 // }

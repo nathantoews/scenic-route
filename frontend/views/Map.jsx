@@ -4,6 +4,23 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Classnames = require('classnames');
 
 var Map = React.createClass({
+
+
+	toggleFullScreen: function() {
+	  var doc = window.document;
+	  var docEl = doc.documentElement;
+
+	  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+	  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+	  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+	    requestFullScreen.call(docEl);
+	  }
+	  else {
+	    cancelFullScreen.call(doc);
+	  }
+	},
+
 	getInitialState: function(){
 		return{
 			layout: Classnames('col', this.props.layout)
@@ -37,6 +54,7 @@ var Map = React.createClass({
 		this.updateDimensions();
 	},
 	routeNav: function(evt) {
+		this.toggleFullScreen();
 		Actions.updateMenu('toggle');
 		$(".progress-point").first().addClass('active');
 		// Resize the map following state changes.
@@ -52,8 +70,9 @@ var Map = React.createClass({
 		return (
 			<div id="map" className={this.state.layout}>
 				<div id="map-container">
-					<a onClick={this.routeNav} className="col s8 m4 l2 waves-effect waves-light btn map-start-btn btn-secondary">
-						<i className="material-icons right">search</i>find my route
+					<div className="logo"></div>
+					<a onClick={this.routeNav} className="col s4 m4 l2 map-start-btn btn-secondary">
+						begin
 					</a>
 				</div>
 			</div>);
