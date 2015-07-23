@@ -4,23 +4,22 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Classnames = require('classnames');
 
 
-$(window).resize(function(){
-if ($(window).width() <= 800){	
-	var doc = window.document;
-	  var docEl = doc.documentElement;
+	 function toggleFullScreen(){
+	 	if ($(window).width() <= 800) {
+			var doc = window.document;
+			var docEl = doc.documentElement;
 
-	  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-	  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+			var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+			var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
-	  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-	    requestFullScreen.call(docEl);
-	  }
-	  else {
-	    cancelFullScreen.call(doc);
-	  }
-	}	
-});
-
+			if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+			requestFullScreen.call(docEl);
+			}
+			else {
+			cancelFullScreen.call(doc);
+			}
+		}
+	};
 
 var Map = React.createClass({
 
@@ -57,6 +56,7 @@ var Map = React.createClass({
 		this.updateDimensions();
 	},
 	routeNav: function(evt) {
+		toggleFullScreen();
 		Actions.updateMenu('toggle');
 		$(".progress-point").first().addClass('active');
 		// Resize the map following state changes.
