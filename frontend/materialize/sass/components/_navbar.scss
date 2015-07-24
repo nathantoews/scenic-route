@@ -68,12 +68,12 @@ nav {
     margin: 0;
 
     li {
-      @include transition(background-color .3s);
+      // @include transition(background-color .3s);
       float: left;
       padding: 0;
 
       &:hover, &.active {
-        background-color: rgba(0,0,0,.1);
+        // background-color: rgba(0,0,0,.1);
       }
     }
     a {

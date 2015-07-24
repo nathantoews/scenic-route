@@ -488,6 +488,7 @@ span.twitter-typeahead{
   bottom:0;
   left:5%;
   font-weight:100;
+  box-shadow:0px 3px 0px #aa4660 !important;
   background-color:$primary-color;
 
   &:hover {
@@ -501,6 +502,7 @@ span.twitter-typeahead{
   bottom:0;
   right:5%;
   font-weight:100;
+  box-shadow:0px 3px 0px #1a9169 !important;
   background-color:$secondary-color;
 
   &:hover {
@@ -514,7 +516,7 @@ span.twitter-typeahead{
   font-weight:100;
   font-family:Roboto;
   background-color:#527ebb;
-  box-shadow-bottom:#3a5d87;
+  box-shadow:0px 3px 0px #3a5d87;
   border-radius: 5px;
   display: inline-block;
   height: 40px;
@@ -529,7 +531,8 @@ span.twitter-typeahead{
   }
 
   &:hover {
-    background-color:#3a5d87;;
+    @include transition(background-color .3s);
+    background-color:#3a5d87;
   }
 }
 
@@ -540,7 +543,7 @@ span.twitter-typeahead{
   font-weight:100;
   font-family:Roboto;
   background-color:#e85749;
-  box-shadow-bottom:#d82908;
+  box-shadow:0px 3px 0px #d82908;
   border-radius: 5px;
   display: inline-block;
   height: 40px;
@@ -555,6 +558,7 @@ span.twitter-typeahead{
   }
 
   &:hover {
+    @include transition(background-color .3s);
     background-color:#d82908;
   }
 }

@@ -45,18 +45,24 @@ var ProfileNav = React.createClass({
 
         <div className="loginSection">
           <li>
-            <a href={`${config.api_url}/auth/google`} className="btn-facebook">
-              <i className="fa fa-facebook-official left"></i>sign in with facebook</a>
+            <a href={`${config.api_url}/auth/facebook`} className="btn-facebook">
+              <i className="fa fa-facebook left"></i>sign in with facebook</a>
           </li>
           <li>
-            <a href={`${config.api_url}/auth/facebook`} className="btn-google">
+            <a href={`${config.api_url}/auth/google`} className="btn-google">
               <i className="fa fa-google left"></i>sign in with google</a>
           </li>
         </div>
-
         <hr></hr>
+        </div>
+    ])
+  },
 
-        <div className="profileOpt">
+  profileButtons: function(){
+    return ([
+
+      <div className="menuStyles">
+      <div className="profileOpt">
           <li><a><i className="restart left"></i>restart route</a></li>
           <li><a><i className="star left"></i>favourited routes</a></li>
           <li><a><i className="share left"></i>share</a></li>
@@ -73,6 +79,7 @@ var ProfileNav = React.createClass({
       </div>
     ])
   },
+
   authButtons: function(){
     return ( ( this.state && this.state.auth )? this.logoutButton() : this.loginButtons() );
   },
@@ -81,6 +88,7 @@ var ProfileNav = React.createClass({
       <nav id='top-nav'>
         <ul id="slide-out" className="side-nav">
           {this.authButtons()}
+          {this.profileButtons()}
         </ul>
         <a data-activates="slide-out" className="button-collapse show-on-large right ">
           <div className="hamburger"></div>

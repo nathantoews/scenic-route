@@ -27,8 +27,6 @@
 
   li {
     float: none;
-
-    &:hover, &.active { background-color: #ddd; }
   }
 }
 
@@ -78,23 +76,23 @@
 }
 
 
-.side-nav .collapsible-body li.active,
-.side-nav.fixed .collapsible-body li.active {
-  background-color: $primary-color;
-  a {
-    color: #fff;
-  }
-}
+// .side-nav .collapsible-body li.active,
+// .side-nav.fixed .collapsible-body li.active {
+//   background-color: $primary-color;
+//   a {
+//     color: #fff;
+//   }
+// }
 
 
-#sidenav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+// #sidenav-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
 
-  height: 120vh;
-  z-index: 997;
+//   height: 120vh;
+//   z-index: 997;
 
-  will-change: opacity;
-}
+//   will-change: opacity;
+// }
