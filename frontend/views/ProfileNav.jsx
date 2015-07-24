@@ -54,11 +54,15 @@ var ProfileNav = React.createClass({
           </li>
         </div>
 
+        <hr></hr>
+
         <div className="profileOpt">
           <li><a><i className="restart left"></i>restart route</a></li>
           <li><a><i className="star left"></i>favourited routes</a></li>
           <li><a><i className="share left"></i>share</a></li>
         </div>
+
+        <hr></hr>
 
         <div className="footer">
           <li><a>faq's</a></li>
