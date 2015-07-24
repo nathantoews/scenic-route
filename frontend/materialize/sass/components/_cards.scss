@@ -150,11 +150,15 @@
     height: 100%;
     z-index: 5;
     display: none;
-
     .card-title {
       cursor: pointer;
       display: block;
     }
-
   }
+  @media #{$medium-and-up}{
+    .card-reveal{
+      height: 80%;;  
+    }
+  }
+
 }

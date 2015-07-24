@@ -3,4 +3,5 @@ node_modules
 .sass-cache
 bundle.js
 materialize/sass/materialize.css
+materialize/js/materialize-cards.js
 materialize/sass/materialize.css.map

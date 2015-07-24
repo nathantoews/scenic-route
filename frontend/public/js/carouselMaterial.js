@@ -28,7 +28,7 @@ $('.openInfo').on('click', function() {
 	$('.openInfo').toggleClass('active');
 	$( ".expandedInfo" ).slideToggle( 400, function() {
 		$(".expandedInfo").animate({
-			height:(100 + "vh")
+			height: ($(".HeaderRoute").offset().top - ($(".openInfo").offset().top + $(".openInfo").outerHeight(true))) + 'px'
 		},200);
   	});
 });

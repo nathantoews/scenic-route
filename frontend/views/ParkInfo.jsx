@@ -53,7 +53,7 @@ var ParkCarousel = React.createClass({
   },
   componentDidMount: function(){
     ScenicStore.addChangeListener(this.updateParkList);
-    $(document).on('click','.slider-decorator-0,.slider-decorator-1', this.updateActiveCarousel);    
+    $(document).on('click','.slider-decorator-0,.slider-decorator-1', this.updateActiveCarousel);
   },
   updateParkList: function(){
       this.setState({parks: ScenicStore.getSessionState().activePath.info.parks});
@@ -86,13 +86,37 @@ var ParkTab = React.createClass({
 
   componentDidMount: function(){
         ScenicStore.addChangeListener(this._onChange);
-      console.log(ScenicStore.getSessionState().activePath);
-    },
+        $(document).on('click','#routeInfo .activator', this.closeParkInfo);
+        $(document).on('click','.parkBtn', this.closeDirections);
 
+    },
+    closeParkInfo: function(){
+      // Use Observer - Listener so we do not DRY.
+      console.log("CLOSING PARK INFO");
+      $(".google-expando__icon").removeClass("active");
+      $(".google-expando__icon").next().removeClass("active");
+    },
+    closeDirections: function(){
+      console.log("CLOSING DIRECTIONS");
+      $('#turnList.card-reveal')
+        .css({ display: 'block'})
+        .velocity("stop", false)
+        .velocity(
+            {
+              translateY: '0%'
+            }, 
+            {
+              duration: 300, 
+              queue: false, 
+              easing: 'easeInOutQuad'
+            }
+        );
+    },
 
 getInitialState: function(){
   var parkList = {
     activeCarousel: 0, 
+    expandedInfoHeight: null,    
     parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info : [],
     parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
     parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
@@ -101,10 +125,16 @@ getInitialState: function(){
   };
   return parkList;
  },
+updateExpInfoHeight: function(){
+    this.setState({
+      'expandedInfoHeight': $(".HeaderRoute").offset().top - ($(".openInfo").offset().top + $(".openInfo").outerHeight(true))
+    });
+}, 
  updateActiveCarousel: function(current){
   console.log("updated active carousel");
   this.setState({'activeCarousel': current});
  },
+
 
   createParkList: function() {
   var ParkState = this.state.parkName;
@@ -138,6 +168,7 @@ getInitialState: function(){
 
 
   render: function() {
+
     return (
 
       <div className="google-expando--wrap">

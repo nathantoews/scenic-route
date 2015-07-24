@@ -665,7 +665,12 @@ $google_expando_transition: (
   position:absolute;
   background-color:white;
   height: 0px;
-  max-height: 43vh;
+
+  /*
+    Limit max-height via JS to: 
+    $(".HeaderRoute").offset().top - ($(".openInfo").offset().top + $(".openInfo").outerHeight(true)) 
+  */
+
   width:100%;
   padding:0% 5%;
     h4 {
