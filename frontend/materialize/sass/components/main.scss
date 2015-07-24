@@ -204,6 +204,10 @@ span.twitter-typeahead{
   }
 }
 
+#turnList{
+  z-index: 50;
+}
+
 .turnDirect {
   height:90%;
   ul {
@@ -660,7 +664,8 @@ $google_expando_transition: (
   display:none;
   position:absolute;
   background-color:white;
-  height:0px;
+  height: 0px;
+  max-height: 43vh;
   width:100%;
   padding:0% 5%;
     h4 {
