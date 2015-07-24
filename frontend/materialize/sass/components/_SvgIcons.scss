@@ -185,24 +185,25 @@
 
 .openInfo {
   z-index:10000000000;
-  // -ms-transform: rotate(180deg); /* IE 9 */
-  // -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  // transform: rotate(180deg);
+  position:absolute;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
   background-image:url('../img/svg/downChev.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:10%;
-  height:30px;
-  margin-top:30px;  
+  width:100%;
+  height:15px;
 }
 
 .openInfo.active {
   z-index:10000000;
+  position:absolute;
   background-image:url('../img/svg/downChev.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:10%;
-  height:30px;
+  width:100%;
+  height:15px;
   -ms-transform: rotate(0deg); /* IE 9 */
   -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
   transform: rotate(0deg);
@@ -224,7 +225,9 @@
 }
 
 .noParkImg {
-  background-image:url('../img/svg/logo.svg');
+  width:100%;
+  height:200px;
+  background-image:url('../img/svg/noPark.svg');
   background-size:100% 100%;
   background-position:50%;
   z-index:50;

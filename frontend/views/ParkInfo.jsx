@@ -84,55 +84,55 @@ var ParkCarousel = React.createClass({
 
 var ParkTab = React.createClass({
 
-	componentDidMount: function(){
-		    ScenicStore.addChangeListener(this._onChange);
-	    console.log(ScenicStore.getSessionState().activePath);
-  	},
+  componentDidMount: function(){
+        ScenicStore.addChangeListener(this._onChange);
+      console.log(ScenicStore.getSessionState().activePath);
+    },
 
 
 getInitialState: function(){
-	var parkList = {
+  var parkList = {
     activeCarousel: 0, 
-		parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info : [],
-		parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
-		parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
+    parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info : [],
+    parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
+    parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
     currentFac: (ScenicStore.getSessionState().activePath) ? this.state.parkFac[this.state.activeCarousel] : [],
     currentPic: (ScenicStore.getSessionState().activePath) ? this.state.parkPic[this.state.activeCarousel] : []
-	};
-	return parkList;
+  };
+  return parkList;
  },
  updateActiveCarousel: function(current){
   console.log("updated active carousel");
   this.setState({'activeCarousel': current});
  },
 
- 	createParkList: function() {
- 	var ParkState = this.state.parkName;
- 	var updatedStateProp = {
- 		parkName: ParkState.map(function(row, i){
+  createParkList: function() {
+  var ParkState = this.state.parkName;
+  var updatedStateProp = {
+    parkName: ParkState.map(function(row, i){
                       return (
                         <h3 dangerouslySetInnerHTML={{__html:row.parks}}>
                         </h3>
                       )
                   }
               ),
- 		}
-	this.setState(updatedStateProp);
+    }
+  this.setState(updatedStateProp);
     },
 
-	_onChange: function(){
-		this.setState({
+  _onChange: function(){
+    this.setState({
       activeCarousel: ScenicStore.getSessionState().activeCarousel,
-			parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
-			parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
-			parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [], 
+      parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
+      parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
+      parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [], 
       currentFac: (ScenicStore.getSessionState().activePath) ? this.state.parkFac[this.state.activeCarousel] : [],
       currentPic: (ScenicStore.getSessionState().activePath) ? this.state.parkPic[this.state.activeCarousel] : []
-		      });  
-		console.log(ScenicStore.getSessionState().activePath);
-		this.createParkList();
+          });  
+    console.log(ScenicStore.getSessionState().activePath);
+    this.createParkList();
     window.myParkState = this.state;
-	},
+  },
 
 
 
@@ -143,17 +143,17 @@ getInitialState: function(){
       <div className="google-expando--wrap">
         <div className="google-expando">
           <div className="google-expando__icon parkBtn">
-          	<span className="visuallyhidden" aria-hidden="true">Expand Card</span>
+            <span className="visuallyhidden" aria-hidden="true">Expand Card</span>
           </div>
 
           <div className="google-expando__card" aria-hidden="true">
             
             {this.state.parkName.length ? <ParkCarousel updateActiveCarousel={this.updateActiveCarousel}/> : false}
 
-          	<div className="openInfo"></div>
-          	<div className="expandedInfo">
-          		<ul>
-          			<h4>i'm going to see</h4>
+            <div className="openInfo"></div>
+            <div className="expandedInfo">
+              <ul>
+                <h4>i'm going to see</h4>
                 {
                   (this.state.parkFac && this.state.parkFac[this.state.activeCarousel]) ? 
                   this.state.parkFac[this.state.activeCarousel].map(function(it){
@@ -167,14 +167,14 @@ getInitialState: function(){
                 : 
                   false
                 }
-          		</ul>
-          		<h4>photos taken here</h4>
-          		<div className="row imgGrid">
+              </ul>
+              <h4>photos taken here</h4>
+              <div className="row imgGrid">
                 {
                   (this.state.parkPic && this.state.parkPic[this.state.activeCarousel]) ? 
                   this.state.parkPic[this.state.activeCarousel].map(function(it){
                     if (it == "NULL"){
-                      return <div className="noParkImg">No images here!</div>  
+                      return <div className="noParkImg"></div>  
                     }
                     else{
                       var divStyle = {
@@ -186,8 +186,8 @@ getInitialState: function(){
                 : 
                   false
                 }
-          		</div>
-          	</div>
+              </div>
+            </div>
           </div>
 
         </div>
