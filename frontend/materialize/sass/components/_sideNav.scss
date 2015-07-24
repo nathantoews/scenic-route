@@ -29,16 +29,8 @@
 
   li {
     float: none;
-    padding: 0 15px;
+
     &:hover, &.active { background-color: #ddd; }
-  }
-  a {
-    color: #444;
-    display: block;
-    font-size: 1rem;
-    height: 64px;
-    line-height: 64px;
-    padding: 0 15px;
   }
 }
 
@@ -104,7 +96,6 @@
   right: 0;
 
   height: 120vh;
-  background-color: rgba(0,0,0,.5);
   z-index: 997;
 
   will-change: opacity;

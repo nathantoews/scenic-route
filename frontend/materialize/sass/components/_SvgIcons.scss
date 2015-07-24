@@ -233,10 +233,34 @@
   z-index:50;
 }
 
-// .svg-route-switch {
-//   background-image:url('../images/icons/svgs/alerts/Blue_Alert_Icon.svg');
-// }
+.restart {
+  width:25px;
+  height:25px;
+  background-image:url('../img/svg/restart.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  transform:translate(0, 50%);
 
-// .svg-loop-switch {
-//   background-image:url('../images/icons/svgs/alerts/Red_Alert_Icon.svg');
-// }
+}
+
+.star {
+  width:25px;
+  height:25px;
+  background-image:url('../img/svg/star.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  transform:translate(0, 50%);
+
+}
+
+
+.share {
+  width:25px;
+  height:25px;
+  background-image:url('../img/svg/share.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  transform:translate(0, 50%);
+}
+
+

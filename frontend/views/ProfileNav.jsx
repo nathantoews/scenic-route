@@ -41,16 +41,32 @@ var ProfileNav = React.createClass({
   loginButtons: function(){
     // $ syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
     return ([
-        <li>
-          <a href={`${config.api_url}/auth/google`} className="waves-effect waves-light btn-flat">
-            <i className="fa fa-google right"></i>google
-          </a>
-        </li>,
-        <li>
-          <a href={`${config.api_url}/auth/facebook`} className="waves-effect waves-light btn-flat">
-            <i className="fa fa-facebook-official right"></i>facebook
-          </a>
-        </li>
+      <div className="menuStyles">
+
+        <div className="loginSection">
+          <li>
+            <a href={`${config.api_url}/auth/google`} className="btn-facebook">
+              <i className="fa fa-facebook-official left"></i>sign in with facebook</a>
+          </li>
+          <li>
+            <a href={`${config.api_url}/auth/facebook`} className="btn-google">
+              <i className="fa fa-google left"></i>sign in with google</a>
+          </li>
+        </div>
+
+        <div className="profileOpt">
+          <li><a><i className="restart left"></i>restart route</a></li>
+          <li><a><i className="star left"></i>favourited routes</a></li>
+          <li><a><i className="share left"></i>share</a></li>
+        </div>
+
+        <div className="footer">
+          <li><a>faq's</a></li>
+          <li><a>about</a></li>
+          <li><a>tutorial</a></li>
+          <li><a>privacy</a></li>
+        </div>
+      </div>
     ])
   },
   authButtons: function(){

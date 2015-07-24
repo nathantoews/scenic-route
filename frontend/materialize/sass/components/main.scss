@@ -508,6 +508,77 @@ span.twitter-typeahead{
   }
 }
 
+.btn-facebook{
+  color:#fff;
+  width:100%;
+  font-weight:100;
+  font-family:Roboto;
+  background-color:#527ebb;
+  box-shadow-bottom:#3a5d87;
+  border-radius: 5px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  vertical-align: middle;
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+
+  .fa {
+    transform:translate(0, 100%)
+  }
+
+  &:hover {
+    background-color:#3a5d87;;
+  }
+}
+
+
+.btn-google {
+  color:#fff;
+  width:100%;
+  font-weight:100;
+  font-family:Roboto;
+  background-color:#e85749;
+  box-shadow-bottom:#d82908;
+  border-radius: 5px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  vertical-align: middle;
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+
+    .fa {
+    transform:translate(0, 100%)
+  }
+
+  &:hover {
+    background-color:#d82908;
+  }
+}
+
+.menuStyles {
+  padding:20px;
+}
+
+.loginSection {
+  border-bottom:2px solid $text-color;
+}
+
+.profileOpt {
+  color:$primary-color;
+  border-bottom:2px solid $text-color;
+}
+
+.footer {
+  color:$primary-color;
+}
+
+
+
+
 // styles for form active ///////////////////////////////////
 
   label.active {
@@ -676,7 +747,7 @@ $google_expando_transition: (
     h4 {
       text-align:center;
       margin-bottom:5%;
-      font-size:1.5rem;
+      font-size:1.2rem;
       font-family:Roboto-Slab;
       color:$text-color;
       font-weight:600 !important;
@@ -726,7 +797,9 @@ hr {
 
     h3 {
       margin:0;
-      font-size:1.8rem;
+      line-height:130%;
+      // white-space: nowrap;
+      font-size:1.4rem;
       font-family:Roboto-Slab;
       color:$secondary-color;
       font-weight:600 !important;
