@@ -84,15 +84,15 @@
 //   }
 // }
 
+#sidenav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* must be - the height of .side-nav  */
+  width: calc(100% - 240px);
+  height: 120vh;
+  z-index: 997;
 
-// #sidenav-overlay {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-
-//   height: 120vh;
-//   z-index: 997;
-
-//   will-change: opacity;
-// }
+  will-change: opacity;
+}

@@ -39,7 +39,7 @@ var Body = React.createClass({
     render: function(){ 
       return (
 			<div id='containerRow' className="row">
-				<ProfileNav/>
+				<ProfileNav />
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
 				<MapView layout={this.state.layout.map} />
 				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} /> 

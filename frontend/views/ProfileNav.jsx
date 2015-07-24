@@ -4,7 +4,7 @@ var config = require('../config.js');
 function readCookie(name) {
     var value = (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
     console.log('cookie value', value);
-    return (value == null) ? false : decodeURI(value);
+    return (value == null) ? false : decodeURIComponent(value);
 }
 
 var ProfileNav = React.createClass({
@@ -12,11 +12,23 @@ var ProfileNav = React.createClass({
     return (this.props.passport && Object.keys(this.props.passport).length); 
   },
   componentDidMount: function(){
-    console.log("Mounted");
     var auth = readCookie('authenticated');
     console.log(auth);
-    var authState = (auth) ? { auth : true } : { auth : false };
-    this.setState(authState);
+
+    if (auth){
+      this.setState({
+        auth: true,
+        authId: readCookie('authId'),
+        type: readCookie('type'),
+        displayName: readCookie('displayName'),
+        profileUrl: readCookie('profileUrl') // returns false if no picture
+      })
+    }else{
+      this.setState({ auth : false });
+    }
+    console.log("window", window);
+    window.hello = this.state;
+    console.log("this state", this.state);
   }, 
   clearCookies: function(){
     document.cookie = 'authenticated' + '=; Max-Age=0';
@@ -27,7 +39,7 @@ var ProfileNav = React.createClass({
     return([
         <li>
           <a className="waves-effect waves-light btn-flat">
-
+          {this.state.displayName}
           </a>
         </li>,
         <li>
@@ -71,7 +83,7 @@ var ProfileNav = React.createClass({
         <hr></hr>
 
         <div className="footer">
-          <li><a>faq's</a></li>
+          <li><a>faq</a></li>
           <li><a>about</a></li>
           <li><a>tutorial</a></li>
           <li><a>privacy</a></li>

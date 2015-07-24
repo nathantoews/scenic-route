@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost:27017/scenic');
 
 app.get('/users', function(req,res){
 	User.find().exec(function(err,suc){
+		console.log(suc);
 		res.send(suc);
 	});
 });

@@ -29,6 +29,7 @@ passport.deserializeUser(function(obj, done) {
 
 
 passport.use(new fb({
+	 profileFields: ['id', 'displayName', 'photos'],
 	 clientID: auth.facebook.clientID,
 	 clientSecret: auth.facebook.clientSecret,
 	 callbackURL: auth.facebook.callbackURL
@@ -69,7 +70,18 @@ app.get('/auth/facebook/callback',
 	    console.log('we b logged in!')
 	    console.dir(req.user)
 	    res.cookie('authenticated', 'true', { maxAge: 60 * 1000 });
+	    res.cookie('authId', req.user.id, { maxAge: 60 * 1000 });
+	    res.cookie('type','fb',{ maxAge: 60 * 1000 });
 	    res.cookie('displayName', req.user.displayName, { maxAge: 60 * 1000 });
+
+	    /*
+		 * Check for if the user has 0 pictures?
+	     */
+
+	    if (req.user._json.picture.data.is_silhouette == false){
+	    	res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 60 * 1000 });
+	    }
+
 	    res.redirect('http://localhost:3001');
 	}
 );
@@ -85,7 +97,14 @@ app.get('/auth/google/callback',
     console.log('google: authenticated, cookies sent.');
     console.dir(req.user)	
     res.cookie('authenticated', 'true', { maxAge: 60 * 1000 });
+    res.cookie('authId', req.user.id, { maxAge: 60 * 1000 });
+    res.cookie('type','google',{ maxAge: 60 * 1000 });    
    	res.cookie('displayName', req.user.displayName, { maxAge: 60 * 1000 });
+	
+	if (!req.user._json.image.isDefault){
+		res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 60 * 1000 });
+	}
+
     res.redirect('http://localhost:3001');
  });
 
