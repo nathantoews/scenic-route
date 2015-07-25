@@ -378,6 +378,7 @@ var Navigate = {
     $.get(Navigate.buildGreenifyURL(), function(results,err){
         console.log("Hit Greenify API", results);
 
+        // Do the click handler stuff here...
         results.results = results.results.slice(-3);
         Actions.setGreenpoints(results);
         // console.log("Inspect _routesInfo");
@@ -388,6 +389,9 @@ var Navigate = {
             window._paths = paths;
             console.log(array);
             console.log(paths);
+            Actions.setDirectionsState(true);
+
+            window.map.invalidateSize();
             // Get the bounds of the longest route.
             var bounds = paths[2].getBounds();
             window.map.fitBounds(bounds);          
@@ -400,7 +404,6 @@ var Navigate = {
             // Find a better place to put this?
 
             Actions.isLoading(false);           
-            Actions.setDirectionsState(true);
         })
     });
     return false;

@@ -186,27 +186,26 @@
 .openInfo {
   z-index:10000000000;
   position:absolute;
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-  background-image:url('../img/svg/downChev.svg');
-  background-size:100% 100%;
-  background-position:50%;
-  width:100%;
-  height:15px;
-}
-
-.openInfo.active {
-  z-index:10000000;
-  position:absolute;
-  background-image:url('../img/svg/downChev.svg');
-  background-size:100% 100%;
-  background-position:50%;
-  width:100%;
-  height:15px;
   -ms-transform: rotate(0deg); /* IE 9 */
   -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
   transform: rotate(0deg);
+  background-image:url('../img/svg/downChev.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  width:100%;
+  height:10px;
+}
+
+@media #{$small-and-down}{
+  .openInfo{
+    margin-top: 35px;
+  }
+}
+
+.openInfo.active {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
 }
 
 

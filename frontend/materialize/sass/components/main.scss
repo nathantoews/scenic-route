@@ -807,11 +807,22 @@ hr {
       margin:0;
       line-height:130%;
       // white-space: nowrap;
-      font-size:1.4rem;
+      font-size:2.5vh;
       font-family:Roboto-Slab;
       color:$secondary-color;
       font-weight:600 !important;
     }
+}
+
+
+.slider-frame{
+  width: auto !important;
+}
+#slider-list{
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .carouselNav{

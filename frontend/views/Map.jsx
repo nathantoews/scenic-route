@@ -57,9 +57,9 @@ var Map = React.createClass({
 		this.state.logoStyle = Classnames('logo', ScenicStore.getLayout().logoState);
 		this.state.startButtonStyle = Classnames('col s4 m4 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState);
 	},
-	componentDidUpdate: function(){
-		this.updateDimensions();
-	},
+	// componentDidUpdate: function(){
+	// 	this.updateDimensions();
+	// },
 	routeNav: function(evt) {
 		toggleFullScreen();
 		Actions.updateMenu('toggle');
