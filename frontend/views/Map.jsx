@@ -13,10 +13,10 @@ var Classnames = require('classnames');
 		var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
 		if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-		requestFullScreen.call(docEl);
+			requestFullScreen.call(docEl);
 		}
 		else {
-		cancelFullScreen.call(doc);
+			cancelFullScreen.call(doc);
 		}
 	}
 };

@@ -399,10 +399,8 @@ var Navigate = {
             drawMarkers();
             // Only for initialization.
             syncActivePath();
-            
             // Handle the state change. 
             // Find a better place to put this?
-
             Actions.isLoading(false);           
         })
     });

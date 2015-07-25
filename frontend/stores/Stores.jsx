@@ -41,6 +41,13 @@ var layout = {
   // logoState is added to the
   // start button as well as the logo
   logoState: "",
+  backBtnState: "hide",
+  burgerActivate:function(){
+    this.backBtnState = "burger";
+  },
+  burgerDeactivate: function(){
+    this.backBtnState = "hide";
+  },
   menuDeactivate: function(){
     this.map = "s12 m12 l12";
     this.nav = "hide";
