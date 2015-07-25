@@ -1,5 +1,9 @@
 var React = require('react');
+var Classnames = require('classnames');
 var config = require('../config.js');
+var Actions = require('../stores/Actions.jsx');
+var ScenicStore = require('../stores/Stores.jsx');
+
 
 function readCookie(name) {
     var value = (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
@@ -8,6 +12,11 @@ function readCookie(name) {
 }
 
 var ProfileNav = React.createClass({
+  getInitialState: function(){
+    return {
+      backBtn: Classnames(ScenicStore.getBackBtnState().css)
+    }
+  },
   validPassport: function(){ 
     return (this.props.passport && Object.keys(this.props.passport).length); 
   },
@@ -26,10 +35,15 @@ var ProfileNav = React.createClass({
     }else{
       this.setState({ auth : false });
     }
-    console.log("window", window);
-    window.hello = this.state;
-    console.log("this state", this.state);
+    ScenicStore.addChangeListener(this.updateBackBtn);
   }, 
+  updateBackBtn:function(){
+    this.setState({
+      // layout prop deails with right padding, 
+      // backBtnState deals with visibility of the button.
+      backBtn: Classnames(ScenicStore.getLayout().backBtn, ScenicStore.getBackBtnState().css)
+    })
+  },
   clearCookies: function(){
     document.cookie = 'authenticated' + '=; Max-Age=0';
     this.setState({auth: false});
@@ -84,7 +98,7 @@ var ProfileNav = React.createClass({
 
         <div className="footer">
           <li><a>faq</a></li>
-          <li><a>about</a></li>
+          <li><a onClick={Actions.setActivePage.bind(this,'aboutUs')}>about</a></li>
           <li><a>tutorial</a></li>
           <li><a>privacy</a></li>
         </div>
@@ -98,6 +112,11 @@ var ProfileNav = React.createClass({
   render: function() {
     return (
       <nav id='top-nav'>
+
+        <button id='backBtn' onClick={Actions.goBack.bind(this)} className={this.state.backBtn}>
+          BACK
+        </button>
+
         <ul id="slide-out" className="side-nav">
           {this.authButtons()}
           {this.profileButtons()}

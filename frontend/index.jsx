@@ -6,7 +6,10 @@ var SetupFlow = require('./views/SetupFlow.jsx');
 var RouteView = require('./views/RouteView.jsx');
 var ParkInfo = require('./views/ParkInfo.jsx');
 var MapView = require('./views/Map.jsx');
+var StaticPages = require('./views/StaticPages.jsx');
 var Loader = require('./views/Loader.jsx');
+
+
 var ScenicStore = require('./stores/Stores.jsx');
 var Actions = require('./stores/Actions.jsx');
 var Body = React.createClass({
@@ -19,15 +22,6 @@ var Body = React.createClass({
 			layout: ScenicStore.getLayout(),
 			test: ScenicStore.getData()
 		};
-	},
-	isLoading: function(loading){
-		// Actions.isLoading()
-		// var _newState = {
-		// 	showLoader:loading
-		// };
-		// this.setState(_newState);
-		// console.log(this.state.showLoader);
-		// window.blatt = this.state.showLoader;
 	},
 	componentDidMount: function(){
 		window.mystate = this.state;
@@ -44,6 +38,7 @@ var Body = React.createClass({
 				<MapView layout={this.state.layout.map} />
 				<Loader stateClass={ (this.state.hideLoader) ? '' : 'hidden'} /> 
 				<RouteView />
+				<StaticPages />
             </div>
       );
     },

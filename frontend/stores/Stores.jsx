@@ -41,26 +41,25 @@ var layout = {
   // logoState is added to the
   // start button as well as the logo
   logoState: "",
-  backBtnState: "hide",
-  burgerActivate:function(){
-    this.backBtnState = "burger";
-  },
-  burgerDeactivate: function(){
-    this.backBtnState = "hide";
-  },
+  backBtn: "",
+  containerMask: "",
   menuDeactivate: function(){
     this.map = "s12 m12 l12";
     this.nav = "hide";
     this.state = "inactive";
     /* Not sure about this? */
     this.directions = "";
+    this.backBtn = "";
+    this.containerMask = "containerMask";    
   },
   menuActivate: function(){
     this.map = "hide-on-small-and-down m7 l8";
-    this.nav = "l4 m5 s12";
+    this.nav = "l4 m12 s12";
     this.state = "active";
     this.directions = "hide";
     this.logoState = "hide";
+    this.backBtn = "pushRight";
+    this.containerMask = "containerMask";
   },
   menuToggle: function(){
     if (this.state == "active"){ 
@@ -87,7 +86,31 @@ var layout = {
   }
 };
 
-window._layout = layout;
+/*
+ * Contains the activePage prop
+ * associated with the StaticPages
+ */
+var activePage = null;
+var backBtn = {
+   css : "hide",
+   states: [],
+   //_page can either be static 
+   // another type of back button
+   // navigation
+   pushState: function(_page){
+    this.states.push(_page);
+    this.css = "";
+   },
+   popState: function(){
+    var popped = this.states.pop();
+    if (popped && (popped=='static')){
+      activePage = null;  
+    }
+    if (this.states.length == 0){
+      this.css = "hide"
+    }
+   }
+}
 
 var ScenicStore = assign({}, EventEmitter.prototype, {
   /**
@@ -99,6 +122,12 @@ var ScenicStore = assign({}, EventEmitter.prototype, {
   },
   getSessionState: function(){
     return sessionState;
+  },
+  getActivePage: function(){
+    return activePage;
+  },
+  getBackBtnState: function(){
+    return backBtn;
   },
   getLayout: function(){
     return layout;
@@ -190,6 +219,16 @@ Dispatcher.register(function(payload) {
         ScenicStore.emitChange();
         console.log("Updated Active Path.");
         break;
+      case 'setActivePage':
+        activePage = payload.activePage;
+        backBtn.pushState('static');
+        ScenicStore.emitChange();
+        break;
+      case 'goBack':
+        backBtn.popState();
+        ScenicStore.emitChange();
+        break;
+
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
     return true; // No errors. Needed by promise in Dispatcher.

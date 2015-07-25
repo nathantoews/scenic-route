@@ -68,7 +68,7 @@ var RouteView = React.createClass({
           travelDist: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.distance : null,
           travelDest: null,
           turns: null,
-          directionsState: Classnames('card','col','l3','m5','s12',ScenicStore.getLayout().directions)
+          directionsState: Classnames('card','col','l3','m12','s12',ScenicStore.getLayout().directions)
         };
         return listItem;
   },
@@ -142,7 +142,7 @@ var RouteView = React.createClass({
                      travelTime: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.duration : null,
                      travelDist: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.formatted.distance : null,
                      travelDest: ScenicStore.getSessionState().destinationName,
-                     directionsState: Classnames('card','col','l3','m5','s12',ScenicStore.getLayout().directions)                   
+                     directionsState: Classnames('card','col','l3','m12','s12',ScenicStore.getLayout().directions)                   
                   });  
     console.log('Invoking createList to update the list.');
     this.createList();

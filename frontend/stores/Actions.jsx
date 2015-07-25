@@ -71,6 +71,20 @@ var ScenicActions = {
       actionType: 'isLoading',
       isLoading: _isLoading
     });
+  },
+  setActivePage: function(_activePage){
+    console.log('setActivePage');
+    console.log(_activePage);
+    Dispatcher.dispatch({
+      actionType: 'setActivePage',
+      activePage: _activePage
+    })
+    $('#sidenav-overlay').trigger('click');
+  },
+  goBack: function(){
+    Dispatcher.dispatch({
+      actionType: 'goBack'
+    })
   }
 };
 
