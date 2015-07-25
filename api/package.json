@@ -4,6 +4,8 @@
   "description": "branch out!",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
     "express": "^4.12.4",
     "express-session": "^1.11.3",
     "mongodb": "^2.0.34",

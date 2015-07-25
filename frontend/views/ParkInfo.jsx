@@ -87,8 +87,6 @@ var ParkTab = React.createClass({
   componentDidMount: function(){
         ScenicStore.addChangeListener(this._onChange);
         $(document).on('click','#routeInfo .activator', this.closeParkInfo);
-        $(document).on('click','.parkBtn', this.closeDirections);
-
     },
     closeParkInfo: function(){
       // Use Observer - Listener so we do not DRY.
@@ -173,7 +171,7 @@ updateExpInfoHeight: function(){
 
       <div className="google-expando--wrap">
         <div className="google-expando">
-          <div className="google-expando__icon parkBtn">
+          <div onClick={this.closeDirections} className="google-expando__icon parkBtn">
             <span className="visuallyhidden" aria-hidden="true">Expand Card</span>
           </div>
 

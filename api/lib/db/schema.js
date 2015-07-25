@@ -17,7 +17,8 @@ var Schemas = {
 			created: { 
 				type: Date, 
 				default: Date.now 
-			}
+			},
+			routes: []
 		}
 	) 
 };

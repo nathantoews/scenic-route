@@ -60,10 +60,12 @@ componentDidMount: function(){
       },
   });
 
-  window.addEventListener('resize', function() {
-    this.initResizer();
-  }.bind(this));
+  window.addEventListener('resize', this.initResizer);
+
 },  
+componentWillUnmount: function(){
+  window.removeEventListener('resize', this.initResizer)
+},
 render: function() {
     return (
       <div className="row" id="timeSlider">

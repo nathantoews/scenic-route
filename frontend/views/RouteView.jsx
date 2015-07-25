@@ -6,6 +6,14 @@ var Actions = require('../stores/Actions.jsx');
 var ScenicStore = require('../stores/Stores.jsx');
 var ParkInfo = require('./ParkInfo.jsx');
 
+
+function readCookie(name) {
+    var value = (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+    console.log('cookie value', value);
+    return (value == null) ? false : decodeURIComponent(value);
+}
+
+
 var RouteView = React.createClass({
   componentDidMount: function(){
     console.log("Route View has Mounted!");
@@ -14,6 +22,44 @@ var RouteView = React.createClass({
 
     window.nateState = this.state;
 
+  },
+  // takes in an array of mapbox latLng objects and 
+  // converts to regular objects.
+  serializeLatLng: function(arrayLatLng){
+    var serialized = arrayLatLng.map(function(latLng){
+        return {lat: latLng.lat, lng: latLng.lng};
+    })
+    return serialized;
+  },
+  favouriteRoute: function(){
+    if (readCookie('authenticated') == false){
+      alert('must be logged in to favourite!');
+      return;
+    }
+
+    var pkg = {
+      authId: parseFloat(readCookie('authId')),
+      type: readCookie('type'),
+      route: {
+        destinationName: ScenicStore.getSessionState().destinationName,
+        latLngs: this.serializeLatLng(ScenicStore.getSessionState().activePath._latlngs),
+        formatted: ScenicStore.getSessionState().activePath.formatted, 
+        info: ScenicStore.getSessionState().activePath.info
+      }
+    };  
+    console.log("this is my shit");
+    console.log(pkg);
+   $.ajax
+    ({
+        type: "POST",
+        url: 'http://localhost:3000/save-route',
+        dataType: 'json',
+        //json object to sent to the authentication url
+        data: pkg,
+        success: function () {
+          alert("Thanks!"); 
+        }
+    })    
   },
   getInitialState: function(){
     var listItem = {
@@ -124,7 +170,7 @@ var RouteView = React.createClass({
                 </li>
               </ul>
           </div>
-          <div className="favorite"></div>
+          <div onClick={this.favouriteRoute} className="favorite"></div>
         </div>
 
         <div id="turnList" className='card-reveal'>
@@ -143,7 +189,7 @@ var RouteView = React.createClass({
                 </li>
               </ul>
           </div>
-          <div className="favorite"></div>
+          <div onClick={this.favouriteRoute} className="favorite"></div>
           </div>
           <div className="turnDirect">
           {this.state.turns}

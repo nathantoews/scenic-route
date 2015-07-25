@@ -814,34 +814,44 @@ hr {
     }
 }
 
+.carouselNav{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 
+.absolute-center{
+  // nuka-carousel attempts to put top 50% on it.
+  top: 0 !important;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
-.slider-decorator-0 button{
+.slider-decorator-0 {
+  @extend .absolute-center;
+
   background-color:#fff;
   background-image:url('../img/svg/downChev.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:50%;
-  height:100%;
-  -ms-transform: rotate(90deg); /* IE 9 */
-  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  transform: rotate(90deg);
+  width:20px;
+  height:20px;
     :focus {
     background-color:#fff;
   }
 
 }
 
-.slider-decorator-1 button {
+.slider-decorator-1 {
+  @extend .absolute-center;
+
   background-color:#fff;
   background-image:url('../img/svg/downChev.svg');
   background-size:100% 100%;
   background-position:50%;
-  width:50%;
-  height:100%;
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-  transform: rotate(-90deg);
+  width:20px;
+  height:20px;
 
     button:selected {
     background-color:#fff;
