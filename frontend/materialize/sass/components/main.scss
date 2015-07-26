@@ -906,13 +906,24 @@ hr {
   margin-left: 50px;
 }
 #backBtn{
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(90deg);
+  background: url("../img/svg/downChev.svg") no-repeat !important;
   z-index: 1;
-  height: $navbar-height;
+
+  width: 25px;  
+  height: 25px;
+  top: 15px;
+  
   position: absolute;  
+  &:hover{
+    cursor: pointer;
+  }
 }
 @media #{$small-and-down}{
   #backBtn{
-    height: $navbar-height-mobile;
+    height: 25px;
   }  
 }
 

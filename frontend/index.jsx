@@ -34,9 +34,7 @@ var Body = React.createClass({
     render: function(){ 
       return (
 			<div id='containerRow' className="row">
-		        <button id='backBtn' onClick={Actions.goBack} className={this.state.backBtn}>
-		          BACK
-		        </button>  			
+		        <div id='backBtn' onClick={Actions.goBack} className={this.state.backBtn}></div>  			
 				<ProfileNav />
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
 				<MapView layout={this.state.layout.map} />
