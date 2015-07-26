@@ -199,9 +199,10 @@ function formatDistanceRaw(_distance){
 }
 
 function formatRouteInfo(_duration, _distance){
-  var durationInfo = formatDuration(_duration);
-  var distanceInfo = formatDistance(_distance);
-  return durationInfo + ' | ' + distanceInfo;
+  // var durationInfo = formatDuration(_duration);
+  // var distanceInfo = formatDistance(_distance);
+  // return durationInfo + ' | ' + distanceInfo;
+  return formatDuration(_duration);
 }
 
 function fetchData(callback) {
@@ -244,6 +245,7 @@ function fetchData(callback) {
                 };
                 path.steps = routesInfo.routes[0].steps;
                 path.info = ScenicStore.getSessionState().greenpoints.results[index];
+                path.transit = ScenicStore.getSessionState().transit;
                 
                 /* REFACTOR */
                 Actions.setSessionState('steps', path.steps);      
@@ -328,7 +330,7 @@ var Navigate = {
     var greenpoints = ScenicStore.getSessionState().greenpoints;
 
     var api = "https://api.tiles.mapbox.com/v4/directions/";
-    api += 'mapbox.walking';
+    api += 'mapbox.' + ScenicStore.getSessionState().transit;
     api += '/';
     api += origin.latLng.lng + ',' + origin.latLng.lat + ';';
     // Affix green waypoints here!
@@ -425,6 +427,13 @@ $(document).on('click','.leaflet-popup',function(){
     return;
   }
 });
+
+$(document).on('click','.routeChoice', function(){
+  var activePathIndex = parseFloat($('.activePath').attr('route'));
+  $("[route]").not("[route="+ activePathIndex +"]").fadeOut();
+  // Center the selected route.
+  window.map.fitBounds(paths[activePathIndex].getBounds())
+})
 
 
 

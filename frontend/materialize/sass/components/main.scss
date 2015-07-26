@@ -878,7 +878,7 @@ hr {
   height: 100%;
   position: absolute;
   background: white;
-  z-index: 2;
+  z-index: 5;
   -webkit-transition: width 2s;
   transition: width 2s;
 }
@@ -901,12 +901,20 @@ hr {
 }  
 
 
-
-
+/* Back Button Styles */
 .pushRight{
   margin-left: 50px;
 }
-
+#backBtn{
+  z-index: 1;
+  height: $navbar-height;
+  position: absolute;  
+}
+@media #{$small-and-down}{
+  #backBtn{
+    height: $navbar-height-mobile;
+  }  
+}
 
 
 

@@ -20,7 +20,8 @@ var Body = React.createClass({
 		return {
 			hideLoader: ScenicStore.getSessionState().isLoading,
 			layout: ScenicStore.getLayout(),
-			test: ScenicStore.getData()
+			test: ScenicStore.getData(),
+			backBtn: Classnames(ScenicStore.getBackBtnState().css)			
 		};
 	},
 	componentDidMount: function(){
@@ -33,6 +34,9 @@ var Body = React.createClass({
     render: function(){ 
       return (
 			<div id='containerRow' className="row">
+		        <button id='backBtn' onClick={Actions.goBack.bind(this)} className={this.state.backBtn}>
+		          BACK
+		        </button>  			
 				<ProfileNav />
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
 				<MapView layout={this.state.layout.map} />
@@ -54,6 +58,11 @@ var Body = React.createClass({
     	this.setState({hideLoader: ScenicStore.getSessionState().isLoading});
     	// Set Updated Layouts State
     	this.setState({layout: ScenicStore.getLayout()});
+	    this.setState({
+	      // layout prop deails with right padding, 
+	      // backBtnState deals with visibility of the button.
+	      backBtn: Classnames(ScenicStore.getLayout().backBtn, ScenicStore.getBackBtnState().css)
+	    })    	
     }
 });
  

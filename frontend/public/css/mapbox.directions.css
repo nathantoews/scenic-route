@@ -277,11 +277,11 @@ path.leaflet-clickable {
 }
 
 path.activePath{
-    stroke: #f36d85;
+    stroke: #38d09f;    
     stroke-opacity:1;
 }
 path.inactivePath{
-    stroke: #38d09f;
+    stroke: #f36d85;
     stroke-opacity:0.5;
 }
 

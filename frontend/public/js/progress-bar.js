@@ -38,7 +38,7 @@
     };
 
     function addBike(_Actions, clickEvent){
-      _Actions.setTransitMode('bicycling');
+      _Actions.setTransitMode('cycling');
       console.log("Mode set to cycling");
       $(".progress-point.active").addClass('bikeProg').removeClass('walkProg');
       $("#travelType").removeClass("disabled");

@@ -44,6 +44,7 @@ var RouteView = React.createClass({
         destinationName: ScenicStore.getSessionState().destinationName,
         latLngs: this.serializeLatLng(ScenicStore.getSessionState().activePath._latlngs),
         formatted: ScenicStore.getSessionState().activePath.formatted, 
+        transit: ScenicStore.getSessionState().activePath.transit,
         info: ScenicStore.getSessionState().activePath.info
       }
     };  

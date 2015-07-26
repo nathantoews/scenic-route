@@ -50,7 +50,7 @@ var layout = {
     /* Not sure about this? */
     this.directions = "";
     this.backBtn = "";
-    this.containerMask = "containerMask";    
+    this.containerMask = "";    
   },
   menuActivate: function(){
     this.map = "hide-on-small-and-down m7 l8";

@@ -12,11 +12,6 @@ function readCookie(name) {
 }
 
 var ProfileNav = React.createClass({
-  getInitialState: function(){
-    return {
-      backBtn: Classnames(ScenicStore.getBackBtnState().css)
-    }
-  },
   validPassport: function(){ 
     return (this.props.passport && Object.keys(this.props.passport).length); 
   },
@@ -35,15 +30,7 @@ var ProfileNav = React.createClass({
     }else{
       this.setState({ auth : false });
     }
-    ScenicStore.addChangeListener(this.updateBackBtn);
   }, 
-  updateBackBtn:function(){
-    this.setState({
-      // layout prop deails with right padding, 
-      // backBtnState deals with visibility of the button.
-      backBtn: Classnames(ScenicStore.getLayout().backBtn, ScenicStore.getBackBtnState().css)
-    })
-  },
   clearCookies: function(){
     document.cookie = 'authenticated' + '=; Max-Age=0';
     this.setState({auth: false});
@@ -111,12 +98,7 @@ var ProfileNav = React.createClass({
   },
   render: function() {
     return (
-      <nav id='top-nav'>
-
-        <button id='backBtn' onClick={Actions.goBack.bind(this)} className={this.state.backBtn}>
-          BACK
-        </button>
-
+      <nav id='top-nav'>    
         <ul id="slide-out" className="side-nav">
           {this.authButtons()}
           {this.profileButtons()}
