@@ -28,6 +28,8 @@ var sessionState = {
   'activeCarousel': 0
 };
 
+
+
 /*
  * Toggling CSS classes based on whether
  * the side-menu is active.
@@ -56,8 +58,10 @@ var layout = {
     this.map = "hide-on-small-and-down m7 l8";
     this.nav = "l4 m12 s12";
     this.state = "active";
-    this.directions = "hide";
+    
     this.logoState = "hide";
+    
+    this.directions = "hide";    
     this.backBtn = "pushRight";
     this.containerMask = "containerMask";
   },
@@ -106,11 +110,16 @@ var backBtn = {
     if (popped && (popped=='static')){
       activePage = null;  
     }
+    else if (popped && (popped =='parkview')){
+      console.log("Popped Parkview!");
+      layout.directionsDeactivate();
+    }
     if (this.states.length == 0){
       this.css = "hide"
     }
    }
 }
+
 
 var ScenicStore = assign({}, EventEmitter.prototype, {
   /**
@@ -222,6 +231,10 @@ Dispatcher.register(function(payload) {
       case 'setActivePage':
         activePage = payload.activePage;
         backBtn.pushState('static');
+        ScenicStore.emitChange();
+        break;
+      case 'setParkMode':
+        backBtn.pushState('parkview');
         ScenicStore.emitChange();
         break;
       case 'goBack':

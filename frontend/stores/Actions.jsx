@@ -81,6 +81,12 @@ var ScenicActions = {
     })
     $('#sidenav-overlay').trigger('click');
   },
+  setParkMode: function(){
+    console.log('setParkMode');
+    Dispatcher.dispatch({
+      actionType: 'setParkMode'
+    })
+  },
   goBack: function(){
     Dispatcher.dispatch({
       actionType: 'goBack'

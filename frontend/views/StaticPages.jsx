@@ -8,7 +8,11 @@ var PageController = React.createClass({
 	getInitialState: function(){
 		return {
 			'activePage': null,
-			'containerCSS': Classnames('staticPageContainer','hide', ScenicStore.getLayout().containerMask)
+			'containerCSS': Classnames(
+								'staticPageContainer',
+								'hide', 
+								ScenicStore.getLayout().containerMask
+							)
 		};
 	},	
 	aboutUs: function(){
@@ -25,10 +29,19 @@ var PageController = React.createClass({
 	},
 	updateActivePage: function(){
 		var containerCSS; 
-		if (!ScenicStore.getActivePage())
-			containerCSS = Classnames('staticPageContainer','hide', ScenicStore.getLayout().containerMask);
-		else
-			containerCSS = Classnames('staticPageContainer', ScenicStore.getLayout().containerMask);
+		if (!ScenicStore.getActivePage()){
+			containerCSS = Classnames(
+								'staticPageContainer',
+								'hide', 
+								ScenicStore.getLayout().containerMask
+							);
+		}
+		else{
+			containerCSS = Classnames(
+								'staticPageContainer', 
+								ScenicStore.getLayout().containerMask
+							);
+		}
 		
 		this.setState({
 			'activePage': ScenicStore.getActivePage(),

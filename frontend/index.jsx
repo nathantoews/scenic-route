@@ -34,7 +34,7 @@ var Body = React.createClass({
     render: function(){ 
       return (
 			<div id='containerRow' className="row">
-		        <button id='backBtn' onClick={Actions.goBack.bind(this)} className={this.state.backBtn}>
+		        <button id='backBtn' onClick={Actions.goBack} className={this.state.backBtn}>
 		          BACK
 		        </button>  			
 				<ProfileNav />
