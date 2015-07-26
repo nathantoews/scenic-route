@@ -20,12 +20,13 @@ var sessionState = {
   'routeTime':null,
   'routeDist':null,
   'routeDest':null,
+  'originName': null, 
   'destinationName': null,
   'activePath': null,
   // Default the "greenLevel" to 1.
   // Should be sent as 3*(1,2,3,4)
   'greenness': 1,
-  'activeCarousel': 0
+  'activeCarousel': 0,
 };
 
 
@@ -102,7 +103,8 @@ var backBtn = {
    // another type of back button
    // navigation
    pushState: function(_page){
-    this.states.push(_page);
+    if (this.states.indexOf(_page) == -1)
+      this.states.push(_page);
     this.css = "";
    },
    popState: function(){

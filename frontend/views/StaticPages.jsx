@@ -4,10 +4,18 @@ var Navigate = require('../stores/Navigate.jsx');
 var Actions = require('../stores/Actions.jsx');
 var ScenicStore = require('../stores/Stores.jsx');
 
+
+function readCookie(name) {
+    var value = (name = new RegExp('(?:^|;\\s*)' + ('' + name).replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + '=([^;]*)').exec(document.cookie)) && name[1];
+    console.log('cookie value', value);
+    return (value == null) ? false : decodeURIComponent(value);
+}
+
 var PageController = React.createClass({
 	getInitialState: function(){
 		return {
 			'activePage': null,
+			'saved': [],
 			'containerCSS': Classnames(
 								'staticPageContainer',
 								'hide', 
@@ -23,11 +31,30 @@ var PageController = React.createClass({
 			</div>
 		);
 	},	
+	savedRoutes: function(){
+		return (
+			<div className="viewContainer">
+			<h1>Saved Routes</h1>
+			{
+			    this.state.saved.map(function(route) {
+			    	console.log('ROUTE', route.originName)
+			        return  <div className='favouritedRoute'>
+								<div>{route.originName}</div>
+								<div>{route.destinationName}</div>
+								<div>{route.formatted.duration}</div>
+								<div>{route.formatted.distance}</div>
+								<button>Go!</button>
+							</div>
+				})
+			}	
+			</div>
+		);
+	},		
 	componentDidMount: function(){
 		window.hrr = this;
-		ScenicStore.addChangeListener(this.updateActivePage);
+		ScenicStore.addChangeListener(this.updateState);
 	},
-	updateActivePage: function(){
+	updateState: function(){
 		var containerCSS; 
 		if (!ScenicStore.getActivePage()){
 			containerCSS = Classnames(
@@ -43,10 +70,30 @@ var PageController = React.createClass({
 							);
 		}
 		
-		this.setState({
-			'activePage': ScenicStore.getActivePage(),
-			'containerCSS': containerCSS
-		})
+
+		console.log(ScenicStore.getActivePage());
+		console.log(readCookie('authenticated'));
+		if ((ScenicStore.getActivePage() == 'savedRoutes') && readCookie('authenticated')){
+			$.get("http://localhost:3000/favourite-routes", {
+				authId: parseFloat(readCookie('authId')), 
+				type: readCookie('type')
+			}, 
+			function(res, err){
+				console.log(res);
+				console.log(err);
+				this.setState({
+					'activePage': ScenicStore.getActivePage(),
+					'containerCSS': containerCSS,
+					'saved': res
+				})
+			}.bind(this));					
+		}
+		else{
+			this.setState({
+				'activePage': ScenicStore.getActivePage(),
+				'containerCSS': containerCSS,
+			})			
+		}
 	},		
 	render: function() {
 		return (

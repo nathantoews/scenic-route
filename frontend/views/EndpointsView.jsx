@@ -12,7 +12,7 @@ var Endpoints = React.createClass({
     return {
       "origin": {},
       "destination": {},
-      "greenpoints": []
+      "greenpoints": [],
     };
   },
   componentDidMount: function(){
@@ -21,38 +21,7 @@ var Endpoints = React.createClass({
       displayKey: 'description',
       source: Navigate.getSuggestions
     });
-    $('.typeahead').on('typeahead:selected', function(evt, obj){
-      console.log("capturing event");
-      var _stateChange = {};
-      geocoder.geocode({'placeId': obj.place_id}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            // Grab the most likely candidate for the reverse geocode lookup.
-            if (results[0]){
-              //setting store with destination sessions state////////////////
-              if (evt.target.id == 'destination') {
-                 var _Name = $('#destination.typeahead').typeahead('val');
-                 _Name = _Name.split(',', 1).join("");
-                Actions.setSessionState('destinationName', _Name );
-
-              }
-              // Modify the state value to represent the updated values.
-              // x.geometry.location returns a google.map.LatLng object
-              Actions.setSessionState(evt.target.id, {
-                "latLng": L.latLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
-              });
-            } else {
-              console.log('No results found');
-            }
-          } else {
-            console.log('Geocoder failed due to: ' + status);
-          }
-        }.bind(this));
-    }.bind(this));
   }, 
-  handleSubmit: function(e){
-
-    // return false;
-  },
   // Looks at the store state and decides whether
   // to show one or two inputs.
   routeInputs: function(){
@@ -62,8 +31,7 @@ var Endpoints = React.createClass({
         console.log("I'M LOOPING");
         return [
               <div className="input-field">
-                <input id="origin" type="text" placeholder="Looping From" className={inputClasses} />
-
+                <input id="origin" type="text" placeholder="Looping From" className={inputClasses} required/>
               </div>
         ];
       }
@@ -73,23 +41,66 @@ var Endpoints = React.createClass({
         return [
               <div className="input-field">
                 <div className="yourLoc"></div>
-                <input id="origin" type="text" placeholder="Home" className={inputClasses} />
-
+                <input id="origin" type="text" placeholder="Home" className={inputClasses} required/>
                 <label className="active" htmlFor="origin">Im starting here</label>
-
               </div>,
               <div className="input-field">
-                <input id="destination" type="text" placeholder="Critical Mass" className={inputClasses} />
+                <input id="destination" type="text" placeholder="Critical Mass" className={inputClasses} required/>
                 <label className="active" htmlFor="origin">Im going there</label>
-
               </div>
         ];        
       }
   },
   validate: function(){
-    // Ensure the inputs are filled in!
-    console.log("Ensure the inputs are filled in!");
-    addLoc();
+    var geocoder = new google.maps.Geocoder();    
+
+    var TorontoBbox = new google.maps.LatLngBounds(
+        new google.maps.LatLng(43.574896,-79.601904),
+        new google.maps.LatLng(43.856788, -79.167944)
+    );
+
+    var validated = true;
+    $('.distContainer input[required]').map(function(){
+        if (!this.value){
+          validated = false;
+        }
+        else{
+            var _value = this.value;
+            var _id = this.id;
+
+            geocoder.geocode({
+                address: this.value, 
+                bounds:  new google.maps.LatLngBounds(
+                      new google.maps.LatLng(43.574896,-79.601904),
+                      new google.maps.LatLng(43.856788, -79.167944)
+            )}, function(results, status){
+                        if (status == google.maps.GeocoderStatus.OK) {
+                          // Grab the most likely candidate for the reverse geocode lookup.
+                          if (results[0]){
+                            //setting store with destination sessions state////////////////
+                            var _Name = _value;
+                            _Name = _Name.split(',', 1).join("");
+                            Actions.setSessionState(_id + 'Name', _Name );
+                            // Modify the state value to represent the updated values.
+                            // x.geometry.location returns a google.map.LatLng object
+                            Actions.setSessionState(_id, {
+                              "latLng": L.latLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
+                            });
+                          } else {
+                            validated = false;
+                            alert('No results found for ' + _id);
+                          }
+                        }
+                })        
+            }
+    });
+    
+    if (validated)
+      addLoc(); 
+    else
+      alert('Form remains incomplete');
+
+    return false;
   },
   render: function() {
     return (

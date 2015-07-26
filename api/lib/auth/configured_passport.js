@@ -36,7 +36,7 @@ passport.use(new fb({
 	},
 	function(accessToken, refreshToken, profile, done) {
 		 process.nextTick(function () {
-		 	User.findOrCreate({authId: profile.id, type: 'fb', routes: []}, function(err, click, created){
+		 	User.findOrCreate({authId: profile.id, type: 'fb'}, function(err, click, created){
 		 		console.log("Was this created?", created);
 				console.log("Was there an error?", err);
 		 	})
@@ -50,7 +50,7 @@ passport.use(new google({
     callbackURL: auth.google.callbackURL
   },
   function(token, tokenSecret, profile, done) {
-    User.findOrCreate({ authId: profile.id, type: 'google', routes: [] }, function (err, click, created) {
+    User.findOrCreate({ authId: profile.id, type: 'google' }, function (err, click, created) {
     api_cache.push(profile);
       return done(err, profile);
     });

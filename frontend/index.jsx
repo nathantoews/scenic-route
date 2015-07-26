@@ -9,9 +9,9 @@ var MapView = require('./views/Map.jsx');
 var StaticPages = require('./views/StaticPages.jsx');
 var Loader = require('./views/Loader.jsx');
 
-
 var ScenicStore = require('./stores/Stores.jsx');
 var Actions = require('./stores/Actions.jsx');
+
 var Body = React.createClass({
 	getInitialState: function(){
 		console.log(ScenicStore);
@@ -59,7 +59,10 @@ var Body = React.createClass({
 	    this.setState({
 	      // layout prop deails with right padding, 
 	      // backBtnState deals with visibility of the button.
-	      backBtn: Classnames(ScenicStore.getLayout().backBtn, ScenicStore.getBackBtnState().css)
+	      backBtn: Classnames(
+	      	ScenicStore.getLayout().backBtn, 
+	      	ScenicStore.getBackBtnState().css
+	      )
 	    })    	
     }
 });

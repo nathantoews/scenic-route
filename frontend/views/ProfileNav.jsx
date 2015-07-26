@@ -16,6 +16,7 @@ var ProfileNav = React.createClass({
     return (this.props.passport && Object.keys(this.props.passport).length); 
   },
   componentDidMount: function(){
+
     var auth = readCookie('authenticated');
     console.log(auth);
 
@@ -25,7 +26,7 @@ var ProfileNav = React.createClass({
         authId: readCookie('authId'),
         type: readCookie('type'),
         displayName: readCookie('displayName'),
-        profileUrl: readCookie('profileUrl') // returns false if no picture
+        profileUrl: readCookie('profileUrl'), // returns false if no picture
       })
     }else{
       this.setState({ auth : false });
@@ -77,7 +78,7 @@ var ProfileNav = React.createClass({
       <div className="menuStyles">
       <div className="profileOpt">
           <li><a><i className="restart left"></i>restart route</a></li>
-          <li><a><i className="star left"></i>favourited routes</a></li>
+          <li><a onClick={Actions.setActivePage.bind(this,'savedRoutes')}><i className="star left"></i>favourited routes</a></li>
           <li><a><i className="share left"></i>share</a></li>
         </div>
 

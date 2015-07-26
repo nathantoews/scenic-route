@@ -41,8 +41,11 @@ var RouteView = React.createClass({
       authId: parseFloat(readCookie('authId')),
       type: readCookie('type'),
       route: {
+        loop: ScenicStore.getSessionState().loop,
+        originName: ScenicStore.getSessionState().originName, 
         destinationName: ScenicStore.getSessionState().destinationName,
         latLngs: this.serializeLatLng(ScenicStore.getSessionState().activePath._latlngs),
+        steps: ScenicStore.getSessionState().activePath.steps,
         formatted: ScenicStore.getSessionState().activePath.formatted, 
         transit: ScenicStore.getSessionState().activePath.transit,
         info: ScenicStore.getSessionState().activePath.info
