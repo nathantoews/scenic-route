@@ -88,7 +88,14 @@ var layout = {
       this.menuActivate();
       this.directions = "hide";
     }
-  }
+  }, 
+  initialized: function(){
+      console.log("IN INITIALIZED");
+      this.logoState = "hide";
+      this.state = "active";
+      this.directionsActivate();
+      console.log("DIRECTIONS ACTIVATED");
+  },
 };
 
 /*
@@ -243,7 +250,10 @@ Dispatcher.register(function(payload) {
         backBtn.popState();
         ScenicStore.emitChange();
         break;
-
+      case 'initialized': 
+        layout.initialized();
+        ScenicStore.emitChange();
+        break;
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
     return true; // No errors. Needed by promise in Dispatcher.

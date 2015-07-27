@@ -91,6 +91,11 @@ var ScenicActions = {
     Dispatcher.dispatch({
       actionType: 'goBack'
     })
+  },
+  initialized: function(){
+    Dispatcher.dispatch({
+      actionType: 'initialized'
+    })
   }
 };
 

@@ -445,6 +445,10 @@ var Navigate = {
         // Handle the state change. 
         Actions.setParkMode();
         Actions.isLoading(false);
+        // If you try and draw 
+        // a favourited route from here the following
+        // action will handle the state changes.
+        Actions.initialized();
         setTimeout(window.map.invalidateSize, 5);
         
     }, 1)
