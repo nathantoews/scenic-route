@@ -205,11 +205,11 @@ function formatRouteInfo(_duration, _distance){
   return formatDuration(_duration);
 }
 
-function fetchData(callback) {
+function fetchData(callback, pathLength) {
     var requests = [];
     // Prepare paths for re-use.
     paths = clearDrawnRoutes();
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < pathLength; i++) {
         // JavaScript Closures: http://www.mennovanslooten.nl/blog/post/62
         (function(index){
             var mapboxCallback = function(routesInfo, err){
@@ -278,6 +278,7 @@ function fetchData(callback) {
 }
 
 
+
 var Navigate = {
   /**
    * @param  {string} query
@@ -321,17 +322,28 @@ var Navigate = {
   buildMapboxDirectionsURL: function(item){
     var origin = ScenicStore.getSessionState().origin;
 
+    console.log("IN BUILD MAPBOX DIRECTIONS");
+    console.log(origin);
+
     var destination;
     if (ScenicStore.getSessionState().loop)
       destination = ScenicStore.getSessionState().origin;
     else
       destination = ScenicStore.getSessionState().destination;
+
+    console.log("STILL THERE");
+    console.log(destination);
     
     var greenpoints = ScenicStore.getSessionState().greenpoints;
+
+    console.log("ALSO STILL HERE");
+    console.log(greenpoints);
 
     var api = "https://api.tiles.mapbox.com/v4/directions/";
     api += 'mapbox.' + ScenicStore.getSessionState().transit;
     api += '/';
+    console.log('origin-lng', origin.latLng.lng);
+    console.log('origin-lat', origin.latLng.lat);
     api += origin.latLng.lng + ',' + origin.latLng.lat + ';';
     // Affix green waypoints here!
     console.log("GREENPOINTS", greenpoints);
@@ -351,6 +363,94 @@ var Navigate = {
     api += 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
     return api;    
   },
+  prepareSingleton: function(route){
+    // origin & destination
+    var origin = route.origin;
+    var destination = route.destination;
+    Actions.setSessionState( 'origin',
+                              {'latLng': L.latLng(parseFloat(origin.lat),parseFloat(origin.lng)) }
+     );
+    Actions.setSessionState( 'destination',
+                              {'latLng': L.latLng(parseFloat(destination.lat),parseFloat(destination.lng)) }
+    );
+
+    // normalize the greenpoints.
+    var greenlane = route.info;
+    greenlane.scenic_route.map(function(greenpnt){
+      return [parseFloat(greenpnt[0]), parseFloat(greenpnt[1])]
+    })
+
+    // format like the object.
+    greenlane = {
+      results: [greenlane]
+    };
+
+    Actions.setSessionState('greenpoints', greenlane);
+    Actions.setSessionState('loop', JSON.parse(route.loop));
+    Actions.setSessionState('transit', route.transit);
+ 
+
+  },
+  generateSingleton: function(route){
+    Actions.goBack();
+
+    event.preventDefault();
+    event.stopPropagation();
+    /*
+     * Set session origin, destination, transit, greenpoints
+    */
+    console.log("in generate singleton");
+    console.log(route);
+    window._comemyroute = route;
+
+    Navigate.prepareSingleton(route);
+
+    var origin = ScenicStore.getSessionState().origin;
+
+    var destination;
+    if (ScenicStore.getSessionState().loop){
+      console.log("im in generate route and im looping");
+      destination = ScenicStore.getSessionState().origin;
+      console.log(destination);
+    }
+    else{
+      destination = ScenicStore.getSessionState().destination;
+    }
+
+    // Setup directions Mapbox Directions object.
+    var directionsSetup = L.mapbox.directions({
+        profile: 'mapbox.' + ScenicStore.getSessionState().transit,
+    });
+    directionsSetup.setOrigin(origin.latLng);
+    directionsSetup.setDestination(destination.latLng);
+    
+    // Get green waypoints, before you request for directions.
+    Actions.isLoading(true);
+    fetchData(function(array){
+        // Debugging variable below.
+        console.log("Finished getting everything");
+        window._paths = paths;
+        console.log(array);
+        console.log(paths);
+
+        Actions.setDirectionsState(true);
+
+        // Get the bounds of the longest route.
+        var bounds = paths[0].getBounds();
+        window.map.fitBounds(bounds);          
+        drawRoutes();
+        drawMarkers();
+        // Only for initialization.
+        syncActivePath();
+        // Handle the state change. 
+        Actions.setParkMode();
+        Actions.isLoading(false);
+        setTimeout(window.map.invalidateSize, 5);
+        
+    }, 1)
+
+    return false;
+  },
   generateRoute: function(event){
     event.preventDefault();
     event.stopPropagation();
@@ -369,7 +469,7 @@ var Navigate = {
 
     // Setup directions Mapbox Directions object.
     var directionsSetup = L.mapbox.directions({
-        profile: 'mapbox.walking',
+        profile: 'mapbox.' + ScenicStore.getSessionState().transit,
     });
     directionsSetup.setOrigin(origin.latLng);
     directionsSetup.setDestination(destination.latLng);
@@ -404,7 +504,7 @@ var Navigate = {
             // Handle the state change. 
             Actions.setParkMode();
             Actions.isLoading(false);           
-        })
+        }, 3)
     });
     return false;
   }  

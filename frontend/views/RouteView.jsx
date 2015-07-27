@@ -25,11 +25,8 @@ var RouteView = React.createClass({
   },
   // takes in an array of mapbox latLng objects and 
   // converts to regular objects.
-  serializeLatLng: function(arrayLatLng){
-    var serialized = arrayLatLng.map(function(latLng){
-        return {lat: latLng.lat, lng: latLng.lng};
-    })
-    return serialized;
+  serializeLatLng: function(point){
+      return {lat: point.latLng.lat, lng: point.latLng.lng};
   },
   favouriteRoute: function(){
     if (readCookie('authenticated') == false){
@@ -43,15 +40,14 @@ var RouteView = React.createClass({
       route: {
         loop: ScenicStore.getSessionState().loop,
         originName: ScenicStore.getSessionState().originName, 
+        origin: this.serializeLatLng(ScenicStore.getSessionState().origin),
         destinationName: ScenicStore.getSessionState().destinationName,
-        latLngs: this.serializeLatLng(ScenicStore.getSessionState().activePath._latlngs),
-        steps: ScenicStore.getSessionState().activePath.steps,
+        destination: this.serializeLatLng(ScenicStore.getSessionState().destination),
         formatted: ScenicStore.getSessionState().activePath.formatted, 
         transit: ScenicStore.getSessionState().activePath.transit,
         info: ScenicStore.getSessionState().activePath.info
       }
     };  
-    console.log("this is my shit");
     console.log(pkg);
    $.ajax
     ({

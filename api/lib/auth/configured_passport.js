@@ -14,7 +14,7 @@ app.use(session(
 		resave: true, 
 		saveUninitialized: true,
 		secret: 'SOMERANDOMSECRETHERE', 
-		cookie: { maxAge: 60000 }
+		cookie: { maxAge: 600000 }
 	}
 ));
 app.use(passport.initialize());
@@ -51,8 +51,8 @@ passport.use(new google({
   },
   function(token, tokenSecret, profile, done) {
     User.findOrCreate({ authId: profile.id, type: 'google' }, function (err, click, created) {
-    api_cache.push(profile);
-      return done(err, profile);
+    	api_cache.push(profile);
+      	return done(err, profile);
     });
   }
 ));
@@ -69,17 +69,15 @@ app.get('/auth/facebook/callback',
 	{
 	    console.log('we b logged in!')
 	    console.dir(req.user)
-	    res.cookie('authenticated', 'true', { maxAge: 60 * 1000 });
-	    res.cookie('authId', req.user.id, { maxAge: 60 * 1000 });
-	    res.cookie('type','fb',{ maxAge: 60 * 1000 });
-	    res.cookie('displayName', req.user.displayName, { maxAge: 60 * 1000 });
-
+	    res.cookie('authenticated', 'true', { maxAge: 600 * 1000 });
+	    res.cookie('authId', req.user.id, { maxAge: 600 * 1000 });
+	    res.cookie('type','fb',{ maxAge: 600 * 1000 });
+	    res.cookie('displayName', req.user.displayName, { maxAge: 600 * 1000 });
 	    /*
 		 * Check for if the user has 0 pictures?
 	     */
-
 	    if (req.user._json.picture.data.is_silhouette == false){
-	    	res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 60 * 1000 });
+	    	res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 600 * 1000 });
 	    }
 
 	    res.redirect('http://localhost:3001');
@@ -96,13 +94,13 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     console.log('google: authenticated, cookies sent.');
     console.dir(req.user)	
-    res.cookie('authenticated', 'true', { maxAge: 60 * 1000 });
-    res.cookie('authId', req.user.id, { maxAge: 60 * 1000 });
-    res.cookie('type','google',{ maxAge: 60 * 1000 });    
-   	res.cookie('displayName', req.user.displayName, { maxAge: 60 * 1000 });
+    res.cookie('authenticated', 'true', { maxAge: 600 * 1000 });
+    res.cookie('authId', req.user.id, { maxAge: 600 * 1000 });
+    res.cookie('type','google',{ maxAge: 600 * 1000 });    
+   	res.cookie('displayName', req.user.displayName, { maxAge: 600 * 1000 });
 	
 	if (!req.user._json.image.isDefault){
-		res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 60 * 1000 });
+		res.cookie('profileUrl', req.user.photos[0].value, { maxAge: 600 * 1000 });
 	}
 
     res.redirect('http://localhost:3001');

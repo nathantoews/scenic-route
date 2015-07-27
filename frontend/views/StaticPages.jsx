@@ -43,7 +43,7 @@ var PageController = React.createClass({
 								<div>{route.destinationName}</div>
 								<div>{route.formatted.duration}</div>
 								<div>{route.formatted.distance}</div>
-								<button>Go!</button>
+								<button onClick={Navigate.generateSingleton.bind(this, route)}>Go!</button>
 							</div>
 				})
 			}	

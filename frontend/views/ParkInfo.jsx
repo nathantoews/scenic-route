@@ -50,6 +50,7 @@ var ParkCarousel = React.createClass({
   componentWillMount: function(){
     console.log("in componet will mount");
     console.log(this.state.parks);
+    window._carousel = this;
   },
   componentDidMount: function(){
     ScenicStore.addChangeListener(this.updateParkList);
@@ -115,11 +116,9 @@ getInitialState: function(){
   var parkList = {
     activeCarousel: 0, 
     expandedInfoHeight: null,    
-    parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info : [],
+    parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
     parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
-    parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [],
-    currentFac: (ScenicStore.getSessionState().activePath) ? this.state.parkFac[this.state.activeCarousel] : [],
-    currentPic: (ScenicStore.getSessionState().activePath) ? this.state.parkPic[this.state.activeCarousel] : []
+    parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : []
   };
   return parkList;
  },
@@ -149,14 +148,16 @@ updateExpInfoHeight: function(){
     },
 
   _onChange: function(){
+    console.log("IN PARK TAB");
+    if (ScenicStore.getSessionState().activePath)
+      console.log("ACTIVE PATH BELOW", ScenicStore.getSessionState().activePath.info);
+
     this.setState({
       activeCarousel: ScenicStore.getSessionState().activeCarousel,
       parkName: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.parks : [],
       parkFac: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.facilities : [],
-      parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : [], 
-      currentFac: (ScenicStore.getSessionState().activePath) ? this.state.parkFac[this.state.activeCarousel] : [],
-      currentPic: (ScenicStore.getSessionState().activePath) ? this.state.parkPic[this.state.activeCarousel] : []
-          });  
+      parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : []
+    });  
     console.log(ScenicStore.getSessionState().activePath);
     this.createParkList();
     window.myParkState = this.state;
