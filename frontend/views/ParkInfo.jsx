@@ -134,7 +134,10 @@ updateExpInfoHeight: function(){
 
 
   createParkList: function() {
+  // To make sure it has the most updated states
+  this._onChange();
   var ParkState = this.state.parkName;
+  console.log("IN CREATE PARK LIST", ParkState);
   var updatedStateProp = {
     parkName: ParkState.map(function(row, i){
                       return (
@@ -159,7 +162,6 @@ updateExpInfoHeight: function(){
       parkPic: (ScenicStore.getSessionState().activePath) ? ScenicStore.getSessionState().activePath.info.pictures : []
     });  
     console.log(ScenicStore.getSessionState().activePath);
-    this.createParkList();
     window.myParkState = this.state;
   },
 
