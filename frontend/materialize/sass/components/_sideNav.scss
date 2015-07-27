@@ -1,8 +1,8 @@
 .side-nav {
   position: fixed;
-  width: 240px;
+  width: 25%;
   left: -105%;
-  top: 0;
+  top: 64px;
   margin: 0;
   height: 100%;
   padding-bottom: 60px;
@@ -28,6 +28,14 @@
   li {
     float: none;
   }
+  @media #{$medium-only} {
+    top:0;
+    width:50%;
+  }
+  @media #{$small-and-down} {
+    top:0;
+    width:80%;
+}
 }
 
 
@@ -90,10 +98,18 @@
   left: 0;
   right: 0;
   /* must be - the height of .side-nav  */
-  width: calc(100% - 240px);
+  width: calc(100% - 25%);
   background-color: rgba(0,0,0,.5);
   height: 120vh;
   z-index: 997;
 
   will-change: opacity;
+
+  @media #{$medium-only} {
+    width:calc(100% - 50%);
+  }
+
+  @media #{$small-and-down} {
+    width:calc(100% - 80%);
+  }
 }

@@ -155,7 +155,7 @@ span.twitter-typeahead{
   height: 100%;
   width:  100%;
   position: absolute;
-  background: white;
+  background:$secondary-color;
   z-index: 4;
   .loading_content{
     img{
@@ -168,7 +168,7 @@ span.twitter-typeahead{
     margin: 0 auto;
     text-align: center;
     max-width: 33.333%;
-    color: $secondary-color-dark;    
+    color:#fff;    
   }  
 }
 
@@ -483,10 +483,14 @@ span.twitter-typeahead{
 
 .btn-primary {
   @extend .btn;
+  border-radius:5px !important;
   position: absolute !important;
   bottom:0;
   left:5%;
-  font-weight:100;
+  font-family:Roboto;
+  font-size:1.2rem;
+  font-weight:200;
+  letter-spacing:2rem;
   box-shadow:0px 3px 0px #aa4660 !important;
   background-color:$primary-color;
 
@@ -497,6 +501,7 @@ span.twitter-typeahead{
 
 .btn-secondary {
   @extend .btn;
+  border-radius:5px !important;
   position: absolute !important;
   bottom:0;
   right:5%;
@@ -526,7 +531,7 @@ span.twitter-typeahead{
   -webkit-tap-highlight-color: transparent;
 
   .fa {
-    transform:translate(0, 100%)
+    transform:translate(0, 25%)
   }
 
   &:hover {
@@ -553,7 +558,7 @@ span.twitter-typeahead{
   -webkit-tap-highlight-color: transparent;
 
     .fa {
-    transform:translate(0, 100%)
+    transform:translate(0, 25%)
   }
 
   &:hover {
@@ -794,7 +799,7 @@ $google_expando_transition: (
 }
 
 hr {
-    margin-top:10%;
+    margin-top:5%;
 }
 
 .slider.parkMenu {
@@ -874,13 +879,49 @@ hr {
 
 .staticPageContainer{
   display:block;
-  width:100%;
+  width:25%;
   height: 100%;
+  padding:0 30px;
   position: absolute;
+  top:64px;
+  right:0;
   background: white;
   z-index: 12;
   -webkit-transition: width 2s;
   transition: width 2s;
+
+  p {
+    line-height:1.3rem;
+    font-weight:300;
+    font-family:Roboto;
+    color:$text-color;
+  }
+
+  h3 {
+    font-size:1.5rem;
+    line-height:1.5rem;
+    font-family:Roboto-Slab;
+    font-weight:400;
+    color:$text-color;
+    text-align:center;
+
+  }
+
+  .logo {
+    margin-bottom:5%;
+    position:inherit;
+  }
+
+
+}
+.staticTitle {
+  margin:0px 0px 5% 0px;
+  line-height:100%;
+  color:$primary-color;
+  font-family:Roboto;
+  font-weight:400;
+  font-size:1.5rem;
+
 }
 
 .containerMask::after{
@@ -898,8 +939,22 @@ hr {
     // height: $navbar-height-mobile;
     height: 61px;
   }  
+  .staticPageContainer{
+    top:0;
+    width:100%;
+
+    .staticTitle {
+      margin-top:20px;
+      margin-left:10px;
+    }
+  }
 }  
 
+@media #{$medium-only} {
+  .staticPageContainer{
+    width:50%;
+  }
+}
 
 /* Back Button Styles */
 .pushRight{
@@ -910,7 +965,7 @@ hr {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   background: url("../img/svg/downChev.svg") no-repeat !important;
-  z-index: 1;
+  z-index: 15;
 
   width: 25px;  
   height: 25px;
@@ -925,6 +980,83 @@ hr {
   #backBtn{
     height: 25px;
   }  
+}
+
+
+/// acordian -----------------------------------
+.section {
+  position: relative;
+  width: 100%;
+  button {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    height: 2em;
+    width: 2em;
+    outline: 0;
+    border: 0;
+    background-color:#fff;
+    background-image:url('../img/svg/downChev.svg');
+    background-size:100% 100%;
+    background-position:50%;
+    pointer-events: none;
+        -ms-transform: rotate(0deg); /* IE 9 */
+  -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+  transform: rotate(0deg);
+  }
+}
+
+.section.open {
+  button {
+      -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+  }
+  .articlewrap {
+    height: 120px;
+  }
+    .favDelete {
+      opacity:1;
+      transition: opacity .25s ease-in-out;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+  }
+      .favGo {
+      opacity:1;
+      transition: opacity .25s ease-in-out;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+  }
+}
+
+.articlewrap {
+  height: 0;
+  overflow: hidden;
+  transition: all .2s ease-in;
+}
+
+.sectionhead {
+  font-family:Roboto;
+  font-weight:300;
+  color:$text-color;
+  height:50px;
+  width: 90%;
+  overflow: hidden;
+  background: white;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  padding:0 1em;
+  padding-right: 2.1em;
+}
+
+.article {
+  font-family:Roboto;
+  font-weight:300;
+  color:$primary-color;
+  width:90%;
+  padding: 1em;
+  line-height: 1.3;
 }
 
 

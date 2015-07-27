@@ -264,4 +264,73 @@
   transform:translate(0, 50%);
 }
 
+.logoWhite {
+  top:5%;
+  left:0;
+  right:0;
+  margin:5% auto;
+  width:70%;
+  height:100px;
+  background-image:url('../img/svg/whiteLogo.svg');
+  background-size:100% 100%;
+  background-position:50%;
+  z-index:50;
+}
+
+.theTeam {
+  width:100%;
+  height:300px;
+  background-image:url('../img/svg/theTeam.svg');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+}
+
+.favGo {
+  opacity:0;
+  position:absolute;
+  bottom:50px;
+  right:-5px;
+  float: right;
+  width:40px;
+  height:40px;
+  background-image:url('../img/svg/goFav.svg');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+}
+
+.favDelete {
+  opacity:0;
+  position:absolute;
+  bottom:0;
+  right:-5px;
+  width:40px;
+  height:40px;
+  background-image:url('../img/svg/delete.svg');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+}
+
+.walkGrey {
+  width:100%;
+  height:300px;
+  background-image:url('../img/svg/walkGrey.svg');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+}
+
+.bikeGrey {
+  width:100%;
+  height:300px;
+  background-image:url('../img/svg/bikeGrey.svg');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:50% 0%;
+}
+
+
+
 

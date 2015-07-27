@@ -27,7 +27,7 @@ var Map = React.createClass({
 		return{
 			layout: Classnames('col', this.props.layout),
 			logoStyle: Classnames('logo', ScenicStore.getLayout().logoState),
-			startButtonStyle: Classnames('col s4 m4 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState)
+			startButtonStyle: Classnames('col s4 m2 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState)
 		};
 	},
 	componentWillMount: function(){

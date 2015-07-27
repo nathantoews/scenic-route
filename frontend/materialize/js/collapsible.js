@@ -1,7 +1,7 @@
 (function ($) {
   $.fn.collapsible = function(options) {
     var defaults = {
-        accordion: undefined
+        accordion: true
     };
 
     options = $.extend(defaults, options);

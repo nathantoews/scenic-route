@@ -62,11 +62,11 @@ var ProfileNav = React.createClass({
         <div className="loginSection">
           <li>
             <a href={`${config.api_url}/auth/facebook`} className="btn-facebook">
-              <i className="fa fa-facebook left"></i>sign in with facebook</a>
+              <i className="fa fa-facebook left fa-2x"></i>sign in with facebook</a>
           </li>
           <li>
             <a href={`${config.api_url}/auth/google`} className="btn-google">
-              <i className="fa fa-google left"></i>sign in with google</a>
+              <i className="fa fa-google left fa-2x"></i>sign in with google</a>
           </li>
         </div>
         <hr></hr>
@@ -75,7 +75,7 @@ var ProfileNav = React.createClass({
   },
   favouritedRoutes: function(){
     return (<li>
-              <a onClick={Actions.setActivePage.bind(this,'savedRoutes')}>
+              <a onClick={Actions.setActivePage.bind(this,'favSection')}>
                 <i className="star left"></i>
                   favourited routes
               </a>
@@ -86,16 +86,18 @@ var ProfileNav = React.createClass({
       <div className="menuStyles">
       <div className="profileOpt">
           {(this.state && this.state.auth) ? this.favouritedRoutes() : false}
+          <li><a><i className="restart left"></i>restart route</a></li>
           <li><a><i className="share left"></i>share</a></li>
         </div>
 
         <hr></hr>
 
         <div className="footer">
-          <li><a>faq</a></li>
+          <li><a onClick={Actions.setActivePage.bind(this,'FAQ')}>faq</a></li>
           <li><a onClick={Actions.setActivePage.bind(this,'aboutUs')}>about</a></li>
           <li><a>tutorial</a></li>
           <li><a>privacy</a></li>
+          <li><a onClick={Actions.setActivePage.bind(this,'privacy')}>privacy</a></li>
           { (this.state && this.state.auth) ? this.logoutButton() : false }
         </div>
       </div>
