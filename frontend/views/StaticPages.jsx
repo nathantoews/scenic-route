@@ -3,6 +3,7 @@ var Classnames = require('classnames');
 var Navigate = require('../stores/Navigate.jsx');
 var Actions = require('../stores/Actions.jsx');
 var ScenicStore = require('../stores/Stores.jsx');
+var Slideshow = require('./Tutorial.jsx');
 
 
 function readCookie(name) {
@@ -10,6 +11,7 @@ function readCookie(name) {
     console.log('cookie value', value);
     return (value == null) ? false : decodeURIComponent(value);
 }
+// SECTION FOR ACCORDION DROP DOWN MENU /////////////////////////////////////////////////////////
 
 var Section = React.createClass({
   handleClick: function(){
@@ -35,7 +37,9 @@ var Section = React.createClass({
     return (
       <div className={this.state.class}>
         <button></button>
-        <div className="sectionhead" onClick={this.handleClick}>{this.props.title}</div>
+        <div className="sectionhead" onClick={this.handleClick}>
+        	{this.props.title}
+        </div>
         <div className="articlewrap">
           <div className="article">
             {this.props.children}
@@ -81,49 +85,7 @@ var Accordion = React.createClass({
   }
 });
 
-var FavSection = React.createClass({
-  
-  render: function() {
-    return (
-      <div className="main">
-        <div className="staticTitle">{this.props.title}</div>
-        <Section title="to: 289 mt pleasent - from: 12 king st">
-        	<div className="favTravel"></div>
-	        	<ul className="favRouteInfo">
-		        	<li className="favDist">4.1 km</li>
-		        	<li className="favTime">1:15 hours</li>
-		        	<li className="favDate">11/06/2015</li>
-		        	<li className="favParks">
-		    			Parks: Winchester Park,
-						Rosedale Ravine lands,
-						Park Drive Reservation Land,
-						Rosedale Park
-					</li>
-				</ul>
-        	<div className="favGo"></div>
-        	<div className="favDelete"></div>
-        </Section>
-
-        <Section title="to: union station - from: 312 adelaide st">
-        	<div className="favTravel"></div>
-	        	<ul className="favRouteInfo">
-		        	<li className="favDist">4.1 km</li>
-		        	<li className="favTime">1:15 hours</li>
-		        	<li className="favDate">11/06/2015</li>
-		        	<li className="favParks">
-		    			Parks: Winchester Park,
-						Rosedale Ravine lands,
-						Park Drive Reservation Land,
-						Rosedale Park
-					</li>
-				</ul>
-        	<div className="favGo"></div>
-        	<div className="favDelete"></div>
-        </Section>
-      </div>
-    );
-  }
-});
+// STATIC PAGE CONTROLLER //////////////////////////////////////////////////////////
 
 var PageController = React.createClass({
 	getInitialState: function(){
@@ -134,28 +96,54 @@ var PageController = React.createClass({
 								'staticPageContainer',
 								'hide', 
 								ScenicStore.getLayout().containerMask
-							)
+							),
+			 'tutorialData' : [
+			  {
+			    id         : "slide1",
+			    imagePath  : "materialize/img/png/Walkthrough-02.png",
+			    imageAlt   : "Slide 1 Image",
+			    title      : "Slide 1",
+			    subtitle   : "Slide 1 Image SubTitle",
+			    text       : "Slide 1 Image Text",
+			    action     : "Slide 1 Image Action",
+			    actionHref : "href"
+			  },
+			  {
+			    id         : "slide2",
+			    imagePath  : "materialize/img/png/Walkthrough-03.png",
+			    imageAlt   : "Slide 2 Image",
+			    title      : "Slide 2",
+			    subtitle   : "Slide 2 Image SubTitle",
+			    text       : "Slide 2 Image Text",
+			    action     : "Slide 2 Image Action",
+			    actionHref : "href"
+			  },
+			  {
+			    id         : "slide3",
+			    imagePath  : "materialize/img/png/Walkthrough-04.png",
+			    imageAlt   : "Slide 3 Image",
+			    title      : "Slide 3",
+			    subtitle   : "Slide 3 Image SubTitle",
+			    text       : "Slide 3 Image Text",
+			    action     : "Slide 3 Image Action",
+			    actionHref : "href"
+			  },
+			]
 		};
 	},
-
-// <div className='favouritedRoute'>
-// 								<div>{route.originName}</div>
-// 								<div>{route.destinationName}</div>
-// 								<div>{route.formatted.duration}</div>
-// 								<div>{route.formatted.distance}</div>
-// 								<button onClick={Navigate.generateSingleton.bind(this, route)}>Go!</button>
-// 							</div>
 
 	favSection: function(){
 		return (
 			<div className="viewContainer">
 			<div className="staticTitle">favourited routes</div>
-			 <div className='favouritedRoute'>
-
+			<div className='favouritedRoute'>
 			{	
 			    this.state.saved.map(function(route) {
+			        var destFav = route.originName + '-' + route.destinationName;
+			        var transitType = route.transit == 'cycling' ? <div><div className='bikeGrey'></div>{destFav}</div>: false || route.transit == 'walking' ? <div><div className='walkGrey'></div>{destFav}</div> : false;
 			    	console.log('ROUTE', route.originName)
-			        return  <Section title={route.originName + '-' + route.destinationName}>
+			        return  <Section title={transitType}>
+
 							<div>{route.originName}</div>
 							<div>{route.destinationName}</div>
 							<div>{route.formatted.duration}</div>
@@ -203,7 +191,15 @@ var PageController = React.createClass({
 				<p>	So next time you’re moving through Toronto, choose Greenlane and see the city differently.</p>
 			</div>		
 		);
-	},	
+	},
+	tutorial: function(){
+	return (
+		<div className="viewContainer">
+			<h1 className="staticTitle">tutorial</h1>
+			// <Slideshow data={this.state.tutorialData}/>
+		</div>		
+	);
+},	
 
 	componentDidMount: function(){
 		window.hrr = this;

@@ -4,22 +4,22 @@ var ScenicStore = require('../stores/Stores.jsx');
 var Classnames = require('classnames');
 
 
- function toggleFullScreen(){
- 	if ($(window).width() <= 800) {
-		var doc = window.document;
-		var docEl = doc.documentElement;
+//  function toggleFullScreen(){
+//  	if ($(window).width() <= 800) {
+// 		var doc = window.document;
+// 		var docEl = doc.documentElement;
 
-		var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-		var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+// 		var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+// 		var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
-		if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-			requestFullScreen.call(docEl);
-		}
-		else {
-			cancelFullScreen.call(doc);
-		}
-	}
-};
+// 		if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+// 			requestFullScreen.call(docEl);
+// 		}
+// 		else {
+// 			cancelFullScreen.call(doc);
+// 		}
+// 	}
+// };
 
 var Map = React.createClass({
 
@@ -35,9 +35,9 @@ var Map = React.createClass({
 		ScenicStore.addChangeListener(this.updateState);
 	},
 	componentDidMount: function(){
-	    L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6IlhHVkZmaW8ifQ.hAMX5hSW-QnTeRCMAy9A8Q';
-	    window.map = L.mapbox.map('map', 'mapbox.streets',{closePopupOnClick: false})
-	      			.setView([43.64, -79.39], 9);
+	    L.mapbox.accessToken = 'pk.eyJ1IjoiYWxvdWlzIiwiYSI6ImUwZWUwYmIzNThmZjAxYWI2YTIwNGNmYmQxZjUzNWU1In0.9QfqI_cVh9_6w1kBSA-yaQ';
+	    window.map = L.mapbox.map('map', 'alouis.n127p3ip',{closePopupOnClick: false})
+	      			.setView([43.64, -79.39], 15);
 	    window.addEventListener("resize", this.updateDimensions);	      			
 
 	    // Parent mounts only after all children elements mount!
@@ -61,7 +61,7 @@ var Map = React.createClass({
 	// 	this.updateDimensions();
 	// },
 	routeNav: function(evt) {
-		toggleFullScreen();
+		// toggleFullScreen();
 		Actions.updateMenu('toggle');
 		$(".progress-point").first().addClass('active');
 		// Resize the map following state changes.

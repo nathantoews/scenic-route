@@ -567,25 +567,47 @@ span.twitter-typeahead{
   }
 }
 
-.menuStyles {
+#accountName {
   padding:20px;
-}
+  border-bottom:1px solid $text-color;
+    h2 {
+      width:70%;
+      float: right;
+      font-size:1.5rem;
+      color:$text-color;
+      font-family:Roboto;
+      font-weight:300;
+      margin:0;
+      translate:0 50%;
+    }
 
-.loginSection {
-  // border-bottom:2px solid $text-color;
+}
+.profileImage {
+  border-radius:50%;
 }
 
 .profileOpt {
+  font-size:1.5rem;
+  font-weight:400 !important;
+  font-family:Roboto;
   color:$primary-color;
-  // border-bottom:2px solid $text-color;
+  padding:20px;
+  font-weight:400;
+  border-bottom:1px solid $text-color;
 }
 
-.footer {
-  color:$primary-color;
+.loginStyles {
+  padding:20px;
+  border-bottom:1px solid $text-color;
+}
 
-  li {
-    line-height:50px;
-  }
+
+.footer {
+  font-family:Roboto;
+  font-size:1rem;
+  font-weight:200 !important;
+  padding:20px;
+  color:$primary-color;
 }
 
 
@@ -876,6 +898,13 @@ hr {
 .slider-decorator-2 {
   display:none;
 }
+
+
+
+// page navigation and container styles ///////////////////////////////////////
+
+
+
 
 .staticPageContainer{
   display:block;

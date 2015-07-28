@@ -39,25 +39,24 @@ var ProfileNav = React.createClass({
   },
   userButtons: function(){  
     return([
-        <li>
-          <a className="waves-effect waves-light btn-flat">
-          {this.state.displayName}
-          </a>
+        <li id="accountName">
+          <img src={this.state.profileUrl} className="profileImage"></img>
+          <h2>{this.state.displayName}</h2>
         </li>
       ]
     )
   },
   logoutButton: function(){
       return  (<li>
-          <a onClick={this.clearCookies} className="waves-effect waves-light btn-flat">
-            <i className="material-icons right">settings</i>logout
+          <a onClick={this.clearCookies}>
+            logout
           </a>
         </li>)
   },
   loginButtons: function(){
     // $ syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
     return ([
-      <div className="menuStyles">
+      <div className="loginStyles">
 
         <div className="loginSection">
           <li>
@@ -69,7 +68,6 @@ var ProfileNav = React.createClass({
               <i className="fa fa-google left fa-2x"></i>sign in with google</a>
           </li>
         </div>
-        <hr></hr>
         </div>
     ])
   },
@@ -83,20 +81,16 @@ var ProfileNav = React.createClass({
   },
   profileButtons: function(){
     return ([
-      <div className="menuStyles">
-      <div className="profileOpt">
-          {(this.state && this.state.auth) ? this.favouritedRoutes() : false}
-          <li><a><i className="restart left"></i>restart route</a></li>
-          <li><a><i className="share left"></i>share</a></li>
+      <div>
+        <div className="profileOpt">
+            {(this.state && this.state.auth) ? this.favouritedRoutes() : false}
+            <li><a><i className="restart left"></i>restart route</a></li>
+            <li><a><i className="share left"></i>share</a></li>
         </div>
-
-        <hr></hr>
-
         <div className="footer">
           <li><a onClick={Actions.setActivePage.bind(this,'FAQ')}>faq</a></li>
           <li><a onClick={Actions.setActivePage.bind(this,'aboutUs')}>about</a></li>
-          <li><a>tutorial</a></li>
-          <li><a>privacy</a></li>
+          <li><a onClick={Actions.setActivePage.bind(this,'tutorial')}>tutorial</a></li>
           <li><a onClick={Actions.setActivePage.bind(this,'privacy')}>privacy</a></li>
           { (this.state && this.state.auth) ? this.logoutButton() : false }
         </div>
