@@ -15,11 +15,17 @@ var SetupFlow = React.createClass({
     _initState['linkTo'] = _seed.linkTo;
     _initState['sessionState'] = ScenicStore.getSessionState();
     _initState['layout'] = Classnames('row','routeSel','left','col', this.props.layout);
+    _initState['lockHeight'] = {};
 
     return _initState;
   },
   componentDidMount: function(){
     ScenicStore.addChangeListener(this.updateState);
+    this.setState({
+      lockHeight: {
+        minHeight: window.outerHeight
+      }
+    });
   },
   updateState: function(){
     this.state.sessionState = ScenicStore.getSessionState();
@@ -100,7 +106,7 @@ var SetupFlow = React.createClass({
     return (
         <div className={this.state.layout}>
           <div className="heightFix col s2">
-            <div className="progress-meter">
+            <div style={this.state.lockHeight} className="progress-meter">
               <div className="track">
                 <span className="progress"></span>
               </div>
