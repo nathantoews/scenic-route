@@ -29,11 +29,9 @@ var Body = React.createClass({
 		// only occurs once once the rest of the site has loaded!
 		window.mystate = this.state;
 		ScenicStore.addChangeListener(this._onChange);
-		this.setState({
-			lockHeight: {
-				minHeight: window.outerHeight
-			}
-		});
+		$("body").css({
+			'min-height': window.innerHeight
+		})
 	},
 	changeData: function(){
 	    Actions.test();

@@ -23,7 +23,7 @@ var SetupFlow = React.createClass({
     ScenicStore.addChangeListener(this.updateState);
     this.setState({
       lockHeight: {
-        minHeight: window.outerHeight
+        minHeight: window.innerHeight 
       }
     });
   },
