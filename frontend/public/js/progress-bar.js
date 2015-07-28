@@ -60,7 +60,7 @@
 
     function addRoute(_Actions){
       _Actions.setRoute();
-      dataLayer({
+      dataLayer.push({
         'travelType': 'ROUTE',
       });      
       $(".progress-point.active").addClass('routeProg').removeClass('loopProg');
@@ -70,7 +70,7 @@
 
     function addLoop(_Actions){
       _Actions.setLoop();
-      dataLayer({
+      dataLayer.push({
         'travelType': 'LOOP',
       });            
       $(".progress-point.active").addClass('loopProg').removeClass('routeProg');
