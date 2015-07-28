@@ -21,19 +21,26 @@ var Body = React.createClass({
 			hideLoader: ScenicStore.getSessionState().isLoading,
 			layout: ScenicStore.getLayout(),
 			test: ScenicStore.getData(),
-			backBtn: Classnames(ScenicStore.getBackBtnState().css)			
+			backBtn: Classnames(ScenicStore.getBackBtnState().css),
+			lockHeight: {}
 		};
 	},
 	componentDidMount: function(){
+		// only occurs once once the rest of the site has loaded!
 		window.mystate = this.state;
 		ScenicStore.addChangeListener(this._onChange);
+		this.setState({
+			lockHeight: {
+				minHeight: window.outerHeight
+			}
+		});
 	},
 	changeData: function(){
 	    Actions.test();
 	},
     render: function(){ 
       return (
-			<div id='containerRow' className="row">
+			<div id='containerRow' style={this.state.lockHeight} className="row">
 		        <div id='backBtn' onClick={Actions.goBack} className={this.state.backBtn}></div>  			
 				<ProfileNav />
 				<SetupFlow layout={this.state.layout.nav} parentState={this.state} isLoading={Actions.isLoading} />
