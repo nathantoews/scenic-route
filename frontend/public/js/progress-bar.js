@@ -39,6 +39,9 @@
 
     function addBike(_Actions, clickEvent){
       _Actions.setTransitMode('cycling');
+      dataLayer({
+        'transportationType': 'BIKE',
+      });
       console.log("Mode set to cycling");
       $(".progress-point.active").addClass('bikeProg').removeClass('walkProg');
       $("#travelType").removeClass("disabled");
@@ -47,6 +50,9 @@
 
     function addWalk(_Actions){
       _Actions.setTransitMode('walking');
+      dataLayer({
+        'transportationType': 'WALK',
+      });
       $(".progress-point.active").addClass('walkProg').removeClass('bikeProg');
       $("#travelType").removeClass("disabled");
       nextPage();
@@ -54,6 +60,9 @@
 
     function addRoute(_Actions){
       _Actions.setRoute();
+      dataLayer({
+        'travelType': 'ROUTE',
+      });      
       $(".progress-point.active").addClass('routeProg').removeClass('loopProg');
       $("#destSel").removeClass("disabled");
       nextPage();
@@ -61,6 +70,9 @@
 
     function addLoop(_Actions){
       _Actions.setLoop();
+      dataLayer({
+        'travelType': 'LOOP',
+      });            
       $(".progress-point.active").addClass('loopProg').removeClass('routeProg');
       $("#destSel").removeClass("disabled");
       nextPage();

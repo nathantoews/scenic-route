@@ -27,7 +27,11 @@ var Map = React.createClass({
 		return{
 			layout: Classnames('col', this.props.layout),
 			logoStyle: Classnames('logo', ScenicStore.getLayout().logoState),
-			startButtonStyle: Classnames('col s4 m2 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState)
+			startButtonStyle: Classnames(
+									'col s4 m2 l2 map-start-btn btn-secondary', 
+									'Begin_Setup', 
+									ScenicStore.getLayout().logoState
+							)
 		};
 	},
 	componentWillMount: function(){
@@ -55,7 +59,11 @@ var Map = React.createClass({
 
 		/* Hide the logo and the start button upon activating menu. */
 		this.state.logoStyle = Classnames('logo', ScenicStore.getLayout().logoState);
-		this.state.startButtonStyle = Classnames('col s4 m4 l2 map-start-btn btn-secondary', ScenicStore.getLayout().logoState);
+		this.state.startButtonStyle = Classnames(
+										'col s4 m4 l2 map-start-btn btn-secondary',
+										'Begin_Setup', 
+										ScenicStore.getLayout().logoState
+									);
 	},
 	// componentDidUpdate: function(){
 	// 	this.updateDimensions();
@@ -78,7 +86,7 @@ var Map = React.createClass({
 			<div id="map" className={this.state.layout}>
 				<div id="map-container">
 					<div className={this.state.logoStyle}></div>
-					<a id='Start_Home' onClick={this.routeNav} className={this.state.startButtonStyle}>
+					<a onClick={this.routeNav} className={this.state.startButtonStyle}>
 						begin
 					</a>
 				</div>

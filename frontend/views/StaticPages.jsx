@@ -85,8 +85,6 @@ var Accordion = React.createClass({
   }
 });
 
-// STATIC PAGE CONTROLLER //////////////////////////////////////////////////////////
-
 var PageController = React.createClass({
 	getInitialState: function(){
 		return {

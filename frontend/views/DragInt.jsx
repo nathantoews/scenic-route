@@ -1,6 +1,7 @@
 var React = require('react');
 var Actions = require('../stores/Actions.jsx');
 var Navigate = require('../stores/Navigate.jsx');
+var Analytics = require('../stores/Analytics.jsx');
 
 function normalize(percentage){
   percentage = Math.floor(percentage*100);
@@ -54,7 +55,11 @@ componentDidMount: function(){
         var adjustTo = sliderHeight - new_top;
 
         var greenness = normalize(adjustTo/$("#resizable-element").parent().height());
+        
+        // Analytics line here.
+        Analytics.greenLevel(greenness);
         Actions.setGreenness(greenness);
+
 
         $("#resizable-element").animate({height:adjustTo},200);
       },
@@ -85,7 +90,7 @@ render: function() {
         </div>
       
         <button className="btn-primary waves-effect waves-light col s4">skip</button> 
-        <button onClick={Navigate.generateRoute} className="btn-secondary waves-effect waves-light col s4">map it</button>       
+        <button onClick={Navigate.generateRoute} className="btn-secondary waves-effect waves-light col s4 Time_Submit">map it</button>       
       </div>
     );
   }

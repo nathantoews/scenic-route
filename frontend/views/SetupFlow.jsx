@@ -105,11 +105,11 @@ var SetupFlow = React.createClass({
                 <span className="progress"></span>
               </div>
               <ol className="progress-points" data-current="1">
-                <li id="transBtns" className="progress-point active" onClick={this.transBtns} href="#step-1">
+                <li id="transBtns" className="progress-point active Back_Progress_Trans" onClick={this.transBtns} href="#step-1">
                 </li>
-                <li id="travelType" className="progress-point disabled" onClick={this.travelType} href="#step-2">
+                <li id="travelType" className="progress-point disabled Back_Progress_Travel" onClick={this.travelType} href="#step-2">
                 </li>
-               <li id="destSel" className="progress-point disabled" onClick={this.destSel} href="#step-3">
+               <li id="destSel" className="progress-point disabled Back_Progress_Dest" onClick={this.destSel} href="#step-3">
                 </li>
                 <li id="timeSel" className="progress-point disabled" onClick={this.timeSel} href="#step-4">
                 </li>

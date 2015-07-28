@@ -3,6 +3,7 @@ var inputClassnames = require('classnames');
 var ScenicStore = require('../stores/Stores.jsx');
 var Actions = require('../stores/Actions.jsx');
 var Navigate = require('../stores/Navigate.jsx');
+var Analytics = require('../stores/Analytics.jsx');
 
 var inputClasses = inputClassnames('typeahead');
 
@@ -32,7 +33,6 @@ var Endpoints = React.createClass({
         return [
               <div className="input-field">
                 <input id="origin" type="text" placeholder="Looping From" className={inputClasses} required/>
-                <label className="active" htmlFor="origin">looping from</label>
               </div>
         ];
       }
@@ -85,10 +85,14 @@ var Endpoints = React.createClass({
                             // Modify the state value to represent the updated values.
                             // x.geometry.location returns a google.map.LatLng object
                             Actions.setSessionState(_id, {
-                              "latLng": L.latLng(results[0].geometry.location.lat(),results[0].geometry.location.lng())
+                              "latLng": L.latLng(
+                                            results[0].geometry.location.lat(),
+                                            results[0].geometry.location.lng()
+                                        )
                             });
                           } else {
                             validated = false;
+                            Analytics.locationError(_id);
                             alert('No results found for ' + _id);
                           }
                         }
