@@ -39,7 +39,7 @@
 
     function addBike(_Actions, clickEvent){
       _Actions.setTransitMode('cycling');
-      dataLayer({
+      dataLayer.push({
         'transportationType': 'BIKE',
       });
       console.log("Mode set to cycling");
@@ -50,7 +50,7 @@
 
     function addWalk(_Actions){
       _Actions.setTransitMode('walking');
-      dataLayer({
+      dataLayer.push({
         'transportationType': 'WALK',
       });
       $(".progress-point.active").addClass('walkProg').removeClass('bikeProg');
