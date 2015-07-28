@@ -1,4 +1,4 @@
-module.exports = function(grunt) {  	
+module.exports = function(grunt) {  
   	// Initial configuration
 	grunt.initConfig({
 		browserify:{
@@ -19,20 +19,28 @@ module.exports = function(grunt) {
 	        	}
 	        }
 	    },	   
+	    autoprefixer: {
+	    	options: {
+  				browsers: ['last 2 versions']
+			},
+            single_file: {
+                src: 'materialize/sass/materialize.css',
+            }			
+	    },
 	    sass: {
 	        dist: {
 	            files: {
 	                'materialize/sass/materialize.css': 'materialize/sass/materialize.scss'
 	            }
 	        }
-	    },	     
+	    },    
 		watch: {
 		  options: {
 		    livereload: true
 		  },			
 		  css: {
 		    files: ['materialize/sass/*.scss','materialize/sass/components/*.scss'],
-		    tasks: ['sass'],
+		    tasks: ['sass','autoprefixer'],
 		  },
 		  react:{
 		  	files: ['index.jsx','views/*.jsx','stores/*.jsx'],
@@ -46,12 +54,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 
 	// Registering tasks
 	grunt.registerTask('default',[
 									'connect:server',
 									'browserify',
 									'sass',
+									'autoprefixer',
 									'watch'
 								]);
 
