@@ -140,6 +140,7 @@ span.twitter-typeahead{
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;  
   /* Where's this 1% of overflow coming from????? */
+  overflow: hidden;
 }
 
 /*
@@ -775,6 +776,8 @@ $google_expando_transition: (
   position:absolute;
   background-color:white;
   height: 0px;
+
+  left:0px;
 
   /*
     Limit max-height via JS to: 
