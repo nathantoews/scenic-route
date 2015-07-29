@@ -78,7 +78,7 @@ render: function() {
       
         <div id="drag-container" className="row">  
 
-            <div id="resize-cont" className="col s6 offset-s3 m6 offset-m4 l5 offset-l3">
+            <div id="resize-cont" className="col s8 offset-s2 m4 offset-m4 l8 offset-l2">
               <div id="resizable-element">
               </div>
             </div>

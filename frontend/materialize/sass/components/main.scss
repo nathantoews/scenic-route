@@ -436,7 +436,7 @@ span.twitter-typeahead{
   // width:60%;
   position: relative;
   // past this point it gets choppy.
-  max-width: 136px !important;
+  max-width:100%;
 }
 
 #resizable-element {
@@ -733,6 +733,15 @@ $google_expando_transition: (
   z-index: 10;
   opacity: 0;
 }
+
+
+@media #{$medium-only}{
+  .google-expando__card.active {
+   height:400px !important;
+  }
+}
+
+
 
 
 // Google Expando State
