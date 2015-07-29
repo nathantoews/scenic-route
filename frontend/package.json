@@ -15,6 +15,7 @@
     "object-assign": "^3.0.0",
     "pixrem": "^1.3.1",
     "react": "^0.13.3",
+    "react-slick": "^0.6.6",
     "watchify": "^3.2.3"
   },
   "devDependencies": {
