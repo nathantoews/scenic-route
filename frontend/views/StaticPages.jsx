@@ -3,7 +3,7 @@ var Classnames = require('classnames');
 var Navigate = require('../stores/Navigate.jsx');
 var Actions = require('../stores/Actions.jsx');
 var ScenicStore = require('../stores/Stores.jsx');
-var Slideshow = require('./Tutorial.jsx');
+var TutorialSection = require('./Tutorial.jsx');
 
 
 function readCookie(name) {
@@ -85,6 +85,8 @@ var Accordion = React.createClass({
   }
 });
 
+// STATIC PAGE CONTROLLER //////////////////////////////////////////////////////////
+
 var PageController = React.createClass({
 	getInitialState: function(){
 		return {
@@ -110,21 +112,15 @@ var PageController = React.createClass({
 			    id         : "slide2",
 			    imagePath  : "materialize/img/png/Walkthrough-03.png",
 			    imageAlt   : "Slide 2 Image",
-			    title      : "Slide 2",
-			    subtitle   : "Slide 2 Image SubTitle",
-			    text       : "Slide 2 Image Text",
+			    title      : "Sasadasdasdasdasdsdasdasdasdaslide 2",
+			    subtitle   : "Slidasdasdasdasdasdasdasdasde 2 Image SubTitle",
+			    text       : "Slisadasdasdasdasdasde 2 Image adsdasdasdasdasdasText",
 			    action     : "Slide 2 Image Action",
 			    actionHref : "href"
 			  },
 			  {
 			    id         : "slide3",
 			    imagePath  : "materialize/img/png/Walkthrough-04.png",
-			    imageAlt   : "Slide 3 Image",
-			    title      : "Slide 3",
-			    subtitle   : "Slide 3 Image SubTitle",
-			    text       : "Slide 3 Image Text",
-			    action     : "Slide 3 Image Action",
-			    actionHref : "href"
 			  },
 			]
 		};
@@ -194,7 +190,7 @@ var PageController = React.createClass({
 	return (
 		<div className="viewContainer">
 			<h1 className="staticTitle">tutorial</h1>
-			// <Slideshow data={this.state.tutorialData}/>
+			<TutorialSection data={this.state.tutorialData}/>
 		</div>		
 	);
 },	
