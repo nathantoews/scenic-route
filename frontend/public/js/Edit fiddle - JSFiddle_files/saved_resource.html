@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://fiddle.jshell.net/_display/# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> - jsFiddle demo</title>
+  
+  <script type="text/javascript" src="jquery-git.js"></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="result-light.css">
+  
+    
+      <script type="text/javascript" src="react-with-addons-0.12.0.js"></script>
+    
+  
+    
+      <script type="text/javascript" src="JSXTransformer-0.12.0.js"></script>
+    
+  
+    
+      <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    
+  
+  <style type="text/css">
+    
+  </style>
+  
+<script type="text/jsx" language="JavaScript 1.7">
+
+ 
+
+var URL = 'http://developer.echonest.com/api/v4/song/search?api_key=JE2S42FJUGYGJFVSE';
+var PER_PAGE = 2;
+
+var Paginator = React.createClass({
+    propTypes: {
+        max: React.PropTypes.number.isRequired,
+        maxVisible: React.PropTypes.number,
+        onChange: React.PropTypes.func.isRequired
+    },
+    componentDidUpdate: function(prevProps, prevState) {
+        if (prevState.currentPage !== this.state.currentPage) {
+            this.props.onChange(this.state.currentPage);
+        }
+    },
+    getDefaultProps: function() {
+        return {
+            maxVisible: 5
+        };
+    },
+    getInitialState: function() {
+        return {
+            currentPage: 1,
+            items: []
+        };
+    },
+    goTo: function(page) {
+        this.setState({currentPage: page});
+    },
+
+    onClickNext: function() {
+        var page = this.state.currentPage;
+
+        if (page < this.props.max) {
+            this.goTo(page + 1);
+        }
+    },
+    onClickPrev: function() {
+        if (this.state.currentPage > 1) {
+            this.goTo(this.state.currentPage - 1);
+        }
+    },
+    render: function() {
+        var className = this.props.className || '',
+            p = this.props,
+            s = this.state,
+            skip = 0;
+
+        if (s.currentPage > p.maxVisible - 1 && s.currentPage < p.max) {
+            skip = s.currentPage - p.maxVisible + 1;
+        } else if (s.currentPage === p.max) {
+            skip = s.currentPage - p.maxVisible;
+        }
+
+        var iterator = Array.apply(null, Array(p.maxVisible)).map(function(v, i) {
+            return skip + i + 1;
+        });
+
+        return (
+            <nav>
+                <ul className={'pagination ' + className}>
+                    <li className={s.currentPage === 1 ? 'disabled' : ''}>
+                        <a href="#" onClick={this.onClickPrev}>
+                            <span aria-hidden="true">&laquo;</span>
+                            <span className="sr-only">Prev</span>
+                        </a>
+                    </li>
+                    {iterator.map(function(page) {
+                        return (
+                            <li key={page}
+                                onClick={this.goTo.bind(this, page)}
+                                className={s.currentPage === page ? 'active' : ''}>
+                                <a href="#">{page}</a>
+                            </li>
+                        );
+                    }, this)}
+                    <li className={s.currentPage === p.max ? 'disabled' : ''}>
+                        <a href="#" onClick={this.onClickNext}>
+                            <span aria-hidden="true">&raquo;</span>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        );
+    }
+});
+
+var App = React.createClass({
+    componentDidMount: function() {
+        this.onChangePage(1);
+    },
+    getData: function(page) {
+        return {
+               hello
+        }
+    },
+    getInitialState: function() {
+        return {
+            items: [],
+            loading: true
+        };
+    },
+    onChangePage: function(page) {
+        this.setState({
+            loading: true
+        });
+
+        this.getData(page).then(function(items) {
+            this.setState({
+                items: items,
+                loading: false
+            });
+        }.bind(this));
+    },
+    renderItem: function(item) {
+        return <li key={item.id}>{item.title}</li>;
+    },
+    render: function() {
+        var s = this.state;
+
+        return (
+            <div>
+                <h1>Paginator example</h1>
+                <Paginator max={10} onChange={this.onChangePage} />
+                {s.loading
+                    ? <div>Loading...</div>
+                    : <ul>{s.items.map(this.renderItem)}</ul>
+                }
+            </div>
+        );
+    }
+});
+
+React.render(<App />, document.body);
+
+ 
+//]]> 
+</script>
+
+
+<script>
+
+ 
+
+var URL = 'http://developer.echonest.com/api/v4/song/search?api_key=JE2S42FJUGYGJFVSE';
+var PER_PAGE = 2;
+
+var Paginator = React.createClass({displayName: 'Paginator',
+    propTypes: {
+        max: React.PropTypes.number.isRequired,
+        maxVisible: React.PropTypes.number,
+        onChange: React.PropTypes.func.isRequired
+    },
+    componentDidUpdate: function(prevProps, prevState) {
+        if (prevState.currentPage !== this.state.currentPage) {
+            this.props.onChange(this.state.currentPage);
+        }
+    },
+    getDefaultProps: function() {
+        return {
+            maxVisible: 5
+        };
+    },
+    getInitialState: function() {
+        return {
+            currentPage: 1,
+            items: []
+        };
+    },
+    goTo: function(page) {
+        this.setState({currentPage: page});
+    },
+
+    onClickNext: function() {
+        var page = this.state.currentPage;
+
+        if (page < this.props.max) {
+            this.goTo(page + 1);
+        }
+    },
+    onClickPrev: function() {
+        if (this.state.currentPage > 1) {
+            this.goTo(this.state.currentPage - 1);
+        }
+    },
+    render: function() {
+        var className = this.props.className || '',
+            p = this.props,
+            s = this.state,
+            skip = 0;
+
+        if (s.currentPage > p.maxVisible - 1 && s.currentPage < p.max) {
+            skip = s.currentPage - p.maxVisible + 1;
+        } else if (s.currentPage === p.max) {
+            skip = s.currentPage - p.maxVisible;
+        }
+
+        var iterator = Array.apply(null, Array(p.maxVisible)).map(function(v, i) {
+            return skip + i + 1;
+        });
+
+        return (
+            React.createElement("nav", null, 
+                React.createElement("ul", {className: 'pagination ' + className}, 
+                    React.createElement("li", {className: s.currentPage === 1 ? 'disabled' : ''}, 
+                        React.createElement("a", {href: "#", onClick: this.onClickPrev}, 
+                            React.createElement("span", {'aria-hidden': "true"}, "«"), 
+                            React.createElement("span", {className: "sr-only"}, "Prev")
+                        )
+                    ), 
+                    iterator.map(function(page) {
+                        return (
+                            React.createElement("li", {key: page, 
+                                onClick: this.goTo.bind(this, page), 
+                                className: s.currentPage === page ? 'active' : ''}, 
+                                React.createElement("a", {href: "#"}, page)
+                            )
+                        );
+                    }, this), 
+                    React.createElement("li", {className: s.currentPage === p.max ? 'disabled' : ''}, 
+                        React.createElement("a", {href: "#", onClick: this.onClickNext}, 
+                            React.createElement("span", {'aria-hidden': "true"}, "»"), 
+                            React.createElement("span", {className: "sr-only"}, "Next")
+                        )
+                    )
+                )
+            )
+        );
+    }
+});
+
+var App = React.createClass({displayName: 'App',
+    componentDidMount: function() {
+        this.onChangePage(1);
+    },
+    getData: function(page) {
+        return {
+               hello
+        }
+    },
+    getInitialState: function() {
+        return {
+            items: [],
+            loading: true
+        };
+    },
+    onChangePage: function(page) {
+        this.setState({
+            loading: true
+        });
+
+        this.getData(page).then(function(items) {
+            this.setState({
+                items: items,
+                loading: false
+            });
+        }.bind(this));
+    },
+    renderItem: function(item) {
+        return React.createElement("li", {key: item.id}, item.title);
+    },
+    render: function() {
+        var s = this.state;
+
+        return (
+            React.createElement("div", null, 
+                React.createElement("h1", null, "Paginator example"), 
+                React.createElement(Paginator, {max: 10, onChange: this.onChangePage}), 
+                s.loading
+                    ? React.createElement("div", null, "Loading...")
+                    : React.createElement("ul", null, s.items.map(this.renderItem))
+                
+            )
+        );
+    }
+});
+
+React.render(React.createElement(App, null), document.body);
+
+ 
+//]]> 
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJhbnNmb3JtZWQuanMiLCJzb3VyY2VzIjpbIklubGluZSBKU1ggc2NyaXB0Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTs7QUFFQSxJQUFJLEdBQUcsR0FBRyw0RUFBNEUsQ0FBQztBQUN2RixJQUFJLFFBQVEsR0FBRyxDQUFDLENBQUM7O0FBRWpCLElBQUksK0JBQStCLHlCQUFBO0lBQy9CLFNBQVMsRUFBRTtRQUNQLEdBQUcsRUFBRSxLQUFLLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxVQUFVO1FBQ3RDLFVBQVUsRUFBRSxLQUFLLENBQUMsU0FBUyxDQUFDLE1BQU07UUFDbEMsUUFBUSxFQUFFLEtBQUssQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLFVBQVU7S0FDNUM7SUFDRCxrQkFBa0IsRUFBRSxTQUFTLFNBQVMsRUFBRSxTQUFTLEVBQUU7UUFDL0MsSUFBSSxTQUFTLENBQUMsV0FBVyxLQUFLLElBQUksQ0FBQyxLQUFLLENBQUMsV0FBVyxFQUFFO1lBQ2xELElBQUksQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsV0FBVyxDQUFDLENBQUM7U0FDL0M7S0FDSjtJQUNELGVBQWUsRUFBRSxXQUFXO1FBQ3hCLE9BQU87WUFDSCxVQUFVLEVBQUUsQ0FBQztTQUNoQixDQUFDO0tBQ0w7SUFDRCxlQUFlLEVBQUUsV0FBVztRQUN4QixPQUFPO1lBQ0gsV0FBVyxFQUFFLENBQUM7WUFDZCxLQUFLLEVBQUUsRUFBRTtTQUNaLENBQUM7S0FDTDtJQUNELElBQUksRUFBRSxTQUFTLElBQUksRUFBRTtRQUNqQixJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsV0FBVyxFQUFFLElBQUksQ0FBQyxDQUFDLENBQUM7QUFDM0MsS0FBSzs7SUFFRCxXQUFXLEVBQUUsV0FBVztBQUM1QixRQUFRLElBQUksSUFBSSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsV0FBVyxDQUFDOztRQUVsQyxJQUFJLElBQUksR0FBRyxJ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SSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUM7S0FDakI7SUFDRCxVQUFVLEVBQUUsU0FBUyxJQUFJLEVBQUU7UUFDdkIsT0FBTyxvQkFBQSxJQUFHLEVBQUEsQ0FBQSxDQUFDLEdBQUEsRUFBRyxDQUFFLElBQUksQ0FBQyxFQUFJLENBQUEsRUFBQyxJQUFJLENBQUMsS0FBVyxDQUFBLENBQUM7S0FDOUM7SUFDRCxNQUFNLEVBQUUsV0FBVztBQUN2QixRQUFRLElBQUksQ0FBQyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUM7O1FBRW5CO1lBQ0ksb0JBQUEsS0FBSSxFQUFBLElBQUMsRUFBQTtnQkFDRCxvQkFBQSxJQUFHLEVBQUEsSUFBQyxFQUFBLG1CQUFzQixDQUFBLEVBQUE7Z0JBQzFCLG9CQUFDLFNBQVMsRUFBQSxDQUFBLENBQUMsR0FBQSxFQUFHLENBQUUsRUFBRSxFQUFDLENBQUMsUUFBQSxFQUFRLENBQUUsSUFBSSxDQUFDLFlBQWEsQ0FBQSxDQUFHLENBQUEsRUFBQTtnQkFDbEQsQ0FBQyxDQUFDLE9BQU87c0JBQ0osb0JBQUEsS0FBSSxFQUFBLElBQUMsRUFBQSxZQUFnQixDQUFBO3NCQUNyQixvQkFBQSxJQUFHLEVBQUEsSUFBQyxFQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQU8sQ0FBQTtnQkFDNUM7WUFDQyxDQUFBO1VBQ1I7S0FDTDtBQUNMLENBQUMsQ0FBQyxDQUFDOztBQUVILEtBQUssQ0FBQyxNQUFNLENBQUMsb0JBQUMsR0FBRyxFQUFBLElBQUEsQ0FBRyxDQUFBLEVBQUUsUUFBUSxDQUFDLElBQUksQ0FBQyxDQUFDO0FBQ3JDOztBQUVBLE1BQU0iLCJzb3VyY2VzQ29udGVudCI6WyJcblxuIFxuXG52YXIgVVJMID0gJ2h0dHA6Ly9kZXZlbG9wZXIuZWNob25lc3QuY29tL2FwaS92NC9zb25nL3NlYXJjaD9hcGlfa2V5PUpFMlM0MkZKVUdZR0pGVlNFJztcbnZhciBQRVJfUEFHRSA9IDI7XG5cbnZhciBQYWdpbmF0b3IgPSBSZWFjdC5jcmVhdGVDbGFzcyh7XG4gICAgcHJvcFR5cGVzOiB7XG4gICAgICAgIG1heDogUmVhY3QuUHJvcFR5cGVzLm51bWJlci5pc1JlcXVpcmVkLFxuICAgICAgICBtYXhWaXNpYmxlOiBSZWFjdC5Qcm9wVHlwZXMubnVtYmVyLFxuICAgICAgICBvbkNoYW5nZTogUmVhY3QuUHJvcFR5cGVzLmZ1bmMuaXNSZXF1aXJlZFxuICAgIH0sXG4gICAgY29tcG9uZW50RGlkVXBkYXRlOiBmdW5jdGlvbihwcmV2UHJvcHMsIHByZXZTdGF0ZSkge1xuICAgICAgICBpZiAocHJldlN0YXRlLmN1cnJlbnRQYWdlICE9PSB0aGlzLnN0YXRlLmN1cnJlbnRQYWdlKSB7XG4gICAgICAgICAgICB0aGlzLnByb3BzLm9uQ2hhbmdlKHRoaXMuc3RhdGUuY3VycmVudFBhZ2UpO1xuICAgICAgICB9XG4gICAgfSxcbiAgICBnZXREZWZhdWx0UHJvcHM6IGZ1bmN0aW9uKCkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgbWF4VmlzaWJsZTogNVxuICAgICAgICB9O1xuICAgIH0sXG4gICAgZ2V0SW5pdGlhbFN0YXRlOiBmdW5jdGlvbigpIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGN1cnJlbnRQYWdlOiAxLFxuICAgICAgICAgICAgaXRlbXM6IFtdXG4gICAgICAgIH07XG4gICAgfSxcbiAgICBnb1RvOiBmdW5jdGlvbihwYWdlKSB7XG4gICAgICAgIHRoaXMuc2V0U3RhdGUoe2N1cnJlbnRQYWdlOiBwYWdlfSk7XG4gICAgfSxcblxuICAgIG9uQ2xpY2tOZXh0OiBmdW5jdGlvbigpIHtcbiAgICAgICAgdmFyIHBhZ2UgPSB0aGlzLnN0YXRlLmN1cnJlbnRQYWdlO1xuXG4gICAgICAgIGlmIChwYWdlIDwgdGhpcy5wcm9wcy5tYXgpIHtcbiAgICAgICAgICAgIHRoaXMuZ29UbyhwYWdlICsgMSk7XG4gICAgICAgIH1cbiAgICB9LFxuICAgIG9uQ2xpY2tQcmV2OiBmdW5jdGlvbigpIHtcbiAgICAgICAgaWYgKHRoaXMuc3RhdGUuY3VycmVudFBhZ2UgPiAxKSB7XG4gICAgICAgICAgICB0aGlzLmdvVG8odGhpcy5zdGF0ZS5jdXJyZW50UGFnZSAtIDEpO1xuICAgICAgICB9XG4gICAgfSxcbiAgICByZW5kZXI6IGZ1bmN0aW9uKCkge1xuICAgICAgICB2YXIgY2xhc3NOYW1lID0gdGhpcy5wcm9wcy5jbGFzc05hbWUgfHwgJycsXG4gICAgICAgICAgICBwID0gdGhpcy5wcm9wcyxcbiAgICAgICAgICAgIHMgPSB0aGlzLnN0YXRlLFxuICAgICAgICAgICAgc2tpcCA9IDA7XG5cbiAgICAgICAgaWYgKHMuY3VycmVudFBhZ2UgPiBwLm1heFZpc2libGUgLSAxICYmIHMuY3VycmVudFBhZ2UgPCBwLm1heCkge1xuICAgICAgICAgICAgc2tpcCA9IHMuY3VycmVudFBhZ2UgLSBwLm1heFZpc2libGUgKyAxO1xuICAgICAgICB9IGVsc2UgaWYgKHMuY3VycmVudFBhZ2UgPT09IHAubWF4KSB7XG4gICAgICAgICAgICBza2lwID0gcy5jdXJyZW50UGFnZSAtIHAubWF4VmlzaWJsZTtcbiAgICAgICAgfVxuXG4gICAgICAgIHZhciBpdGVyYXRvciA9IEFycmF5LmFwcGx5KG51bGwsIEFycmF5KHAubWF4VmlzaWJsZSkpLm1hcChmdW5jdGlvbih2LCBpKSB7XG4gICAgICAgICAgICByZXR1cm4gc2tpcCArIGkgKyAxO1xuICAgICAgICB9KTtcblxuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPG5hdj5cbiAgICAgICAgICAgICAgICA8dWwgY2xhc3NOYW1lPXsncGFnaW5hdGlvbiAnICsgY2xhc3NOYW1lfT5cbiAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT17cy5jdXJyZW50UGFnZSA9PT0gMSA/ICdkaXNhYmxlZCcgOiAnJ30+XG4gICAgICAgICAgICAgICAgICAgICAgICA8YSBocmVmPVwiI1wiIG9uQ2xpY2s9e3RoaXMub25DbGlja1ByZXZ9PlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPiZsYXF1bzs8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwic3Itb25seVwiPlByZXY8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2E+XG4gICAgICAgICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgICAgICAgIHtpdGVyYXRvci5tYXAoZnVuY3Rpb24ocGFnZSkge1xuICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8bGkga2V5PXtwYWdlfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXt0aGlzLmdvVG8uYmluZCh0aGlzLCBwYWdlKX1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtzLmN1cnJlbnRQYWdlID09PSBwYWdlID8gJ2FjdGl2ZScgOiAnJ30+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9XCIjXCI+e3BhZ2V9PC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgICAgICAgICAgICApO1xuICAgICAgICAgICAgICAgICAgICB9LCB0aGlzKX1cbiAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT17cy5jdXJyZW50UGFnZSA9PT0gcC5tYXggPyAnZGlzYWJsZWQnIDogJyd9PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj1cIiNcIiBvbkNsaWNrPXt0aGlzLm9uQ2xpY2tOZXh0fT5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBhcmlhLWhpZGRlbj1cInRydWVcIj4mcmFxdW87PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInNyLW9ubHlcIj5OZXh0PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICAgICAgICAgICA8L2xpPlxuICAgICAgICAgICAgICAgIDwvdWw+XG4gICAgICAgICAgICA8L25hdj5cbiAgICAgICAgKTtcbiAgICB9XG59KTtcblxudmFyIEFwcCA9IFJlYWN0LmNyZWF0ZUNsYXNzKHtcbiAgICBjb21wb25lbnREaWRNb3VudDogZnVuY3Rpb24oKSB7XG4gICAgICAgIHRoaXMub25DaGFuZ2VQYWdlKDEpO1xuICAgIH0sXG4gICAgZ2V0RGF0YTogZnVuY3Rpb24ocGFnZSkge1xuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgICAgaGVsbG9cbiAgICAgICAgfVxuICAgIH0sXG4gICAgZ2V0SW5pdGlhbFN0YXRlOiBmdW5jdGlvbigpIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGl0ZW1zOiBbXSxcbiAgICAgICAgICAgIGxvYWRpbmc6IHRydWVcbiAgICAgICAgfTtcbiAgICB9LFxuICAgIG9uQ2hhbmdlUGFnZTogZnVuY3Rpb24ocGFnZSkge1xuICAgICAgICB0aGlzLnNldFN0YXRlKHtcbiAgICAgICAgICAgIGxvYWRpbmc6IHRydWVcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdGhpcy5nZXREYXRhKHBhZ2UpLnRoZW4oZnVuY3Rpb24oaXRlbXMpIHtcbiAgICAgICAgICAgIHRoaXMuc2V0U3RhdGUoe1xuICAgICAgICAgICAgICAgIGl0ZW1zOiBpdGVtcyxcbiAgICAgICAgICAgICAgICBsb2FkaW5nOiBmYWxzZVxuICAgICAgICAgICAgfSk7XG4gICAgICAgIH0uYmluZCh0aGlzKSk7XG4gICAgfSxcbiAgICByZW5kZXJJdGVtOiBmdW5jdGlvbihpdGVtKSB7XG4gICAgICAgIHJldHVybiA8bGkga2V5PXtpdGVtLmlkfT57aXRlbS50aXRsZX08L2xpPjtcbiAgICB9LFxuICAgIHJlbmRlcjogZnVuY3Rpb24oKSB7XG4gICAgICAgIHZhciBzID0gdGhpcy5zdGF0ZTtcblxuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8aDE+UGFnaW5hdG9yIGV4YW1wbGU8L2gxPlxuICAgICAgICAgICAgICAgIDxQYWdpbmF0b3IgbWF4PXsxMH0gb25DaGFuZ2U9e3RoaXMub25DaGFuZ2VQYWdlfSAvPlxuICAgICAgICAgICAgICAgIHtzLmxvYWRpbmdcbiAgICAgICAgICAgICAgICAgICAgPyA8ZGl2PkxvYWRpbmcuLi48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgOiA8dWw+e3MuaXRlbXMubWFwKHRoaXMucmVuZGVySXRlbSl9PC91bD5cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgKTtcbiAgICB9XG59KTtcblxuUmVhY3QucmVuZGVyKDxBcHAgLz4sIGRvY3VtZW50LmJvZHkpO1xuXG4gXG4vL11dPiBcbiJdfQ==</script></head>
+<body><div data-reactid=".0"><h1 data-reactid=".0.0">Paginator example</h1><nav data-reactid=".0.1"><ul class="pagination " data-reactid=".0.1.0"><li class="" data-reactid=".0.1.0.0"><a href="saved_resource.html" data-reactid=".0.1.0.0.0"><span aria-hidden="true" data-reactid=".0.1.0.0.0.0">«</span><span class="sr-only" data-reactid=".0.1.0.0.0.1">Prev</span></a></li><li class="" data-reactid=".0.1.0.1:$6"><a href="saved_resource.html" data-reactid=".0.1.0.1:$6.0">6</a></li><li class="" data-reactid=".0.1.0.1:$7"><a href="saved_resource.html" data-reactid=".0.1.0.1:$7.0">7</a></li><li class="" data-reactid=".0.1.0.1:$8"><a href="saved_resource.html" data-reactid=".0.1.0.1:$8.0">8</a></li><li class="" data-reactid=".0.1.0.1:$9"><a href="saved_resource.html" data-reactid=".0.1.0.1:$9.0">9</a></li><li class="active" data-reactid=".0.1.0.1:$10"><a href="saved_resource.html" data-reactid=".0.1.0.1:$10.0">10</a></li><li class="disabled" data-reactid=".0.1.0.2"><a href="saved_resource.html" data-reactid=".0.1.0.2.0"><span aria-hidden="true" data-reactid=".0.1.0.2.0.0">»</span><span class="sr-only" data-reactid=".0.1.0.2.0.1">Next</span></a></li></ul></nav><div data-reactid=".0.2">Loading...</div></div></body></html>

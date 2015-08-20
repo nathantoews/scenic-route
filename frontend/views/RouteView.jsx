@@ -162,11 +162,8 @@ var RouteView = React.createClass({
                 <li className="destLbl">
                   <span className="activator">{this.state.travelDest}</span>
                 </li>
-                <li className="distLbl centerLine">
-                  <span className="activator">{this.state.travelDist}</span>
-                </li>
-                <li className="timeLbl left">
-                  <span className="activator">{this.state.travelTime}</span>
+                <li className="timeLbl">
+                  <span className="activator">{this.state.travelTime + ' | ' + this.state.travelDist}</span>
                 </li>
               </ul>
           </div>
@@ -181,11 +178,8 @@ var RouteView = React.createClass({
                 <li className="destLbl">
                   <span className="card-title">{this.state.travelDest}</span>
                 </li>
-                <li className="distLbl centerLine">
-                  <span className="card-title">{this.state.travelDist}</span>
-                </li>
-                <li className="timeLbl left">
-                  <span className="card-title">{this.state.travelTime}</span>
+                <li className="timeLbl">
+                  <span className="card-title">{this.state.travelTime + ' | ' + this.state.travelDist}</span>
                 </li>
               </ul>
           </div>

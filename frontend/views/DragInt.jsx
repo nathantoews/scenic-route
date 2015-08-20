@@ -74,7 +74,7 @@ componentWillUnmount: function(){
 render: function() {
     return (
       <div className="row" id="timeSlider">
-        <p className="introTag">I have</p>
+        <p className="introTag">i want my greenlane to be</p>
       
         <div id="drag-container" className="row">  
 
@@ -89,8 +89,8 @@ render: function() {
 
         </div>
       
-        <button className="btn-primary waves-effect waves-light col s4">skip</button> 
-        <button onClick={Navigate.generateRoute} className="btn-secondary waves-effect waves-light col s4 Time_Submit">map it</button>       
+        <button className="btn-primary col s4">skip</button> 
+        <button onClick={Navigate.generateRoute} className="btn-secondary col s4 Time_Submit">map it</button>       
       </div>
     );
   }

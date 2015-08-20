@@ -291,7 +291,7 @@
   opacity:0;
   position:absolute;
   bottom:50px;
-  right:-5px;
+  right:0;
   float: right;
   width:40px;
   height:40px;
@@ -305,7 +305,7 @@
   opacity:0;
   position:absolute;
   bottom:0;
-  right:-5px;
+  right:0;
   width:40px;
   height:40px;
   background-image:url('../img/svg/delete.svg');
@@ -315,6 +315,7 @@
 }
 
 .walkGrey {
+  float: left;
   width:30px;
   height:30px;
   background-image:url('../img/svg/walkGrey.svg');
@@ -324,6 +325,7 @@
 }
 
 .bikeGrey {
+  float: left;
   width:30px;
   height:30px;
   background-image:url('../img/svg/bikeGrey.svg');

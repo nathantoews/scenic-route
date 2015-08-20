@@ -46,6 +46,8 @@ html, body, .table-container{
 }
 #map-container{
   .map-start-btn{
+    font-family:Roboto;
+    font-weight:200;
     z-index:50;
     position: absolute;
     top:25%;
@@ -75,6 +77,7 @@ html, body, .table-container{
 /* Overriding the materialize input to allow more padding down below */
 .distContainer{
   .input-field{
+    margin-top:5rem !important;
     box-shadow: 0 62px 0 0 $secondary-color-light !important;
   }
 } 
@@ -193,14 +196,6 @@ span.twitter-typeahead{
     margin:auto;
     li {
       text-align:center;
-    }
-    .left {
-      width:50%;
-    }
-    .centerLine {
-      float: left;
-      width:50%;
-      border-right:3px solid $text-color;
     }
   }
 }
@@ -477,7 +472,7 @@ span.twitter-typeahead{
 .distContainer {
   height:100%;
   position: relative;
-  padding: 20% 0 50% 0;
+  padding: 10% 0 50% 0;
 }
 
 /// BUTTTON STYLES /////////////////////////////////////////////////////////
@@ -492,11 +487,21 @@ span.twitter-typeahead{
   font-size:1.2rem;
   font-weight:200;
   letter-spacing:2rem;
-  box-shadow:0px 3px 0px #aa4660 !important;
+  box-shadow:0px 4px 0px #aa4660 !important;
   background-color:$primary-color;
 
   &:hover {
     background-color:$primary-color;
+    box-shadow:0 3px 0px #aa4660 !important;
+  }
+
+  &:active {
+    transform: translate(0px, 4px);
+    -webkit-transform: translate(0px, 4px);
+    -moz-transform: translate(0px, 4px);
+    -o-transform: translate(0px, 4px);
+    -ms-transform: translate(0px, 4px);
+    box-shadow:0px 0px 0px #aa4660 !important;
   }
 }
 
@@ -506,12 +511,21 @@ span.twitter-typeahead{
   position: absolute !important;
   bottom:0;
   right:5%;
-  font-weight:100;
-  box-shadow:0px 3px 0px #1a9169 !important;
+  font-size:1.2rem;
+  font-weight:200;
+  box-shadow:0px 4px 0px #1a9169 !important;
   background-color:$secondary-color;
 
   &:hover {
     background-color:$secondary-color;
+  }
+  &:active {
+     transform: translate(0px, 4px);
+    -webkit-transform: translate(0px, 4px);
+    -moz-transform: translate(0px, 4px);
+    -o-transform: translate(0px, 4px);
+    -ms-transform: translate(0px, 4px);
+    box-shadow:0px 0px 0px #aa4660 !important;
   }
 }
 
@@ -926,7 +940,7 @@ hr {
 .staticPageContainer{
   display:block;
   width:25%;
-  height: 100%;
+  height: calc(100% - 64px) !important;
   padding:0 30px;
   position: absolute;
   top:64px;
@@ -987,6 +1001,7 @@ hr {
   }  
   .staticPageContainer{
     top:0;
+    height:100% !important;
     width:100%;
 
     .staticTitle {
@@ -998,7 +1013,8 @@ hr {
 
 @media #{$medium-only} {
   .staticPageContainer{
-    width:50%;
+    height: calc(100% - 64px) !important;  
+    width:100%;
   }
 }
 
@@ -1011,7 +1027,7 @@ hr {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   background: url("../img/svg/downChev.svg") no-repeat !important;
-  z-index: 3;
+  z-index: 15;
 
   width: 25px;  
   height: 25px;
@@ -1029,13 +1045,31 @@ hr {
 }
 
 
-/// acordian -----------------------------------
+/// acordian for FAVOURITE ROUTES -----------------------------------
+
+.favouritedRoute {
+  margin:0 -30px;
+
+  .sectionhead {
+    height:100%;
+  }
+  .section {
+    padding:1em 30px;
+    border-bottom:0.5px solid $text-color;
+
+    .article {
+      right:0;
+    }
+
+  }
+}
 .section {
   position: relative;
   width: 100%;
   button {
     position: absolute;
-    right: 0;
+    top:30px;
+    right: 36px;
     margin: 0;
     padding: 0;
     height: 2em;
@@ -1060,7 +1094,7 @@ hr {
   transform: rotate(180deg);
   }
   .articlewrap {
-    height: 120px;
+    height: 100px;
   }
     .favDelete {
       opacity:1;
@@ -1077,6 +1111,7 @@ hr {
 }
 
 .articlewrap {
+  position:relative;
   height: 0;
   overflow: hidden;
   transition: all .2s ease-in;
@@ -1087,21 +1122,27 @@ hr {
   font-weight:300;
   color:$text-color;
   height:50px;
-  width: 90%;
+  width: 80%;
   overflow: hidden;
   background: white;
   cursor: pointer;
   text-overflow: ellipsis;
-  padding:0 1em;
+  padding:1em 0;
   padding-right: 2.1em;
+  span {
+    width:70%;
+    float: right;
+    white-space:pre;
+  }
 }
 
 .article {
+  position:absolute;
+  bottom:0;
   font-family:Roboto;
   font-weight:300;
   color:$primary-color;
-  width:90%;
-  padding: 1em;
+  width:80%;
   line-height: 1.3;
 }
 
@@ -1114,10 +1155,76 @@ hr {
   z-index: 1000 !important;
 }
 
+
+// TUTORIAL SLIDER /////////////////////////////////////////////////////////////////
+
 .tutorialSlide{
+  height:100%;
+  background-position:50% 50%;
   background-size:contain;
   background-repeat: no-repeat;
   min-height: 440px;
-  max-width:100%;
+  width:100%;
 }
+
+.tutorial {
+  height:100%;
+  background-image:url("../img/png/1Walkthrough-10.svg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:50% 50%;
+  margin:0 -30px;
+}
+
+.slick-list {
+  height:100% !important;
+  .slick-track {
+    height:100% !important;
+    .slick-slide {
+      height:100% !important;
+    }
+  }
+}
+.slick-slider {
+  margin:0 !important;
+  height:100%;
+}
+
+.slick-dots {
+  bottom:0 !important;
+
+  li button:before {
+    font-size:12px !important;
+    color:#fff !important;
+  }
+
+  .slick-active {
+    color:#fff !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -98,30 +98,14 @@ var PageController = React.createClass({
 								ScenicStore.getLayout().containerMask
 							),
 			 'tutorialData' : [
-			  {
-			    id         : "slide1",
-			    imagePath  : "materialize/img/png/Walkthrough-02.png",
-			    imageAlt   : "Slide 1 Image",
-			    title      : "Slide 1",
-			    subtitle   : "Slide 1 Image SubTitle",
-			    text       : "Slide 1 Image Text",
-			    action     : "Slide 1 Image Action",
-			    actionHref : "href"
-			  },
-			  {
-			    id         : "slide2",
-			    imagePath  : "materialize/img/png/Walkthrough-03.png",
-			    imageAlt   : "Slide 2 Image",
-			    title      : "Sasadasdasdasdasdsdasdasdasdaslide 2",
-			    subtitle   : "Slidasdasdasdasdasdasdasdasde 2 Image SubTitle",
-			    text       : "Slisadasdasdasdasdasde 2 Image adsdasdasdasdasdasText",
-			    action     : "Slide 2 Image Action",
-			    actionHref : "href"
-			  },
-			  {
-			    id         : "slide3",
-			    imagePath  : "materialize/img/png/Walkthrough-04.png",
-			  },
+			 	{imagePath : "materialize/img/png/1Walkthrough-02.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-03.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-04.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-05.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-06.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-07.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-08.svg"},
+			 	{imagePath : "materialize/img/png/1Walkthrough-09.svg"},
 			]
 		};
 	},
@@ -133,18 +117,16 @@ var PageController = React.createClass({
 			<div className='favouritedRoute'>
 			{	
 			    this.state.saved.map(function(route) {
-			        var destFav = route.originName + '-' + route.destinationName;
+			        var destFav = 'to: ' + route.destinationName +  '\n' + 'from: '  + route.originName;
 			        var transitType = route.transit == 'cycling' ? <div><div className='bikeGrey'></div>{destFav}</div>: false || route.transit == 'walking' ? <div><div className='walkGrey'></div>{destFav}</div> : false;
 			    	console.log('ROUTE', route.originName)
 			        return  <Section title={transitType}>
-
-							<div>{route.originName}</div>
-							<div>{route.destinationName}</div>
-							<div>{route.formatted.duration}</div>
-							<div>{route.formatted.distance}</div>
-							<div>{route.info.parks}</div>
-							<div onClick={Navigate.generateSingleton.bind(this, route)} className="favGo"></div>
-							<div className="favDelete"></div>	
+								<div>{route.formatted.duration}</div>
+								<div>{route.formatted.distance}</div>
+								<div>{route.formatted.date}</div>
+								<div>{route.info.parks}</div>
+								<div onClick={Navigate.generateSingleton.bind(this, route)} className="favGo"></div>
+								<div className="favDelete"></div>	
 							</Section>
 			
 				})
@@ -188,8 +170,7 @@ var PageController = React.createClass({
 	},
 	tutorial: function(){
 	return (
-		<div className="viewContainer">
-			<h1 className="staticTitle">tutorial</h1>
+		<div className="viewContainer tutorial">
 			<TutorialSection data={this.state.tutorialData}/>
 		</div>		
 	);
